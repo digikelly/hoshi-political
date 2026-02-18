@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Hoshi Sora | Legislative Intelligence</title>
+<style>
+body{font-family:system-ui;background:#0a1628;color:#c5e3f0;margin:0;padding:20px}
+.container{max-width:1400px;margin:0 auto}
+header{display:flex;justify-content:space-between;align-items:center;padding:20px 0;border-bottom:1px solid rgba(197,227,240,0.1);margin-bottom:30px}
+.logo{display:flex;align-items:center;gap:15px}
+.logo-icon{width:44px;height:44px;background:linear-gradient(135deg,#d4a574,#ffd700);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px}
+.logo-text h1{font-size:22px;letter-spacing:3px;color:#c5e3f0;margin:0}
+nav{display:flex;gap:10px;margin-bottom:25px}
+.nav-btn{padding:10px 20px;background:rgba(26,47,74,0.4);border:1px solid rgba(197,227,240,0.1);border-radius:20px;color:#c5e3f0;cursor:pointer}
+.nav-btn:hover,.nav-btn.active{background:rgba(212,165,116,0.2);border-color:#d4a574}
+.page{display:none}.page.active{display:block}
+.card{background:rgba(26,47,74,0.35);border:1px solid rgba(197,227,240,0.08);border-radius:14px;padding:20px;margin-bottom:16px}
+.card-title{font-size:13px;font-weight:500;color:#c5e3f0;letter-spacing:1.5px;text-transform:uppercase}
+.bill-card{padding:16px;background:rgba(10,22,40,0.3);border-radius:10px;border-left:3px solid #d4a574;margin-bottom:12px;cursor:pointer}
+.bill-card:hover{background:rgba(10,22,40,0.5)}
+.bill-number{font-size:14px;font-weight:600;color:#d4a574}
+.bill-title{font-size:14px;color:#c5e3f0;margin:8px 0}
+.bill-description{font-size:12px;color:rgba(197,227,240,0.7)}
+.committee-item{display:flex;justify-content:space-between;align-items:center;padding:12px;background:rgba(10,22,40,0.25);border-radius:8px;margin-bottom:8px;cursor:pointer}
+.committee-item:hover{background:rgba(10,22,40,0.4)}
+.committee-name{font-size:13px;color:#c5e3f0}
+.committee-chair{font-size:11px;color:rgba(197,227,240,0.5)}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<div class="logo">
+<div class="logo-icon">✦</div>
+<div class="logo-text">
+<h1>HOSHI SORA</h1>
+<p>Legislative Intelligence</p>
+</div>
+</div>
+<div style="padding:8px 16px;background:rgba(212,165,116,0.15);border:1px solid rgba(212,165,116,0.3);border-radius:20px;font-size:12px;color:#d4a574">Client Dashboard</div>
+</header>
+
+<nav>
+<button class="nav-btn active" onclick="showPage('dashboard')">Dashboard</button>
+<button class="nav-btn" onclick="showPage('redmond')">🏛️ Redmond</button>
+</nav>
+
+<div id="dashboard-page" class="page active">
+<div class="card">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+<div class="card-title">Priority Bills</div>
+<span style="padding:4px 10px;border-radius:12px;font-size:10px;background:rgba(255,107,107,0.2);color:#ff6b6b">3 Urgent</span>
+</div>
+
+<div class="bill-card" onclick="window.open('https://app.leg.wa.gov/billsummary?BillNumber=6346&Year=2025','_blank')">
+<div style="display:flex;justify-content:space-between">
+<span class="bill-number">SB 6346</span>
+<span style="padding:3px 10px;border-radius:10px;font-size:10px;background:rgba(78,205,196,0.2);color:#4ecdc4">Passed Senate</span>
+</div>
+<div class="bill-title">Millionaires Tax - 9.9% on income over $1M</div>
+<div class="bill-description">Now in House. High impact for high-net-worth clients.</div>
+</div>
+
+<div class="bill-card" onclick="window.open('https://app.leg.wa.gov/billsummary?BillNumber=2418&Year=2025','_blank')">
+<div style="display:flex;justify-content:space-between">
+<span class="bill-number">HB 2418</span>
+<span style="padding:3px 10px;border-radius:10px;font-size:10px;background:rgba(255,217,61,0.2);color:#ffd93d">In Senate</span>
+</div>
+<div class="bill-title">Permit Review Reform - Streamlined housing permits</div>
+<div class="bill-description">Passed House, now in Senate Local Government.</div>
+</div>
+
+<div class="bill-card" onclick="window.open('https://app.leg.wa.gov/billsummary?BillNumber=2442&Year=2025','_blank')">
+<div style="display:flex;justify-content:space-between">
+<span class="bill-number">HB 2442</span>
+<span style="padding:3px 10px;border-radius:10px;font-size:10px;background:rgba(78,205,196,0.2);color:#4ecdc4">In Appropriations</span>
+</div>
+<div class="bill-title">Local Gov Tax Flexibility - REET for housing</div>
+<div class="bill-description">More tools for affordable housing development.</div>
+</div>
+</div>
+</div>
+
+<div id="redmond-page" class="page">
+<div class="card">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+<div class="card-title">🏛️ Redmond Leadership</div>
+<span style="padding:4px 10px;border-radius:12px;font-size:10px;background:rgba(78,205,196,0.2);color:#4ecdc4">Mayor + 7 Council</span>
+</div>
+
+<div class="bill-card" style="border-left-color:#4ecdc4" onclick="window.open('https://www.redmond.gov/191/Mayor-Angela-Birney','_blank')">
+<div style="display:flex;justify-content:space-between">
+<span class="bill-number">Mayor</span>
+<span style="padding:3px 10px;border-radius:10px;font-size:10px;background:rgba(78,205,196,0.2);color:#4ecdc4">Active</span>
+</div>
+<div class="bill-title">Angela Birney →</div>
+<div class="bill-description">Housing Action Plan, behavioral health, economic development</div>
+</div>
+
+<div style="margin-top:16px;font-size:12px;color:#d4a574;margin-bottom:8px">All 7 Council Members</div>
+
+<div class="committee-item" style="background:rgba(212,165,116,0.1)" onclick="window.open('https://www.redmond.gov/189/City-Council','_blank')">
+<div>
+<div class="committee-name">🎖️ Vanessa Kritzer →</div>
+<div class="committee-chair">Council President | Public Safety, Transportation</div>
+</div>
+<span style="font-size:10px;color:#d4a574">#5</span>
+</div>
+
+<div class="committee-item" style="background:rgba(212,165,116,0.1)" onclick="window.open('https://www.redmond.gov/189/City-Council','_blank')">
+<div>
+<div class="committee-name">🎖️ Jessica Forsythe →</div>
+<div class="committee-chair">Vice President | Federal Priorities</div>
+</div>
+<span style="font-size:10px;color:#d4a574">#3</span>
+</div>
+
+<div class="committee-item" onclick="window.open('https://www.redmond.gov/189/City-Council','_blank')">
+<div>
+<div class="committee-name">Osman Salahuddin →</div>
+<div class="committee-chair">Public Safety/Human Services Chair</div>
+</div>
+<span style="font-size:10px;color:rgba(197,227,240,0.5)">#1</span>
+</div>
+
+<div class="committee-item" onclick="window.open('https://www.redmond.gov/189/City-Council','_blank')">
+<div>
+<div class="committee-name">Steve Fields →</div>
+<div class="committee-chair">Finance Chair (ends 2025)</div>
+</div>
+<span style="font-size:10px;color:rgba(197,227,240,0.5)">#2</span>
+</div>
+
+<div class="committee-item" onclick="window.open('https://www.redmond.gov/189/City-Council','_blank')">
+<div>
+<div class="committee-name">Melissa Stuart →</div>
+<div class="committee-chair">Planning/Public Works Chair</div>
+</div>
+<span style="font-size:10px;color:rgba(197,227,240,0.5)">#4</span>
+</div>
+
+<div class="committee-item" onclick="window.open('https://www.redmond.gov/189/City-Council','_blank')">
+<div>
+<div class="committee-name">Jeralee Anderson →</div>
+<div class="committee-chair">Public Works Board (ends 2025)</div>
+</div>
+<span style="font-size:10px;color:rgba(197,227,240,0.5)">#6</span>
+</div>
+
+<div class="committee-item" onclick="window.open('https://www.redmond.gov/189/City-Council','_blank')">
+<div>
+<div class="committee-name">Angie Nuevacamina →</div>
+<div class="committee-chair">Parks/Environmental Chair</div>
+</div>
+<span style="font-size:10px;color:rgba(197,227,240,0.5)">#7</span>
+</div>
+</div>
+
+<div class="card" style="border:2px solid #d4a574">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+<div class="card-title">🚇 Marymoor Village TOD</div>
+<span style="padding:4px 10px;border-radius:12px;font-size:10px;background:rgba(255,217,61,0.2);color:#ffd93d">Planning Phase</span>
+</div>
+<div style="padding:16px;background:rgba(212,165,116,0.1);border:1px solid rgba(212,165,116,0.2);border-radius:10px;margin-bottom:16px">
+<div style="font-size:12px;color:#d4a574;margin-bottom:8px">Project Overview</div>
+<div style="font-size:13px;color:#c5e3f0;line-height:1.6">
+Sound Transit surplus land adjacent to Marymoor Village Station. ~3.5 acres for transit-oriented development with affordable housing priority.
+</div>
+</div>
+<div style="font-size:12px;color:#c5e3f0;line-height:1.6">
+📍 <strong>Location:</strong> Adjacent to Marymoor Park<br>
+📐 <strong>Size:</strong> ~3.5 acres<br>
+🏠 <strong>Housing:</strong> 80% surplus priority for affordable housing<br>
+🎯 <strong>Model:</strong> Similar to Prisma (Spring District - 234 units)
+</div>
+<div style="margin-top:12px;padding:12px;background:rgba(78,205,196,0.1);border-radius:8px;border-left:3px solid #4ecdc4">
+<div style="font-size:11px;color:#4ecdc4;margin-bottom:4px">✓ REDMOND CONNECTION</div>
+<div style="font-size:13px;color:#c5e3f0">Councilmember Melissa Stuart (Planning) will coordinate city involvement</div>
+</div>
+<div style="margin-top:16px">
+<a href="https://www.soundtransit.org/system-expansion/creating-vibrant-stations/transit-oriented-development/projects/marymoor-village" target="_blank" style="font-size:12px;color:#d4a574;text-decoration:none">🔗 View on Sound Transit →</a>
+</div>
+</div>
+</div>
+
+<script>
+function showPage(page){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(page+'-page').classList.add('active');document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));event.target.classList.add('active')}
+</script>
+</body>
+</html>
