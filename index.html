@@ -1,190 +1,1840 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Hoshi Sora | Legislative Intelligence</title>
-<style>
-body{font-family:system-ui;background:#0a1628;color:#c5e3f0;margin:0;padding:20px}
-.container{max-width:1400px;margin:0 auto}
-header{display:flex;justify-content:space-between;align-items:center;padding:20px 0;border-bottom:1px solid rgba(197,227,240,0.1);margin-bottom:30px}
-.logo{display:flex;align-items:center;gap:15px}
-.logo-icon{width:44px;height:44px;background:linear-gradient(135deg,#d4a574,#ffd700);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px}
-.logo-text h1{font-size:22px;letter-spacing:3px;color:#c5e3f0;margin:0}
-nav{display:flex;gap:10px;margin-bottom:25px}
-.nav-btn{padding:10px 20px;background:rgba(26,47,74,0.4);border:1px solid rgba(197,227,240,0.1);border-radius:20px;color:#c5e3f0;cursor:pointer}
-.nav-btn:hover,.nav-btn.active{background:rgba(212,165,116,0.2);border-color:#d4a574}
-.page{display:none}.page.active{display:block}
-.card{background:rgba(26,47,74,0.35);border:1px solid rgba(197,227,240,0.08);border-radius:14px;padding:20px;margin-bottom:16px}
-.card-title{font-size:13px;font-weight:500;color:#c5e3f0;letter-spacing:1.5px;text-transform:uppercase}
-.bill-card{padding:16px;background:rgba(10,22,40,0.3);border-radius:10px;border-left:3px solid #d4a574;margin-bottom:12px;cursor:pointer}
-.bill-card:hover{background:rgba(10,22,40,0.5)}
-.bill-number{font-size:14px;font-weight:600;color:#d4a574}
-.bill-title{font-size:14px;color:#c5e3f0;margin:8px 0}
-.bill-description{font-size:12px;color:rgba(197,227,240,0.7)}
-.committee-item{display:flex;justify-content:space-between;align-items:center;padding:12px;background:rgba(10,22,40,0.25);border-radius:8px;margin-bottom:8px;cursor:pointer}
-.committee-item:hover{background:rgba(10,22,40,0.4)}
-.committee-name{font-size:13px;color:#c5e3f0}
-.committee-chair{font-size:11px;color:rgba(197,227,240,0.5)}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hoshi Sora | Legislative Intelligence</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --night-deep: #0a1628;
+            --night-mid: #1a2f4a;
+            --night-light: #2a4563;
+            --sky-teal: #3d6a8a;
+            --sky-blue: #7fb3d5;
+            --sky-soft: #c5e3f0;
+            --star-white: #ffffff;
+            --star-gold: #ffd700;
+            --hoshi-gold: #d4a574;
+            --success: #4ecdc4;
+            --warning: #ffd93d;
+            --danger: #ff6b6b;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: linear-gradient(180deg, var(--night-deep) 0%, var(--night-mid) 50%, var(--sky-teal) 100%);
+            color: var(--sky-soft);
+            min-height: 100vh;
+        }
+        .container { max-width: 1400px; margin: 0 auto; padding: 20px; }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(197, 227, 240, 0.1);
+            margin-bottom: 30px;
+        }
+        .logo { display: flex; align-items: center; gap: 15px; }
+        .logo-icon {
+            width: 44px; height: 44px;
+            background: linear-gradient(135deg, var(--hoshi-gold), var(--star-gold));
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 20px;
+            box-shadow: 0 0 20px rgba(212, 165, 116, 0.3);
+        }
+        .logo-text h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 22px; font-weight: 500;
+            letter-spacing: 3px; color: var(--sky-soft);
+        }
+        .logo-text p { font-size: 11px; color: rgba(197, 227, 240, 0.5); letter-spacing: 2px; }
+        .client-badge {
+            padding: 8px 16px;
+            background: rgba(212, 165, 116, 0.15);
+            border: 1px solid rgba(212, 165, 116, 0.3);
+            border-radius: 20px;
+            font-size: 12px; color: var(--hoshi-gold);
+        }
+        nav { display: flex; gap: 10px; margin-bottom: 25px; }
+        .nav-btn {
+            padding: 10px 20px;
+            background: rgba(26, 47, 74, 0.4);
+            border: 1px solid rgba(197, 227, 240, 0.1);
+            border-radius: 20px;
+            color: var(--sky-soft);
+            font-family: 'Outfit', sans-serif;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .nav-btn:hover, .nav-btn.active {
+            background: rgba(212, 165, 116, 0.2);
+            border-color: var(--hoshi-gold);
+        }
+        .page { display: none; }
+        .page.active { display: block; }
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 20px;
+        }
+        .card {
+            background: rgba(26, 47, 74, 0.35);
+            border: 1px solid rgba(197, 227, 240, 0.08);
+            border-radius: 14px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+        }
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        .card-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 13px; font-weight: 500;
+            color: var(--sky-soft);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+        .card-badge {
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 10px; font-weight: 500;
+        }
+        .badge-active { background: rgba(78, 205, 196, 0.2); color: var(--success); }
+        .badge-pending { background: rgba(255, 217, 61, 0.2); color: var(--warning); }
+        .badge-urgent { background: rgba(255, 107, 107, 0.2); color: var(--danger); }
+        .stats-row {
+            grid-column: span 12;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+        .stat-card {
+            padding: 18px;
+            background: rgba(10, 22, 40, 0.4);
+            border-radius: 10px;
+            text-align: center;
+        }
+        .stat-value {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 32px; font-weight: 300;
+            color: var(--sky-soft);
+            margin-bottom: 4px;
+        }
+        .stat-label {
+            font-size: 11px;
+            color: rgba(197, 227, 240, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .bill-card {
+            padding: 16px;
+            background: rgba(10, 22, 40, 0.3);
+            border-radius: 10px;
+            border-left: 3px solid var(--hoshi-gold);
+            margin-bottom: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+        .bill-card:hover {
+            background: rgba(10, 22, 40, 0.5);
+            transform: translateX(4px);
+            border-left-width: 5px;
+            box-shadow: 0 4px 20px rgba(212, 165, 116, 0.15);
+        }
+        .bill-card.active {
+            background: rgba(212, 165, 116, 0.12);
+            border-left-width: 6px;
+            transform: translateX(8px);
+            box-shadow: 0 6px 25px rgba(212, 165, 116, 0.25);
+        }
+        .bill-card.active .bill-number {
+            color: var(--star-gold);
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
+        .bill-remove-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255,107,107,0.2);
+            border: none;
+            border-radius: 4px;
+            color: #ff8585;
+            padding: 4px 8px;
+            cursor: pointer;
+            font-size: 11px;
+            z-index: 10;
+        }
+        .bill-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            padding-right: 60px;
+        }
+        .bill-expand {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .bill-expand.active {
+            max-height: 500px;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(197, 227, 240, 0.1);
+        }
+        .bill-assessment {
+            font-size: 13px;
+            color: var(--sky-soft);
+            line-height: 1.6;
+            margin-bottom: 10px;
+            padding: 12px;
+            background: rgba(212, 165, 116, 0.15);
+            border-left: 3px solid var(--hoshi-gold);
+            border-radius: 0 8px 8px 0;
+        }
+        .bill-assessment strong {
+            color: var(--hoshi-gold);
+            display: block;
+            margin-bottom: 6px;
+        }
+        .bill-link {
+            display: inline-block;
+            margin-top: 8px;
+            padding: 6px 12px;
+            background: rgba(78, 205, 196, 0.2);
+            border: 1px solid rgba(78, 205, 196, 0.3);
+            border-radius: 6px;
+            color: var(--success);
+            font-size: 12px;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .bill-link:hover {
+            background: rgba(78, 205, 196, 0.3);
+        }
+        .score-explanation {
+            font-size: 11px;
+            color: rgba(197, 227, 240, 0.6);
+            margin-top: 8px;
+            padding: 8px;
+            background: rgba(10, 22, 40, 0.3);
+            border-radius: 6px;
+        }
+        .committee-bill-link {
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .committee-bill-link:hover {
+            background: rgba(212, 165, 116, 0.15);
+        }
+        .bill-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 14px; font-weight: 600;
+            color: var(--hoshi-gold);
+        }
+        .bill-status {
+            padding: 3px 10px;
+            border-radius: 10px;
+            font-size: 10px; font-weight: 500;
+        }
+        .bill-title {
+            font-size: 14px; color: var(--sky-soft);
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+        .bill-description {
+            font-size: 12px;
+            color: rgba(197, 227, 240, 0.7);
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+        .bill-meta {
+            display: flex;
+            gap: 15px;
+            font-size: 11px;
+            color: rgba(197, 227, 240, 0.5);
+        }
+        .bill-impact {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(197, 227, 240, 0.1);
+            font-size: 12px;
+        }
+        .impact-high { color: var(--danger); }
+        .impact-medium { color: var(--warning); }
+        .impact-low { color: var(--success); }
+        .committee-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            background: rgba(10, 22, 40, 0.25);
+            border-radius: 8px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .committee-item:hover { background: rgba(10, 22, 40, 0.4); }
+        .status-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+        .status-table th {
+            text-align: left;
+            padding: 12px;
+            background: rgba(10, 22, 40, 0.4);
+            color: var(--hoshi-gold);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 11px;
+        }
+        .status-table td {
+            padding: 12px;
+            border-bottom: 1px solid rgba(197, 227, 240, 0.1);
+        }
+        .status-table tr:hover {
+            background: rgba(10, 22, 40, 0.2);
+        }
+        .status-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 500;
+        }
+        .status-committee { background: rgba(255, 217, 61, 0.2); color: var(--warning); }
+        .status-floor { background: rgba(127, 179, 213, 0.2); color: var(--sky-blue); }
+        .status-passed { background: rgba(78, 205, 196, 0.2); color: var(--success); }
+        .status-rules { background: rgba(212, 165, 116, 0.2); color: var(--hoshi-gold); }
+        .status-dead { background: rgba(255, 107, 107, 0.3); color: #ff6b6b; border: 1px solid rgba(255, 107, 107, 0.5); }
+        .dead-badge { 
+            display: inline-block; 
+            padding: 2px 8px; 
+            background: rgba(255, 107, 107, 0.2); 
+            border: 1px solid rgba(255, 107, 107, 0.4); 
+            border-radius: 4px; 
+            color: #ff6b6b; 
+            font-size: 10px; 
+            font-weight: 600;
+            margin-left: 8px;
+        }
+        .bill-link-table {
+            color: var(--hoshi-gold);
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .bill-link-table:hover {
+            text-decoration: underline;
+        }
+        .chamber-house { color: var(--sky-blue); }
+        .chamber-senate { color: var(--warning); }
+        .committee-name { font-size: 13px; color: var(--sky-soft); }
+        .committee-chair { font-size: 11px; color: rgba(197, 227, 240, 0.5); }
+        .legislator-card {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: rgba(10, 22, 40, 0.25);
+            border-radius: 10px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .legislator-card:hover { background: rgba(10, 22, 40, 0.4); }
+        .legislator-avatar {
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--sky-blue), var(--sky-teal));
+            display: flex; align-items: center; justify-content: center;
+            font-size: 16px;
+        }
+        .legislator-info { flex: 1; }
+        .legislator-name { font-size: 13px; font-weight: 500; color: var(--sky-soft); }
+        .legislator-role { font-size: 11px; color: rgba(197, 227, 240, 0.5); }
+        .legislator-score {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 18px; color: var(--hoshi-gold);
+        }
+        .timeline { position: relative; padding-left: 20px; }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 6px; top: 0; bottom: 0;
+            width: 2px;
+            background: rgba(197, 227, 240, 0.2);
+        }
+        .timeline-item { position: relative; padding-bottom: 20px; }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -17px; top: 2px;
+            width: 10px; height: 10px;
+            border-radius: 50%;
+            background: var(--hoshi-gold);
+            border: 2px solid var(--night-mid);
+        }
+        .timeline-date { font-size: 11px; color: rgba(197, 227, 240, 0.5); margin-bottom: 4px; }
+        .timeline-content { font-size: 13px; color: var(--sky-soft); }
+        .summary-box {
+            padding: 16px;
+            background: rgba(212, 165, 116, 0.1);
+            border: 1px solid rgba(212, 165, 116, 0.2);
+            border-radius: 10px;
+        }
+        .summary-title {
+            font-size: 12px; color: var(--hoshi-gold);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .summary-text {
+            font-size: 13px; color: var(--sky-soft);
+            line-height: 1.6;
+        }
+        .add-bill-form {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .add-bill-form input {
+            flex: 1;
+            padding: 10px 14px;
+            background: rgba(10, 22, 40, 0.4);
+            border: 1px solid rgba(197, 227, 240, 0.1);
+            border-radius: 8px;
+            color: var(--sky-soft);
+            font-size: 13px;
+        }
+        .add-bill-form button {
+            padding: 10px 20px;
+            background: rgba(212, 165, 116, 0.2);
+            border: 1px solid rgba(212, 165, 116, 0.3);
+            border-radius: 8px;
+            color: var(--hoshi-gold);
+            font-size: 13px;
+            cursor: pointer;
+        }
+        .legislator-detail {
+            display: flex;
+            gap: 20px;
+            padding: 20px;
+            background: rgba(10, 22, 40, 0.3);
+            border-radius: 12px;
+            margin-bottom: 16px;
+        }
+        .legislator-photo {
+            width: 100px; height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--sky-blue), var(--sky-teal));
+            display: flex; align-items: center; justify-content: center;
+            font-size: 36px;
+        }
+        .legislator-details h3 {
+            font-size: 18px; color: var(--sky-soft);
+            margin-bottom: 8px;
+        }
+        .legislator-details p {
+            font-size: 13px; color: rgba(197, 227, 240, 0.7);
+            margin-bottom: 4px;
+        }
+        .contact-btn {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 8px 16px;
+            background: rgba(78, 205, 196, 0.2);
+            border: 1px solid rgba(78, 205, 196, 0.3);
+            border-radius: 6px;
+            color: var(--success);
+            font-size: 12px;
+            text-decoration: none;
+        }
+        .coming-soon {
+            text-align: center;
+            padding: 100px 20px;
+        }
+        .coming-soon-icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+        .coming-soon h2 {
+            font-size: 24px;
+            color: var(--sky-soft);
+            margin-bottom: 10px;
+        }
+        .coming-soon p {
+            font-size: 14px;
+            color: rgba(197, 227, 240, 0.5);
+        }
+        @media (max-width: 1024px) {
+            .dashboard { grid-template-columns: 1fr; }
+            .stats-row { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
 </head>
 <body>
-<div class="container">
-<header>
-<div class="logo">
-<div class="logo-icon">✦</div>
-<div class="logo-text">
-<h1>HOSHI SORA</h1>
-<p>Legislative Intelligence</p>
-</div>
-</div>
-<div style="padding:8px 16px;background:rgba(212,165,116,0.15);border:1px solid rgba(212,165,116,0.3);border-radius:20px;font-size:12px;color:#d4a574">Client Dashboard</div>
-</header>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo">
+                <div class="logo-icon">✦</div>
+                <div class="logo-text">
+                    <h1>HOSHI SORA</h1>
+                    <p>Legislative Intelligence</p>
+                </div>
+            </div>
+            <div class="client-badge">Client Dashboard</div>
+        </header>
 
-<nav>
-<button class="nav-btn active" onclick="showPage('dashboard')">Dashboard</button>
-<button class="nav-btn" onclick="showPage('redmond')">🏛️ Redmond</button>
-</nav>
+        <!-- Navigation -->
+        <nav>
+            <button class="nav-btn active" id="nav-dashboard" onclick="showPage('dashboard', this)">Dashboard</button>
+            <button class="nav-btn" id="nav-bills" onclick="showPage('bills', this)">Tracked Bills</button>
+            <button class="nav-btn" id="nav-committees" onclick="showPage('committees', this)">Committees</button>
+            <button class="nav-btn" id="nav-legislators" onclick="showPage('legislators', this)">Legislators</button>
+            <button class="nav-btn" id="nav-redmond" onclick="showPage('redmond', this)">🏛️ Redmond</button>
+            <button class="nav-btn" id="nav-reports" onclick="showPage('reports', this)">Reports</button>
+        </nav>
 
-<div id="dashboard-page" class="page active">
-<div class="card">
-<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
-<div class="card-title">Priority Bills</div>
-<span style="padding:4px 10px;border-radius:12px;font-size:10px;background:rgba(255,107,107,0.2);color:#ff6b6b">3 Urgent</span>
-</div>
+        <!-- Search Bar -->
+        <div style="margin-bottom: 25px;">
+            <div style="display: flex; gap: 10px;">
+                <input type="text" id="bill-search" placeholder="Search bills by number, title, or keyword..." 
+                    style="flex: 1; padding: 12px 16px; background: rgba(10, 22, 40, 0.4); border: 1px solid rgba(197, 227, 240, 0.2); 
+                    border-radius: 10px; color: var(--sky-soft); font-size: 14px; font-family: 'Outfit', sans-serif;"
+                    onkeyup="searchBills(this.value)">
+                <button onclick="clearSearch()" style="padding: 12px 20px; background: rgba(212, 165, 116, 0.2); border: 1px solid rgba(212, 165, 116, 0.3); 
+                    border-radius: 10px; color: var(--hoshi-gold); cursor: pointer; font-size: 13px;">Clear</button>
+            </div>
+            <div id="search-results" style="margin-top: 10px; display: none;">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">🔍 Search Results</div>
+                        <span id="result-count" class="card-badge badge-active">0 results</span>
+                    </div>
+                    <div id="search-results-list">
+                        <!-- Search results populated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
 
-<div class="bill-card" onclick="window.open('https://app.leg.wa.gov/billsummary?BillNumber=6346&Year=2025','_blank')">
-<div style="display:flex;justify-content:space-between">
-<span class="bill-number">SB 6346</span>
-<span style="padding:3px 10px;border-radius:10px;font-size:10px;background:rgba(78,205,196,0.2);color:#4ecdc4">Passed Senate</span>
-</div>
-<div class="bill-title">Millionaires Tax - 9.9% on income over $1M</div>
-<div class="bill-description">Now in House. High impact for high-net-worth clients.</div>
-</div>
+        <!-- Dashboard Page -->
+        <div id="dashboard-page" class="page active">
+            <div class="dashboard">
+                <!-- Stats -->
+                <div class="stats-row">
+                    <div class="stat-card">
+                        <div class="stat-value" id="stat-bills">18</div>
+                        <div class="stat-label">Bills Tracked</div>
+                    </div>
+                    <div class="stat-card" style="background: rgba(78, 205, 196, 0.15); border: 1px solid rgba(78, 205, 196, 0.3);">
+                        <div class="stat-value" style="color: #4ecdc4;">14</div>
+                        <div class="stat-label" style="color: #4ecdc4;">Alive</div>
+                    </div>
+                    <div class="stat-card" style="background: rgba(255, 107, 107, 0.15); border: 1px solid rgba(255, 107, 107, 0.3);">
+                        <div class="stat-value" style="color: #ff6b6b;">3</div>
+                        <div class="stat-label" style="color: #ff6b6b;">Likely Dead</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">2</div>
+                        <div class="stat-label">Passed Chamber</div>
+                    </div>
+                </div>
 
-<div class="bill-card" onclick="window.open('https://app.leg.wa.gov/billsummary?BillNumber=2418&Year=2025','_blank')">
-<div style="display:flex;justify-content:space-between">
-<span class="bill-number">HB 2418</span>
-<span style="padding:3px 10px;border-radius:10px;font-size:10px;background:rgba(255,217,61,0.2);color:#ffd93d">In Senate</span>
-</div>
-<div class="bill-title">Permit Review Reform - Streamlined housing permits</div>
-<div class="bill-description">Passed House, now in Senate Local Government.</div>
-</div>
+                <!-- Priority Bills -->
+                <div class="card" style="grid-column: span 12; border: 2px solid var(--hoshi-gold);">
+                    <div class="card-header">
+                        <div class="card-title">🎯 Priority Bills</div>
+                        <span class="card-badge" style="background: rgba(212, 165, 116, 0.3); color: var(--hoshi-gold);">Tax | Permitting | Tourism | Econ Dev</span>
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;">
+                        <!-- Tax Bills -->
+                        <div class="bill-card" onclick="showBillDetail('SB6346')" style="border-left-color: #4ecdc4; cursor: pointer;">
+                            <div class="bill-header">
+                                <span class="bill-number">SB 6346</span>
+                                <span class="bill-status" style="background: rgba(78, 205, 196, 0.2); color: #4ecdc4;">Passed Senate</span>
+                            </div>
+                            <div class="bill-title">Millionaires Tax <span style="color: var(--hoshi-gold);">[Tax]</span></div>
+                            <div class="bill-description" style="font-size: 11px;">High impact for high-net-worth clients. Passed Senate, moves to House.</div>
+                            <div class="bill-meta" style="font-size: 10px;">
+                                <span>📅 Feb 16</span>
+                                <span>🔴 High Impact</span>
+                            </div>
+                            <a href="https://app.leg.wa.gov/billsummary?BillNumber=6346&Year=2025" target="_blank" style="font-size: 10px; color: var(--hoshi-gold); text-decoration: none; display: inline-block; margin-top: 8px;" onclick="event.stopPropagation();">📄 View on leg.wa.gov →</a>
+                        </div>
 
-<div class="bill-card" onclick="window.open('https://app.leg.wa.gov/billsummary?BillNumber=2442&Year=2025','_blank')">
-<div style="display:flex;justify-content:space-between">
-<span class="bill-number">HB 2442</span>
-<span style="padding:3px 10px;border-radius:10px;font-size:10px;background:rgba(78,205,196,0.2);color:#4ecdc4">In Appropriations</span>
-</div>
-<div class="bill-title">Local Gov Tax Flexibility - REET for housing</div>
-<div class="bill-description">More tools for affordable housing development.</div>
-</div>
-</div>
-</div>
+                        <div class="bill-card" onclick="showBillDetail('SB6173')" style="border-left-color: #ff4757; border: 2px solid #ff4757; cursor: pointer;">
+                            <div class="bill-header">
+                                <span class="bill-number">SB 6173</span>
+                                <span class="bill-status" style="background: rgba(255, 71, 87, 0.3); color: #ff4757; font-weight: bold;">🚨 HIGH PRIORITY</span>
+                            </div>
+                            <div class="bill-title">Apple Health Employer Assessment <span style="color: var(--hoshi-gold);">[Tax]</span></div>
+                            <div class="bill-description" style="font-size: 11px;"><strong>MAJOR fee/tax on employers with 100+ employees.</strong> Executive session Feb 19.</div>
+                            <div class="bill-meta" style="font-size: 10px;">
+                                <span>📅 Feb 19 @ 4:00 PM</span>
+                                <span>🔴 CRITICAL IMPACT</span>
+                            </div>
+                            <a href="https://app.leg.wa.gov/billsummary?BillNumber=6173&Year=2025" target="_blank" style="font-size: 10px; color: var(--hoshi-gold); text-decoration: none; display: inline-block; margin-top: 8px;" onclick="event.stopPropagation();">📄 View on leg.wa.gov →</a>
+                        </div>
 
-<div id="redmond-page" class="page">
-<div class="card">
-<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
-<div class="card-title">🏛️ Redmond Leadership</div>
-<span style="padding:4px 10px;border-radius:12px;font-size:10px;background:rgba(78,205,196,0.2);color:#4ecdc4">Mayor + 7 Council</span>
-</div>
+                        <div class="bill-card" onclick="showBillDetail('HB2100')" style="border-left-color: #ffd93d; cursor: pointer;">
+                            <div class="bill-header">
+                                <span class="bill-number">HB 2100</span>
+                                <span class="bill-status badge-active">In Committee</span>
+                            </div>
+                            <div class="bill-title">Payroll Tax - Well WA Fund <span style="color: var(--hoshi-gold);">[Tax]</span></div>
+                            <div class="bill-description" style="font-size: 11px;">Significant impact for large employers. Affects hiring decisions.</div>
+                            <div class="bill-meta" style="font-size: 10px;">
+                                <span>📅 Jan 22</span>
+                                <span>🔴 High Impact</span>
+                            </div>
+                            <a href="https://app.leg.wa.gov/billsummary?BillNumber=2100&Year=2025" target="_blank" style="font-size: 10px; color: var(--hoshi-gold); text-decoration: none; display: inline-block; margin-top: 8px;" onclick="event.stopPropagation();">📄 View on leg.wa.gov →</a>
+                        </div>
 
-<div class="bill-card" style="border-left-color:#4ecdc4" onclick="window.open('https://www.redmond.gov/191/Mayor-Angela-Birney','_blank')">
-<div style="display:flex;justify-content:space-between">
-<span class="bill-number">Mayor</span>
-<span style="padding:3px 10px;border-radius:10px;font-size:10px;background:rgba(78,205,196,0.2);color:#4ecdc4">Active</span>
-</div>
-<div class="bill-title">Angela Birney →</div>
-<div class="bill-description">Housing Action Plan, behavioral health, economic development</div>
-</div>
+                        <!-- Permitting Bills -->
+                        <div class="bill-card" onclick="showBillDetail('HB2418')" style="border-left-color: #7fb3d5; cursor: pointer;">
+                            <div class="bill-header">
+                                <span class="bill-number">HB 2418</span>
+                                <span class="bill-status" style="background: rgba(255, 193, 7, 0.2); color: #ffc107;">🗓️ HEARING FEB 19</span>
+                            </div>
+                            <div class="bill-title">Permit Review Process Reform <span style="color: var(--hoshi-gold);">[Permitting]</span></div>
+                            <div class="bill-description" style="font-size: 11px;">Streamlined permitting for development. Senate Local Government hearing at 1:30 PM.</div>
+                            <div class="bill-meta" style="font-size: 10px;">
+                                <span>📅 Feb 19 @ 1:30 PM</span>
+                                <span>🟡 Medium Impact</span>
+                            </div>
+                            <a href="https://app.leg.wa.gov/billsummary?BillNumber=2418&Year=2025" target="_blank" style="font-size: 10px; color: var(--hoshi-gold); text-decoration: none; display: inline-block; margin-top: 8px;" onclick="event.stopPropagation();">📄 View on leg.wa.gov →</a>
+                        </div>
 
-<div style="margin-top:16px;font-size:12px;color:#d4a574;margin-bottom:8px">All 7 Council Members</div>
+                        <!-- Tourism Bills -->
+                        <div class="bill-card" onclick="showBillDetail('HB2278')" style="border-left-color: #7fb3d5; cursor: pointer;">
+                            <div class="bill-header">
+                                <span class="bill-number">HB 2278</span>
+                                <span class="bill-status" style="background: rgba(212, 165, 116, 0.2); color: var(--hoshi-gold);">In Rules</span>
+                            </div>
+                            <div class="bill-title">Tourism Promotion Areas <span style="color: var(--hoshi-gold);">[Tourism]</span></div>
+                            <div class="bill-description" style="font-size: 11px;">Framework for tourism promotion districts. Moved to Rules Committee.</div>
+                            <div class="bill-meta" style="font-size: 10px;">
+                                <span>📅 Jan 21</span>
+                                <span>🟢 Low Impact</span>
+                            </div>
+                            <a href="https://app.leg.wa.gov/billsummary?BillNumber=2278&Year=2025" target="_blank" style="font-size: 10px; color: var(--hoshi-gold); text-decoration: none; display: inline-block; margin-top: 8px;" onclick="event.stopPropagation();">📄 View on leg.wa.gov →</a>
+                        </div>
 
-<div class="committee-item" style="background:rgba(212,165,116,0.1)" onclick="window.open('https://www.redmond.gov/189/City-Council','_blank')">
-<div>
-<div class="committee-name">🎖️ Vanessa Kritzer →</div>
-<div class="committee-chair">Council President | Public Safety, Transportation</div>
-</div>
-<span style="font-size:10px;color:#d4a574">#5</span>
-</div>
+                        <div class="bill-card" onclick="showBillDetail('HB2325')" style="border-left-color: #7fb3d5; cursor: pointer;">
+                            <div class="bill-header">
+                                <span class="bill-number">HB 2325</span>
+                                <span class="bill-status" style="background: rgba(127, 179, 213, 0.2); color: #7fb3d5;">On Floor</span>
+                            </div>
+                            <div class="bill-title">Tourism Assessment Program <span style="color: var(--hoshi-gold);">[Tourism]</span></div>
+                            <div class="bill-description" style="font-size: 11px;">Statewide tourism funding. On House floor for vote.</div>
+                            <div class="bill-meta" style="font-size: 10px;">
+                                <span>📅 Jan 21</span>
+                                <span>🟢 Low Impact</span>
+                            </div>
+                            <a href="https://app.leg.wa.gov/billsummary?BillNumber=2325&Year=2025" target="_blank" style="font-size: 10px; color: var(--hoshi-gold); text-decoration: none; display: inline-block; margin-top: 8px;" onclick="event.stopPropagation();">📄 View on leg.wa.gov →</a>
+                        </div>
 
-<div class="committee-item" style="background:rgba(212,165,116,0.1)" onclick="window.open('https://www.redmond.gov/189/City-Council','_blank')">
-<div>
-<div class="committee-name">🎖️ Jessica Forsythe →</div>
-<div class="committee-chair">Vice President | Federal Priorities</div>
-</div>
-<span style="font-size:10px;color:#d4a574">#3</span>
-</div>
+                        <!-- Economic Development -->
+                        <div class="bill-card" onclick="showBillDetail('HB2615')" style="border-left-color: #ffd93d; cursor: pointer;">
+                            <div class="bill-header">
+                                <span class="bill-number">HB 2615</span>
+                                <span class="bill-status badge-active">In Committee</span>
+                            </div>
+                            <div class="bill-title">Tax Amnesty Program <span style="color: var(--hoshi-gold);">[Econ Dev]</span></div>
+                            <div class="bill-description" style="font-size: 11px;">Voluntary disclosure program. Opportunity for compliance issues.</div>
+                            <div class="bill-meta" style="font-size: 10px;">
+                                <span>📅 Feb 6</span>
+                                <span>🟡 Medium Impact</span>
+                            </div>
+                            <a href="https://app.leg.wa.gov/billsummary?BillNumber=2615&Year=2025" target="_blank" style="font-size: 10px; color: var(--hoshi-gold); text-decoration: none; display: inline-block; margin-top: 8px;" onclick="event.stopPropagation();">📄 View on leg.wa.gov →</a>
+                        </div>
 
-<div class="committee-item" onclick="window.open('https://www.redmond.gov/189/City-Council','_blank')">
-<div>
-<div class="committee-name">Osman Salahuddin →</div>
-<div class="committee-chair">Public Safety/Human Services Chair</div>
-</div>
-<span style="font-size:10px;color:rgba(197,227,240,0.5)">#1</span>
-</div>
+                        <div class="bill-card" onclick="showBillDetail('HB2480')" style="border-left-color: #ff6b6b; opacity: 0.7; cursor: pointer;">
+                            <div class="bill-header">
+                                <span class="bill-number">HB 2480</span>
+                                <span class="bill-status" style="background: rgba(255, 107, 107, 0.2); color: #ff6b6b;">LIKELY DEAD</span>
+                            </div>
+                            <div class="bill-title">Residential Dev in Commercial <span style="color: var(--hoshi-gold);">[Econ Dev]</span> <span class="dead-badge">DEAD</span></div>
+                            <div class="bill-description" style="font-size: 11px;">Housing density in commercial zones. No action since Feb 3.</div>
+                            <div class="bill-meta" style="font-size: 10px;">
+                                <span>📅 Feb 3</span>
+                                <span style="color: #ff6b6b;">❌ Missed Cutoff</span>
+                            </div>
+                            <a href="https://app.leg.wa.gov/billsummary?BillNumber=2480&Year=2025" target="_blank" style="font-size: 10px; color: var(--hoshi-gold); text-decoration: none; display: inline-block; margin-top: 8px;" onclick="event.stopPropagation();">📄 View on leg.wa.gov →</a>
+                        </div>
 
-<div class="committee-item" onclick="window.open('https://www.redmond.gov/189/City-Council','_blank')">
-<div>
-<div class="committee-name">Steve Fields →</div>
-<div class="committee-chair">Finance Chair (ends 2025)</div>
-</div>
-<span style="font-size:10px;color:rgba(197,227,240,0.5)">#2</span>
-</div>
+                        <div class="bill-card" onclick="showBillDetail('SB6229')" style="border-left-color: #ffd93d; cursor: pointer;">
+                            <div class="bill-header">
+                                <span class="bill-number">SB 6229</span>
+                                <span class="bill-status badge-active">In Committee</span>
+                            </div>
+                            <div class="bill-title">Small Business Stock Taxation <span style="color: var(--hoshi-gold);">[Econ Dev]</span></div>
+                            <div class="bill-description" style="font-size: 11px;">QSBS taxation affects startup investors. Executive session Feb 19.</div>
+                            <div class="bill-meta" style="font-size: 10px;">
+                                <span>📅 Feb 19</span>
+                                <span>🟡 Medium Impact</span>
+                            </div>
+                            <a href="https://app.leg.wa.gov/billsummary?BillNumber=6229&Year=2025" target="_blank" style="font-size: 10px; color: var(--hoshi-gold); text-decoration: none; display: inline-block; margin-top: 8px;" onclick="event.stopPropagation();">📄 View on leg.wa.gov →</a>
+                        </div>
+                    </div>
+                </div>
 
-<div class="committee-item" onclick="window.open('https://www.redmond.gov/189/City-Council','_blank')">
-<div>
-<div class="committee-name">Melissa Stuart →</div>
-<div class="committee-chair">Planning/Public Works Chair</div>
-</div>
-<span style="font-size:10px;color:rgba(197,227,240,0.5)">#4</span>
-</div>
+                <!-- Priority Bills -->
+                <div class="card" style="grid-column: span 4;">
+                    <div class="card-header">
+                        <div class="card-title">Priority Bills</div>
+                        <div style="display: flex; gap: 10px;">
+                            <button class="nav-btn" onclick="showPage('bills', document.getElementById('nav-bills'))" style="padding: 10px 20px; font-size: 13px; background: rgba(78, 205, 196, 0.3); border-color: var(--success); color: var(--success); font-weight: 600;">+ Add Bill</button>
+                            <span class="card-badge badge-urgent">1 Urgent</span>
+                        </div>
+                    </div>
 
-<div class="committee-item" onclick="window.open('https://www.redmond.gov/189/City-Council','_blank')">
-<div>
-<div class="committee-name">Jeralee Anderson →</div>
-<div class="committee-chair">Public Works Board (ends 2025)</div>
-</div>
-<span style="font-size:10px;color:rgba(197,227,240,0.5)">#6</span>
-</div>
+                    <div class="bill-card" style="border-left-color: #ff6b6b; opacity: 0.7;">
+                        <div class="bill-header">
+                            <span class="bill-number">HB 1319</span>
+                            <span class="bill-status" style="background: rgba(255, 107, 107, 0.2); color: #ff6b6b;">LIKELY DEAD</span>
+                        </div>
+                        <div class="bill-title" onclick="showBillDetail('HB1319')" style="cursor: pointer;">Wealth Tax on Financial Assets <span class="dead-badge">⚠️ DEAD</span></div>
+                        <div class="bill-description">
+                            Major impact for wealthy clients with investment portfolios. No action since Jan 15.
+                        </div>
+                        <div class="bill-meta">
+                            <span>📅 Jan 15</span>
+                            <span>👤 TBD</span>
+                            <span>🏛️ Finance</span>
+                        </div>
+                        <div class="bill-impact">
+                            <span style="color: #ff6b6b;">❌ Did not move out of Finance Committee by Feb 7 cutoff</span>
+                        </div>
+                        <a href="https://app.leg.wa.gov/billsummary?BillNumber=1319&Year=2025" target="_blank" style="font-size: 10px; color: var(--hoshi-gold); text-decoration: none; display: inline-block; margin-top: 8px;" onclick="event.stopPropagation();">📄 View on leg.wa.gov →</a>
+                    </div>
 
-<div class="committee-item" onclick="window.open('https://www.redmond.gov/189/City-Council','_blank')">
-<div>
-<div class="committee-name">Angie Nuevacamina →</div>
-<div class="committee-chair">Parks/Environmental Chair</div>
-</div>
-<span style="font-size:10px;color:rgba(197,227,240,0.5)">#7</span>
-</div>
-</div>
+                    <div class="bill-card" style="border-left-color: #ff6b6b; opacity: 0.7;">
+                        <div class="bill-header">
+                            <span class="bill-number">HB 2736</span>
+                            <span class="bill-status" style="background: rgba(255, 107, 107, 0.2); color: #ff6b6b;">LIKELY DEAD</span>
+                        </div>
+                        <div class="bill-title" onclick="showBillDetail('HB2736')" style="cursor: pointer;">Estate Tax Rates - Reinstatement for Large Estates <span class="dead-badge">⚠️ MISSED CUTOFF</span></div>
+                        <div class="bill-description">
+                            Reinstates estate tax rates that applied immediately before May 20, 2025, for estates of decedents dying on or after July 1, 2026.
+                        </div>
+                        <div class="bill-meta">
+                            <span>📅 Hearing: Feb 20</span>
+                            <span>👤 Frame (D)</span>
+                            <span>🏛️ Finance</span>
+                        </div>
+                        <div class="bill-impact">
+                            <span style="color: #ff6b6b;">❌ Did not move out of Finance Committee by Feb 7 cutoff</span>
+                        </div>
+                        <a href="https://app.leg.wa.gov/billsummary?BillNumber=2736&Year=2025" target="_blank" style="font-size: 10px; color: var(--hoshi-gold); text-decoration: none; display: inline-block; margin-top: 8px;" onclick="event.stopPropagation();">📄 View on leg.wa.gov →</a>
+                    </div>
 
-<div class="card" style="border:2px solid #d4a574">
-<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
-<div class="card-title">🚇 Marymoor Village TOD</div>
-<span style="padding:4px 10px;border-radius:12px;font-size:10px;background:rgba(255,217,61,0.2);color:#ffd93d">Planning Phase</span>
-</div>
-<div style="padding:16px;background:rgba(212,165,116,0.1);border:1px solid rgba(212,165,116,0.2);border-radius:10px;margin-bottom:16px">
-<div style="font-size:12px;color:#d4a574;margin-bottom:8px">Project Overview</div>
-<div style="font-size:13px;color:#c5e3f0;line-height:1.6">
-Sound Transit surplus land adjacent to Marymoor Village Station. ~3.5 acres for transit-oriented development with affordable housing priority.
-</div>
-</div>
-<div style="font-size:12px;color:#c5e3f0;line-height:1.6">
-📍 <strong>Location:</strong> Adjacent to Marymoor Park<br>
-📐 <strong>Size:</strong> ~3.5 acres<br>
-🏠 <strong>Housing:</strong> 80% surplus priority for affordable housing<br>
-🎯 <strong>Model:</strong> Similar to Prisma (Spring District - 234 units)
-</div>
-<div style="margin-top:12px;padding:12px;background:rgba(78,205,196,0.1);border-radius:8px;border-left:3px solid #4ecdc4">
-<div style="font-size:11px;color:#4ecdc4;margin-bottom:4px">✓ REDMOND CONNECTION</div>
-<div style="font-size:13px;color:#c5e3f0">Councilmember Melissa Stuart (Planning) will coordinate city involvement</div>
-</div>
-<div style="margin-top:16px">
-<a href="https://www.soundtransit.org/system-expansion/creating-vibrant-stations/transit-oriented-development/projects/marymoor-village" target="_blank" style="font-size:12px;color:#d4a574;text-decoration:none">🔗 View on Sound Transit →</a>
-</div>
-</div>
-</div>
+                    <div class="bill-card">
+                        <div class="bill-header">
+                            <span class="bill-number">HB 1833</span>
+                            <span class="bill-status badge-pending">Scheduled</span>
+                        </div>
+                        <div class="bill-title" onclick="showBillDetail('HB1833')" style="cursor: pointer;">Spark Act - Artificial Intelligence Grant Program</div>
+                        <div class="bill-description">
+                            Creates the Spark Act, establishing an artificial intelligence grant program administered by the Department of Commerce to promote AI innovation and ethical AI pilot projects.
+                        </div>
+                        <div class="bill-meta">
+                            <span>📅 Hearing: Mar 25</span>
+                            <span>👤 Kloba (D)</span>
+                            <span>🏛️ Environment, Energy & Technology</span>
+                        </div>
+                        <div class="bill-impact">
+                            <span class="impact-high">🔴 High Impact</span> — Direct funding for AI sector clients
+                        </div>
+                        <a href="https://app.leg.wa.gov/billsummary?BillNumber=1833&Year=2025" target="_blank" style="font-size: 10px; color: var(--hoshi-gold); text-decoration: none; display: inline-block; margin-top: 8px;" onclick="event.stopPropagation();">📄 View on leg.wa.gov →</a>
+                    </div>
 
-<script>
-function showPage(page){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(page+'-page').classList.add('active');document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));event.target.classList.add('active')}
-</script>
+                    <div class="bill-card">
+                        <div class="bill-header">
+                            <span class="bill-number">HB 2225</span>
+                            <span class="bill-status badge-active">In Committee</span>
+                        </div>
+                        <div class="bill-title" onclick="showBillDetail('HB2225')" style="cursor: pointer;">AI Companion Chatbot Regulation</div>
+                        <div class="bill-description">
+                            Regulates artificial intelligence companion chatbots, requiring mental health safeguards and consumer protections for AI-powered companion applications.
+                        </div>
+                        <div class="bill-meta">
+                            <span>📅 Hearing: Jan 14</span>
+                            <span>👤 Ferguson (Gov)</span>
+                            <span>🏛️ Technology, Economic Development, & Veterans</span>
+                        </div>
+                        <div class="bill-impact">
+                            <span class="impact-medium">🟡 Medium Impact</span> — Affects AI consumer applications
+                        </div>
+                        <a href="https://app.leg.wa.gov/billsummary?BillNumber=2225&Year=2025" target="_blank" style="font-size: 10px; color: var(--hoshi-gold); text-decoration: none; display: inline-block; margin-top: 8px;" onclick="event.stopPropagation();">📄 View on leg.wa.gov →</a>
+                    </div>
+
+                    <div class="bill-card">
+                        <div class="bill-header">
+                            <span class="bill-number">HB 2278</span>
+                            <span class="bill-status badge-pending">Scheduled</span>
+                        </div>
+                        <div class="bill-title" onclick="showBillDetail('HB2278')" style="cursor: pointer;">Tourism Promotion Areas</div>
+                        <div class="bill-description">
+                            Concerning tourism promotion areas. Establishes framework for local tourism promotion districts and funding mechanisms for destination marketing.
+                        </div>
+                        <div class="bill-meta">
+                            <span>📅 Hearing: Jan 21</span>
+                            <span>👤 Gregerson (D)</span>
+                            <span>🏛️ Technology, Economic Development, & Veterans</span>
+                        </div>
+                        <div class="bill-impact">
+                            <span class="impact-low">🟢 Low Impact</span> — Monitoring only
+                        </div>
+                        <a href="https://app.leg.wa.gov/billsummary?BillNumber=2278&Year=2025" target="_blank" style="font-size: 10px; color: var(--hoshi-gold); text-decoration: none; display: inline-block; margin-top: 8px;" onclick="event.stopPropagation();">📄 View on leg.wa.gov →</a>
+                    </div>
+
+                    <div class="bill-card">
+                        <div class="bill-header">
+                            <span class="bill-number">HB 2446</span>
+                            <span class="bill-status badge-active">In Committee</span>
+                        </div>
+                        <div class="bill-title" onclick="showBillDetail('HB2446')" style="cursor: pointer;">Quantum Technology Industry Development</div>
+                        <div class="bill-description">
+                            Developing the quantum technology industry into the state's economic development and workforce strategy.
+                        </div>
+                        <div class="bill-meta">
+                            <span>📅 Hearing: Jan 20</span>
+                            <span>👤 TBD</span>
+                            <span>🏛️ Appropriations</span>
+                        </div>
+                        <div class="bill-impact">
+                            <span class="impact-medium">🟡 Medium Impact</span> — Emerging tech sector opportunity
+                        </div>
+                        <a href="https://app.leg.wa.gov/billsummary?BillNumber=2446&Year=2025" target="_blank" style="font-size: 10px; color: var(--hoshi-gold); text-decoration: none; display: inline-block; margin-top: 8px;" onclick="event.stopPropagation();">📄 View on leg.wa.gov →</a>
+                    </div>
+
+                    <div class="bill-card">
+                        <div class="bill-header">
+                            <span class="bill-number">HB 2730</span>
+                            <span class="bill-status badge-active">In Committee</span>
+                        </div>
+                        <div class="bill-title" onclick="showBillDetail('HB2730')" style="cursor: pointer;">Aerospace Tax Preferences - Effectiveness Metrics</div>
+                        <div class="bill-description">
+                            Clarifying the metric for judging the effectiveness of aerospace tax preferences.
+                        </div>
+                        <div class="bill-meta">
+                            <span>📅 Hearing: Feb 20</span>
+                            <span>👤 TBD</span>
+                            <span>🏛️ House Finance</span>
+                        </div>
+                        <div class="bill-impact">
+                            <span class="impact-medium">🟡 Medium Impact</span> — Affects aerospace/space sector
+                        </div>
+                        <a href="https://app.leg.wa.gov/billsummary?BillNumber=2730&Year=2025" target="_blank" style="font-size: 10px; color: var(--hoshi-gold); text-decoration: none; display: inline-block; margin-top: 8px;" onclick="event.stopPropagation();">📄 View on leg.wa.gov →</a>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="card" style="grid-column: span 4;">
+                    <div class="card-header">
+                        <div class="card-title">Recent Activity</div>
+                        <span class="card-badge badge-active">Live</span>
+                    </div>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-date">Today, 10:23 AM</div>
+                            <div class="timeline-content">HB 2736 scheduled for hearing in House Innovation Committee</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">Today, 9:15 AM</div>
+                            <div class="timeline-content">Amendment proposed to HB 6026 - tax credit cap increased</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">Yesterday, 4:30 PM</div>
+                            <div class="timeline-content">Rep. Slatter spoke favorably on space industry incentives</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">Yesterday, 2:00 PM</div>
+                            <div class="timeline-content">HB 2257 moved to Environment committee schedule</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">Feb 16, 11:00 AM</div>
+                            <div class="timeline-content">New bill introduced: HB 6289 (AI Workforce Development)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Key Committees -->
+                <div class="card" style="grid-column: span 4;">
+                    <div class="card-header">
+                        <div class="card-title">Key Committees</div>
+                    </div>
+                    <div class="committee-item" onclick="showPage('committees')">
+                        <div>
+                            <div class="committee-name">Environment, Energy & Technology</div>
+                            <div class="committee-chair">Chair: TBD</div>
+                        </div>
+                        <span class="card-badge badge-active">2 Bills</span>
+                    </div>
+                    <div class="committee-item" onclick="showPage('committees')">
+                        <div>
+                            <div class="committee-name">Technology, Economic Development, & Veterans</div>
+                            <div class="committee-chair">Chair: TBD</div>
+                        </div>
+                        <span class="card-badge badge-pending">2 Bills</span>
+                    </div>
+                    <div class="committee-item" onclick="showPage('committees')">
+                        <div>
+                            <div class="committee-name">House Finance</div>
+                            <div class="committee-chair">Chair: Noel Frame</div>
+                        </div>
+                        <span class="card-badge badge-pending">2 Bills</span>
+                    </div>
+                    <div class="committee-item" onclick="showPage('committees')">
+                        <div>
+                            <div class="committee-name">Senate Business</div>
+                            <div class="committee-chair">Chair: Marko Liias</div>
+                        </div>
+                        <span class="card-badge badge-pending">1 Bill</span>
+                    </div>
+                    <div class="committee-item" onclick="showPage('committees')">
+                        <div>
+                            <div class="committee-name">Senate Environment</div>
+                            <div class="committee-chair">Chair: Christine Rolfes</div>
+                        </div>
+                        <span class="card-badge badge-active">2 Bills</span>
+                    </div>
+                    <div class="committee-item" onclick="showPage('committees')">
+                        <div>
+                            <div class="committee-name">Senate Ways & Means</div>
+                            <div class="committee-chair">Chair: June Robinson</div>
+                        </div>
+                        <span class="card-badge badge-active">Fiscal</span>
+                    </div>
+                </div>
+
+                <!-- Bill Status Table -->
+                <div class="card" style="grid-column: span 12;">
+                    <div class="card-header">
+                        <div class="card-title">All Bills Status Overview</div>
+                        <div style="display: flex; gap: 10px;">
+                            <span class="card-badge badge-active">15 Active</span>
+                            <span class="card-badge" style="background: rgba(255, 71, 87, 0.2); color: #ff4757;">🚨 SB 6173 Critical</span>
+                            <span class="card-badge" style="background: rgba(255, 107, 107, 0.2); color: #ff6b6b;">3 Likely Dead</span>
+                        </div>
+                    </div>
+                    <div style="overflow-x: auto;">
+                        <table class="status-table" id="status-table">
+                            <thead>
+                                <tr>
+                                    <th>Bill</th>
+                                    <th>Title</th>
+                                    <th>Chamber</th>
+                                    <th>Status</th>
+                                    <th>Committee</th>
+                                    <th>Impact</th>
+                                </tr>
+                            </thead>
+                            <tbody id="status-table-body">
+                                <!-- Populated by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Old Key Committees (to be removed) -->
+
+                <!-- Priority Legislators -->
+                <div class="card" style="grid-column: span 4;">
+                    <div class="card-header">
+                        <div class="card-title">Priority Legislators</div>
+                    </div>
+                    <div class="legislator-card" onclick="showLegislatorDetail('slatter')">
+                        <div class="legislator-avatar">VS</div>
+                        <div class="legislator-info">
+                            <div class="legislator-name">Vandana Slatter</div>
+                            <div class="legislator-role">House Innovation Chair</div>
+                        </div>
+                        <div class="legislator-score">92</div>
+                    </div>
+                    <div class="legislator-card" onclick="showLegislatorDetail('frame')">
+                        <div class="legislator-avatar">NF</div>
+                        <div class="legislator-info">
+                            <div class="legislator-name">Noel Frame</div>
+                            <div class="legislator-role">House Finance Chair</div>
+                        </div>
+                        <div class="legislator-score">87</div>
+                    </div>
+                    <div class="legislator-card" onclick="showLegislatorDetail('liias')">
+                        <div class="legislator-avatar">ML</div>
+                        <div class="legislator-info">
+                            <div class="legislator-name">Marko Liias</div>
+                            <div class="legislator-role">Senate Business Chair</div>
+                        </div>
+                        <div class="legislator-score">85</div>
+                    </div>
+                    <div class="legislator-card" onclick="showLegislatorDetail('rolfes')">
+                        <div class="legislator-avatar">CR</div>
+                        <div class="legislator-info">
+                            <div class="legislator-name">Christine Rolfes</div>
+                            <div class="legislator-role">Senate Environment Chair</div>
+                        </div>
+                        <div class="legislator-score">82</div>
+                    </div>
+                    <div class="legislator-card" onclick="showLegislatorDetail('robinson')">
+                        <div class="legislator-avatar">JR</div>
+                        <div class="legislator-info">
+                            <div class="legislator-name">June Robinson</div>
+                            <div class="legislator-role">Senate Ways & Means Chair</div>
+                        </div>
+                        <div class="legislator-score">96</div>
+                    </div>
+                </div>
+
+                <!-- Weekly Summary -->
+                <div class="card" style="grid-column: span 4;">
+                    <div class="card-header">
+                        <div class="card-title">Weekly Summary</div>
+                    </div>
+                    <div class="summary-box">
+                        <div class="summary-title">Key Developments</div>
+                        <div class="summary-text">
+                            This week sees critical movement on space industry tax incentives (HB 2736) with a hearing scheduled for Thursday. The AI/Blockchain sandbox proposal (HB 6026) received a favorable amendment increasing tax credits. Energy permitting reform continues to advance with bipartisan support.
+                        </div>
+                    </div>
+                    <div style="margin-top: 16px; padding: 12px; background: rgba(78, 205, 196, 0.1); border-radius: 8px; border-left: 3px solid var(--success);">
+                        <div style="font-size: 11px; color: var(--success); margin-bottom: 4px;">✓ RECOMMENDED ACTION</div>
+                        <div style="font-size: 13px; color: var(--sky-soft);">Contact Rep. Slatter's office before Thursday's hearing on HB 2736</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tracked Bills Page -->
+        <div id="bills-page" class="page">
+            <div class="dashboard">
+                <div class="card" style="grid-column: span 12;">
+                    <div class="card-header">
+                        <div class="card-title">Tracked Bills</div>
+                        <button class="nav-btn" onclick="showPage('dashboard', document.getElementById('nav-dashboard'))">← Back to Dashboard</button>
+                    </div>
+                    
+                    <div class="add-bill-form">
+                        <input type="text" id="new-bill-input" placeholder="Enter bill number (e.g., HB 1234)...">
+                        <button onclick="addBill()">Add Bill</button>
+                    </div>
+
+                    <div id="tracked-bills-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 15px;">
+                        <!-- Bills will be populated here in grid -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Committees Page -->
+        <div id="committees-page" class="page">
+            <div class="dashboard">
+                <div class="card" style="grid-column: span 12;">
+                    <div class="card-header">
+                        <div class="card-title">Committees</div>
+                        <button class="nav-btn" onclick="showPage('dashboard', document.getElementById('nav-dashboard'))">← Back to Dashboard</button>
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title">House Finance</div>
+                                <span class="card-badge badge-active">3 Bills</span>
+                            </div>
+                            <p style="font-size: 13px; color: rgba(197, 227, 240, 0.7); margin-bottom: 12px;">Manages tax policy, revenue, and fiscal matters.</p>
+                            <p style="font-size: 12px; color: var(--hoshi-gold);">Chair: Noel Frame</p>
+                            <div style="margin-top: 16px;">
+                                <div class="bill-card committee-bill-link" onclick="navigateToBill('HB2100')" style="margin-bottom: 8px; cursor: pointer;">
+                                    <div class="bill-number">HB 2100</div>
+                                    <div class="bill-title" style="font-size: 12px;">Payroll Tax - Well WA Fund</div>
+                                </div>
+                                <div class="bill-card committee-bill-link" onclick="navigateToBill('HB2730')" style="margin-bottom: 8px; cursor: pointer;">
+                                    <div class="bill-number">HB 2730</div>
+                                    <div class="bill-title" style="font-size: 12px;">Aerospace Tax Metrics</div>
+                                </div>
+                                <div class="bill-card committee-bill-link" onclick="navigateToBill('HB1319')" style="margin-bottom: 8px; cursor: pointer; opacity: 0.7;">
+                                    <div class="bill-number">HB 1319 <span style="color: #ff6b6b;">(DEAD)</span></div>
+                                    <div class="bill-title" style="font-size: 12px;">Wealth Tax</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title">Environment, Energy & Technology</div>
+                                <span class="card-badge badge-active">2 Bills</span>
+                            </div>
+                            <p style="font-size: 13px; color: rgba(197, 227, 240, 0.7); margin-bottom: 12px;">Oversees environmental policy, energy, and technology legislation.</p>
+                            <p style="font-size: 12px; color: var(--hoshi-gold);">Chair: TBD</p>
+                            <div style="margin-top: 16px;">
+                                <div class="bill-card committee-bill-link" onclick="navigateToBill('HB1833')" style="margin-bottom: 8px; cursor: pointer;">
+                                    <div class="bill-number">HB 1833</div>
+                                    <div class="bill-title" style="font-size: 12px;">Spark Act - AI Grants</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title">Technology, Economic Development, & Veterans</div>
+                                <span class="card-badge badge-pending">2 Bills</span>
+                            </div>
+                            <p style="font-size: 13px; color: rgba(197, 227, 240, 0.7); margin-bottom: 12px;">Oversees technology policy, economic development, and veterans affairs.</p>
+                            <p style="font-size: 12px; color: var(--hoshi-gold);">Chair: TBD</p>
+                            <div style="margin-top: 16px;">
+                                <div class="bill-card committee-bill-link" onclick="navigateToBill('HB2278')" style="margin-bottom: 8px; cursor: pointer;">
+                                    <div class="bill-number">HB 2278</div>
+                                    <div class="bill-title" style="font-size: 12px;">Tourism Promotion Areas</div>
+                                </div>
+                                <div class="bill-card committee-bill-link" onclick="navigateToBill('HB2325')" style="margin-bottom: 8px; cursor: pointer;">
+                                    <div class="bill-number">HB 2325</div>
+                                    <div class="bill-title" style="font-size: 12px;">Tourism Assessment Program</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title">House Finance</div>
+                                <span class="card-badge badge-active">3 Bills</span>
+                            </div>
+                            <p style="font-size: 13px; color: rgba(197, 227, 240, 0.7); margin-bottom: 12px;">Manages tax policy, revenue, and fiscal matters.</p>
+                            <p style="font-size: 12px; color: var(--hoshi-gold);">Chair: Noel Frame</p>
+                            <div style="margin-top: 16px;">
+                                <div class="bill-card committee-bill-link" onclick="navigateToBill('HB2100')" style="margin-bottom: 8px; cursor: pointer;">
+                                    <div class="bill-number">HB 2100</div>
+                                    <div class="bill-title" style="font-size: 12px;">Payroll Tax - Well WA Fund</div>
+                                </div>
+                                <div class="bill-card committee-bill-link" onclick="navigateToBill('HB2730')" style="margin-bottom: 8px; cursor: pointer;">
+                                    <div class="bill-number">HB 2730</div>
+                                    <div class="bill-title" style="font-size: 12px;">Aerospace Tax Metrics</div>
+                                </div>
+                                <div class="bill-card committee-bill-link" onclick="navigateToBill('HB1319')" style="margin-bottom: 8px; cursor: pointer; opacity: 0.7;">
+                                    <div class="bill-number">HB 1319 <span style="color: #ff6b6b;">(DEAD)</span></div>
+                                    <div class="bill-title" style="font-size: 12px;">Wealth Tax</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title">Appropriations</div>
+                                <span class="card-badge badge-active">2 Bills</span>
+                            </div>
+                            <p style="font-size: 13px; color: rgba(197, 227, 240, 0.7); margin-bottom: 12px;">Controls state budget and funding allocations.</p>
+                            <p style="font-size: 12px; color: var(--hoshi-gold);">Chair: TBD</p>
+                            <div style="margin-top: 16px;">
+                                <div class="bill-card committee-bill-link" onclick="navigateToBill('HB2446')" style="margin-bottom: 8px; cursor: pointer;">
+                                    <div class="bill-number">HB 2446</div>
+                                    <div class="bill-title" style="font-size: 12px;">Quantum Technology</div>
+                                </div>
+                                <div class="bill-card committee-bill-link" onclick="navigateToBill('HB2615')" style="margin-bottom: 8px; cursor: pointer;">
+                                    <div class="bill-number">HB 2615</div>
+                                    <div class="bill-title" style="font-size: 12px;">Tax Amnesty Program</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title">Senate Ways & Means</div>
+                                <span class="card-badge badge-active">3 Bills</span>
+                            </div>
+                            <p style="font-size: 13px; color: rgba(197, 227, 240, 0.7); margin-bottom: 12px;">Controls Senate fiscal and revenue policy.</p>
+                            <p style="font-size: 12px; color: var(--hoshi-gold);">Chair: June Robinson</p>
+                            <div style="margin-top: 16px;">
+                                <div class="bill-card committee-bill-link" onclick="navigateToBill('SB6346')" style="margin-bottom: 8px; cursor: pointer;">
+                                    <div class="bill-number">SB 6346</div>
+                                    <div class="bill-title" style="font-size: 12px;">Millionaires Tax (PASSED)</div>
+                                </div>
+                                <div class="bill-card committee-bill-link" onclick="navigateToBill('SB6229')" style="margin-bottom: 8px; cursor: pointer;">
+                                    <div class="bill-number">SB 6229</div>
+                                    <div class="bill-title" style="font-size: 12px;">Small Business Stock Tax</div>
+                                </div>
+                                <div class="bill-card committee-bill-link" onclick="navigateToBill('SB6173')" style="margin-bottom: 8px; cursor: pointer; border: 1px solid #ff4757;">
+                                    <div class="bill-number">SB 6173 <span style="color: #ff4757;">(CRITICAL)</span></div>
+                                    <div class="bill-title" style="font-size: 12px;">Apple Health Employer Assessment</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Legislators Page -->
+        <div id="legislators-page" class="page">
+            <div class="dashboard">
+                <div class="card" style="grid-column: span 12;">
+                    <div class="card-header">
+                        <div class="card-title">Legislators</div>
+                        <button class="nav-btn" onclick="showPage('dashboard', document.getElementById('nav-dashboard'))">← Back to Dashboard</button>
+                    </div>
+
+                    <div id="legislators-list">
+                        <!-- Legislator details will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reports Page -->
+        <div id="reports-page" class="page">
+            <div class="coming-soon">
+                <div class="coming-soon-icon">📊</div>
+                <h2>Reports Coming Soon</h2>
+                <p>Detailed analytics and reporting features are under development.</p>
+                <button class="nav-btn" onclick="showPage('dashboard', document.getElementById('nav-dashboard'))" style="margin-top: 20px;">Back to Dashboard</button>
+            </div>
+        </div>
+
+        <!-- Redmond Page -->
+        <div id="redmond-page" class="page">
+            <div class="dashboard">
+                <!-- Mayor & Council -->
+                <div class="card" style="grid-column: span 6;">
+                    <div class="card-header">
+                        <div class="card-title">🏛️ Redmond Leadership</div>
+                        <span class="card-badge badge-active">Mayor + 7 Council</span>
+                    </div>
+                    
+                    <div class="bill-card" style="border-left-color: #4ecdc4; cursor: pointer;" onclick="window.open('https://www.redmond.gov/191/Mayor-Angela-Birney', '_blank')">
+                        <div class="bill-header">
+                            <span class="bill-number">Mayor</span>
+                            <span class="bill-status" style="background: rgba(78, 205, 196, 0.2); color: #4ecdc4;">Active</span>
+                        </div>
+                        <div class="bill-title">Angela Birney →</div>
+                        <div class="bill-description">Focus: Housing Action Plan, behavioral health, economic development</div>
+                        <div class="bill-meta">
+                            <span>📋 2025-26 Budget Priorities</span>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 16px;">
+                        <div style="font-size: 12px; color: var(--hoshi-gold); margin-bottom: 8px;">All 7 Council Members</div>
+                        
+                        <div class="committee-item" style="cursor: pointer; background: rgba(212, 165, 116, 0.1);" onclick="window.open('https://www.redmond.gov/189/City-Council', '_blank')">
+                            <div>
+                                <div class="committee-name">🎖️ Vanessa Kritzer →</div>
+                                <div class="committee-chair">Council President | Public Safety, Transportation</div>
+                            </div>
+                            <span style="font-size: 10px; color: var(--hoshi-gold);">#5</span>
+                        </div>
+                        
+                        <div class="committee-item" style="cursor: pointer; background: rgba(212, 165, 116, 0.1);" onclick="window.open('https://www.redmond.gov/189/City-Council', '_blank')">
+                            <div>
+                                <div class="committee-name">🎖️ Jessica Forsythe →</div>
+                                <div class="committee-chair">Vice President | Federal Priorities, Transportation</div>
+                            </div>
+                            <span style="font-size: 10px; color: var(--hoshi-gold);">#3</span>
+                        </div>
+                        
+                        <div class="committee-item" style="cursor: pointer;" onclick="window.open('https://www.redmond.gov/189/City-Council', '_blank')">
+                            <div>
+                                <div class="committee-name">Osman Salahuddin →</div>
+                                <div class="committee-chair">Public Safety/Human Services Chair | OneRedmond</div>
+                            </div>
+                            <span style="font-size: 10px; color: rgba(197, 227, 240, 0.5);">#1</span>
+                        </div>
+                        
+                        <div class="committee-item" style="cursor: pointer;" onclick="window.open('https://www.redmond.gov/189/City-Council', '_blank')">
+                            <div>
+                                <div class="committee-name">Steve Fields →</div>
+                                <div class="committee-chair">Finance Chair (ends 2025) | Lodging Tax</div>
+                            </div>
+                            <span style="font-size: 10px; color: rgba(197, 227, 240, 0.5);">#2</span>
+                        </div>
+                        
+                        <div class="committee-item" style="cursor: pointer;" onclick="window.open('https://www.redmond.gov/189/City-Council', '_blank')">
+                            <div>
+                                <div class="committee-name">Melissa Stuart →</div>
+                                <div class="committee-chair">Planning/Public Works Chair | Growth Management</div>
+                            </div>
+                            <span style="font-size: 10px; color: rgba(197, 227, 240, 0.5);">#4</span>
+                        </div>
+                        
+                        <div class="committee-item" style="cursor: pointer;" onclick="window.open('https://www.redmond.gov/189/City-Council', '_blank')">
+                            <div>
+                                <div class="committee-name">Jeralee Anderson →</div>
+                                <div class="committee-chair">Public Works Board | Term ends 2025</div>
+                            </div>
+                            <span style="font-size: 10px; color: rgba(197, 227, 240, 0.5);">#6</span>
+                        </div>
+                        
+                        <div class="committee-item" style="cursor: pointer;" onclick="window.open('https://www.redmond.gov/189/City-Council', '_blank')">
+                            <div>
+                                <div class="committee-name">Angie Nuevacamina →</div>
+                                <div class="committee-chair">Parks/Environmental Chair | Cascade Water Alliance</div>
+                            </div>
+                            <span style="font-size: 10px; color: rgba(197, 227, 240, 0.5);">#7</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Marymoor TOD Project -->
+                <div class="card" style="grid-column: span 6; border: 2px solid var(--hoshi-gold);">
+                    <div class="card-header">
+                        <div class="card-title">🚇 Marymoor Village TOD</div>
+                        <span class="card-badge badge-pending">Planning Phase</span>
+                    </div>
+                    
+                    <div class="summary-box">
+                        <div class="summary-title">Project Overview</div>
+                        <div class="summary-text">
+                            Sound Transit surplus land adjacent to Marymoor Village Station. ~3.5 acres for transit-oriented development with affordable housing priority.
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 16px;">
+                        <div class="bill-card" style="margin-bottom: 8px; cursor: default;">
+                            <div class="bill-header">
+                                <span class="bill-number">Timeline</span>
+                            </div>
+                            <div class="timeline" style="padding-left: 16px; margin-top: 8px;">
+                                <div class="timeline-item" style="padding-bottom: 12px;">
+                                    <div class="timeline-date">May 2024</div>
+                                    <div class="timeline-content">Sound Transit declared surplus (R2024-12)</div>
+                                </div>
+                                <div class="timeline-item" style="padding-bottom: 12px;">
+                                    <div class="timeline-date">May 2025</div>
+                                    <div class="timeline-content">Downtown Redmond Link opened - Station active</div>
+                                </div>
+                                <div class="timeline-item" style="padding-bottom: 0;">
+                                    <div class="timeline-date">Now</div>
+                                    <div class="timeline-content">Due diligence & site analysis underway</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bill-card" style="margin-bottom: 8px; cursor: default; border-left-color: #4ecdc4;">
+                            <div class="bill-header">
+                                <span class="bill-number">Key Details</span>
+                            </div>
+                            <div style="font-size: 12px; color: var(--sky-soft); margin-top: 8px; line-height: 1.6;">
+                                📍 <strong>Location:</strong> Adjacent to Marymoor Park<br>
+                                📐 <strong>Size:</strong> ~3.5 acres<br>
+                                🏠 <strong>Housing:</strong> 80% surplus priority for affordable housing<br>
+                                🎯 <strong>Model:</strong> Similar to Prisma (Spring District - 234 units)
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 12px; padding: 12px; background: rgba(78, 205, 196, 0.1); border-radius: 8px; border-left: 3px solid var(--success);">
+                            <div style="font-size: 11px; color: var(--success); margin-bottom: 4px;">✓ REDMOND CONNECTION</div>
+                            <div style="font-size: 13px; color: var(--sky-soft);">Councilmember Melissa Stuart (Planning) will coordinate city involvement</div>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 16px;">
+                        <a href="https://www.soundtransit.org/system-expansion/creating-vibrant-stations/transit-oriented-development/projects/marymoor-village" target="_blank" style="font-size: 12px; color: var(--hoshi-gold); text-decoration: none;">🔗 View on Sound Transit →</a>
+                    </div>
+                </div>
+
+                <!-- Redmond Legislative Priorities -->
+                <div class="card" style="grid-column: span 12;">
+                    <div class="card-header">
+                        <div class="card-title">📋 2026 State Legislative Agenda</div>
+                        <span class="card-badge badge-active">5 Priorities</span>
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px;">
+                        <div class="stat-card" style="text-align: left; padding: 16px; cursor: pointer; transition: all 0.2s;" onclick="window.open('https://www.redmond.gov/2298/Housing', '_blank')" onmouseover="this.style.background='rgba(212, 165, 116, 0.15)'" onmouseout="this.style.background='rgba(10, 22, 40, 0.4)'">
+                            <div style="font-size: 20px; margin-bottom: 8px;">🏠</div>
+                            <div style="font-size: 13px; font-weight: 500; color: var(--sky-soft); margin-bottom: 4px;">Housing</div>
+                            <div style="font-size: 11px; color: rgba(197, 227, 240, 0.6);">Preserve, improve, expand housing stock</div>
+                            <div style="font-size: 10px; color: var(--hoshi-gold); margin-top: 8px;">🔗 View Housing Action Plan →</div>
+                        </div>
+                        
+                        <div class="stat-card" style="text-align: left; padding: 16px; cursor: pointer; transition: all 0.2s;" onclick="window.open('https://www.redmond.gov/2246/Transportation', '_blank')" onmouseover="this.style.background='rgba(212, 165, 116, 0.15)'" onmouseout="this.style.background='rgba(10, 22, 40, 0.4)'">
+                            <div style="font-size: 20px; margin-bottom: 8px;">🚌</div>
+                            <div style="font-size: 13px; font-weight: 500; color: var(--sky-soft); margin-bottom: 4px;">Transportation</div>
+                            <div style="font-size: 11px; color: rgba(197, 227, 240, 0.6);">Multi-modal, Eastrail, regional coordination</div>
+                            <div style="font-size: 10px; color: var(--hoshi-gold); margin-top: 8px;">🔗 View Transportation →</div>
+                        </div>
+                        
+                        <div class="stat-card" style="text-align: left; padding: 16px; cursor: pointer; transition: all 0.2s;" onclick="window.open('https://www.redmond.gov/2252/Environmental-Protection', '_blank')" onmouseover="this.style.background='rgba(212, 165, 116, 0.15)'" onmouseout="this.style.background='rgba(10, 22, 40, 0.4)'">
+                            <div style="font-size: 20px; margin-bottom: 8px;">🌲</div>
+                            <div style="font-size: 13px; font-weight: 500; color: var(--sky-soft); margin-bottom: 4px;">Environment</div>
+                            <div style="font-size: 11px; color: rgba(197, 227, 240, 0.6);">Climate action, water, salmon recovery</div>
+                            <div style="font-size: 10px; color: var(--hoshi-gold); margin-top: 8px;">🔗 View Environmental Programs →</div>
+                        </div>
+                        
+                        <div class="stat-card" style="text-align: left; padding: 16px; cursor: pointer; transition: all 0.2s;" onclick="window.open('https://www.redmond.gov/2250/Public-Safety', '_blank')" onmouseover="this.style.background='rgba(212, 165, 116, 0.15)'" onmouseout="this.style.background='rgba(10, 22, 40, 0.4)'">
+                            <div style="font-size: 20px; margin-bottom: 8px;">🛡️</div>
+                            <div style="font-size: 13px; font-weight: 500; color: var(--sky-soft); margin-bottom: 4px;">Public Safety</div>
+                            <div style="font-size: 11px; color: rgba(197, 227, 240, 0.6);">Crisis response, behavioral health</div>
+                            <div style="font-size: 10px; color: var(--hoshi-gold); margin-top: 8px;">🔗 View Public Safety →</div>
+                        </div>
+                        
+                        <div class="stat-card" style="text-align: left; padding: 16px; cursor: pointer; transition: all 0.2s;" onclick="window.open('https://www.redmond.gov/2248/Economic-Development', '_blank')" onmouseover="this.style.background='rgba(212, 165, 116, 0.15)'" onmouseout="this.style.background='rgba(10, 22, 40, 0.4)'">
+                            <div style="font-size: 20px; margin-bottom: 8px;">💼</div>
+                            <div style="font-size: 13px; font-weight: 500; color: var(--sky-soft); margin-bottom: 4px;">Economic Dev</div>
+                            <div style="font-size: 11px; color: rgba(197, 227, 240, 0.6);">Tech sector, OneRedmond support</div>
+                            <div style="font-size: 10px; color: var(--hoshi-gold); margin-top: 8px;">🔗 View Economic Development →</div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 20px; padding: 16px; background: rgba(212, 165, 116, 0.1); border-radius: 10px; border: 1px solid rgba(212, 165, 116, 0.2);">
+                        <div style="font-size: 12px; color: var(--hoshi-gold); margin-bottom: 8px;">📄 FULL LEGISLATIVE AGENDA DOCUMENT</div>
+                        <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                            <a href="https://www.redmond.gov/35878/Adopted-2026-Legislative-Agenda" target="_blank" style="font-size: 13px; color: var(--sky-soft); text-decoration: none; padding: 8px 12px; background: rgba(78, 205, 196, 0.2); border-radius: 6px; border: 1px solid rgba(78, 205, 196, 0.3);">📋 View 2026 Legislative Agenda →</a>
+                            <a href="https://www.redmond.gov/DocumentCenter/View/35878/Adopted-2026-Legislative-Agenda" target="_blank" style="font-size: 13px; color: var(--sky-soft); text-decoration: none; padding: 8px 12px; background: rgba(127, 179, 213, 0.2); border-radius: 6px; border: 1px solid rgba(127, 179, 213, 0.3);">📄 Download PDF →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tracked Bills with Redmond Impact -->
+                <div class="card" style="grid-column: span 6;">
+                    <div class="card-header">
+                        <div class="card-title">⚖️ WA Bills with Redmond Impact</div>
+                    </div>
+                    
+                    <div class="bill-card" onclick="showBillDetail('HB2418')" style="cursor: pointer;">
+                        <div class="bill-header">
+                            <span class="bill-number">HB 2418</span>
+                            <span class="bill-status badge-active">In Senate</span>
+                        </div>
+                        <div class="bill-title">Permit Review Reform</div>
+                        <div class="bill-description">Streamlines permitting for housing/development</div>
+                        <div style="margin-top: 8px; font-size: 11px; color: var(--hoshi-gold);">🏛️ Impact: Melissa Stuart/Planning implements</div>
+                    </div>
+
+                    <div class="bill-card" onclick="showBillDetail('HB2442')" style="cursor: pointer;">
+                        <div class="bill-header">
+                            <span class="bill-number">HB 2442</span>
+                            <span class="bill-status badge-active">In Appropriations</span>
+                        </div>
+                        <div class="bill-title">Local Gov Tax Flexibility</div>
+                        <div class="bill-description">REET flexibility for affordable housing</div>
+                        <div style="margin-top: 8px; font-size: 11px; color: var(--hoshi-gold);">🏛️ Impact: More tools for Housing Action Plan</div>
+                    </div>
+
+                    <div class="bill-card" onclick="showBillDetail('HB2278')" style="cursor: pointer;">
+                        <div class="bill-header">
+                            <span class="bill-number">HB 2278</span>
+                            <span class="bill-status" style="background: rgba(212, 165, 116, 0.2); color: var(--hoshi-gold);">In Rules</span>
+                        </div>
+                        <div class="bill-title">Tourism Promotion Areas</div>
+                        <div class="bill-description">Local tourism district funding</div>
+                        <div style="margin-top: 8px; font-size: 11px; color: var(--hoshi-gold);">🏛️ Impact: Potential Marymoor Park area tourism</div>
+                    </div>
+                </div>
+
+                <!-- Resources & Links -->
+                <div class="card" style="grid-column: span 6;">
+                    <div class="card-header">
+                        <div class="card-title">🔗 Redmond Resources</div>
+                    </div>
+                    
+                    <div class="committee-item" onclick="window.open('https://redmond.legistar.com/Calendar.aspx', '_blank')" style="cursor: pointer;">
+                        <div>
+                            <div class="committee-name">📅 City Council Agendas</div>
+                            <div class="committee-chair">Meeting schedules & documents</div>
+                        </div>
+                        <span style="color: var(--hoshi-gold);">→</span>
+                    </div>
+                    
+                    <div class="committee-item" onclick="window.open('https://www.redmond.gov/2254/City-Ordinances-2025', '_blank')" style="cursor: pointer;">
+                        <div>
+                            <div class="committee-name">📜 City Ordinances 2025</div>
+                            <div class="committee-chair">Recently passed legislation</div>
+                        </div>
+                        <span style="color: var(--hoshi-gold);">→</span>
+                    </div>
+                    
+                    <div class="committee-item" onclick="window.open('https://www.redmond.gov/2298/Housing', '_blank')" style="cursor: pointer;">
+                        <div>
+                            <div class="committee-name">🏠 Housing Action Plan</div>
+                            <div class="committee-chair">Redmond housing priorities</div>
+                        </div>
+                        <span style="color: var(--hoshi-gold);">→</span>
+                    </div>
+                    
+                    <div class="committee-item" onclick="window.open('https://www.redmond.gov/35878/Adopted-2026-Legislative-Agenda', '_blank')" style="cursor: pointer;">
+                        <div>
+                            <div class="committee-name">📋 2026 Legislative Agenda</div>
+                            <div class="committee-chair">State priorities document</div>
+                        </div>
+                        <span style="color: var(--hoshi-gold);">→</span>
+                    </div>
+
+                    <div style="margin-top: 16px; padding: 12px; background: rgba(255, 217, 61, 0.1); border-radius: 8px; border-left: 3px solid var(--warning);">
+                        <div style="font-size: 11px; color: var(--warning); margin-bottom: 4px;">⚠️ WEEKLY ALERT SET</div>
+                        <div style="font-size: 13px; color: var(--sky-soft);">Mondays 9:00 AM PT - Redmond Council update</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Bill data with full summaries - ALL 17 BILLS
+        const billsData = {
+            'HB2730': { number: 'HB 2730', title: 'Aerospace Tax Preferences - Effectiveness Metrics', shortDesc: 'Clarifying the metric for judging the effectiveness of aerospace tax preferences.', fullSummary: 'This bill clarifies how the effectiveness of aerospace tax incentives will be measured, specifically regarding job creation and retention metrics. Important for aerospace companies operating in Washington.', assessment: 'Important for aerospace/space sector clients. The clarified metrics will affect how companies demonstrate compliance with tax incentive requirements. Recommend monitoring for changes to reporting obligations.', status: 'HFinance', statusLabel: 'In Committee', hearing: 'Feb 20', sponsor: 'TBD', committee: 'House Finance', impact: 'medium', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=2730&Year=2025', chamber: 'House', alive: true },
+            'SB6346': { number: 'SB 6346', title: 'Millionaires Tax', shortDesc: 'Establishing a tax on millionaires.', fullSummary: 'This bill establishes a tax on millionaires to fund state services. It targets high-net-worth individuals and could affect wealthy business owners and investors.', assessment: 'High impact for high-net-worth clients. This tax could affect business owners considering relocation or restructuring. Monitor amendments that might adjust thresholds or exemptions.', status: 'SPassed 3rd', statusLabel: 'Passed Senate', hearing: 'Feb 16', sponsor: 'TBD', committee: 'Senate Ways & Means', impact: 'high', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=6346&Year=2025', chamber: 'Senate', alive: true },
+            'HB2100': { number: 'HB 2100', title: 'Payroll Tax for Well Washington Fund', shortDesc: 'Enacting an excise tax on large operating companies on payroll expenses above minimum wage threshold.', fullSummary: 'This bill enacts an excise tax on large operating companies based on payroll expenses above the minimum wage threshold to fund services benefiting Washingtonians through the Well Washington fund.', assessment: 'Significant impact for large employers. The payroll tax structure could affect hiring decisions and wage strategies. Monitor for threshold definitions and credit mechanisms.', status: 'HFinance', statusLabel: 'In Committee', hearing: 'Jan 22', sponsor: 'TBD', committee: 'House Finance', impact: 'high', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=2100&Year=2025', chamber: 'House', alive: true },
+            'SB6093': { number: 'SB 6093', title: 'Payroll Tax - Senate Version', shortDesc: 'Senate version of excise tax on large operating companies payroll expenses.', fullSummary: 'Senate companion bill to HB 2100, enacting an excise tax on large operating companies based on payroll expenses above minimum wage threshold to fund the Well Washington fund.', assessment: 'Parallel track to HB 2100. Monitor which version moves forward. Senate version may have different thresholds or implementation timelines.', status: 'SWays & Means', statusLabel: 'In Committee', hearing: 'Jan 13', sponsor: 'TBD', committee: 'Senate Ways & Means', impact: 'high', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=6093&Year=2025', chamber: 'Senate', alive: true },
+            'HB1319': { number: 'HB 1319', title: 'Wealth Tax on Financial Assets', shortDesc: 'Enacting a wealth tax on ownership of stocks, bonds, and other financial intangible property.', fullSummary: 'This bill enacts a wealth tax on the ownership of stocks, bonds, and other financial intangible property. Targets high-net-worth individuals with significant investment portfolios.', assessment: 'LIKELY DEAD - No action since Jan 15. Missed policy committee cutoff (Feb 7).', status: 'HFinance', statusLabel: 'LIKELY DEAD', hearing: 'Jan 15', sponsor: 'OFM Request', committee: 'House Finance', impact: 'high', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=1319&Year=2025', chamber: 'House', alive: false },
+            'SB6229': { number: 'SB 6229', title: 'Small Business Stock Taxation', shortDesc: 'Concerning taxation of long-term capital gain of section 1202 small business stock.', fullSummary: 'This bill addresses taxation of long-term capital gains from section 1202 small business stock, affecting startup investors and founders.', assessment: 'Important for startup ecosystem. Changes to QSBS taxation could affect investment decisions and startup formation. Executive session scheduled Feb 19.', status: 'SWays & Means', statusLabel: 'In Committee', hearing: 'Feb 19', sponsor: 'TBD', committee: 'Senate Ways & Means', impact: 'medium', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=6229&Year=2025', chamber: 'Senate', alive: true },
+            'HB2615': { number: 'HB 2615', title: 'Tax Amnesty Program', shortDesc: 'Codifying voluntary disclosure tax program and authorizing temporary tax amnesty.', fullSummary: 'This bill codifies the voluntary disclosure tax program and authorizes a temporary tax amnesty period, allowing taxpayers to come into compliance with reduced penalties.', assessment: 'Opportunity for clients with tax compliance issues. Amnesty programs provide limited windows for voluntary disclosure. Monitor effective dates and eligibility.', status: 'HApprops', statusLabel: 'In Committee', hearing: 'Feb 6', sponsor: 'TBD', committee: 'House Appropriations', impact: 'medium', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=2615&Year=2025', chamber: 'House', alive: true },
+            'HB2278': { number: 'HB 2278', title: 'Tourism Promotion Areas', shortDesc: 'Concerning tourism promotion areas and destination marketing.', fullSummary: 'This bill establishes a framework for creating tourism promotion areas throughout Washington State, enabling local jurisdictions to form tourism promotion districts with dedicated funding.', assessment: 'Lower priority for tech clients but relevant for hospitality sector. The local control aspect allows targeted investment in tourism infrastructure.', status: 'HRules R', statusLabel: 'In Rules', hearing: 'Jan 21', sponsor: 'Gregerson (D)', committee: 'Technology, Economic Development, & Veterans', impact: 'low', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=2278&Year=2025', chamber: 'House', alive: true },
+            'HB2325': { number: 'HB 2325', title: 'Tourism Self-Supported Assessment', shortDesc: 'Establishing tourism self-supported assessment program for statewide promotion.', fullSummary: 'This bill establishes a tourism self-supported assessment program to fund statewide tourism promotion, creating a dedicated revenue stream for destination marketing.', assessment: 'Related to HB 2278. Assessment-based funding model for tourism promotion. Monitor for overlap with other tourism bills.', status: 'H2nd Reading', statusLabel: 'On Floor', hearing: 'Jan 21', sponsor: 'TBD', committee: 'House Floor', impact: 'low', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=2325&Year=2025', chamber: 'House', alive: true },
+            'SB6061': { number: 'SB 6061', title: 'Tourism Assessment - Senate', shortDesc: 'Senate version of tourism self-supported assessment program.', fullSummary: 'Senate companion to HB 2325, establishing a tourism self-supported assessment program to fund statewide tourism promotion.', assessment: 'Senate version moving faster - already on floor. Monitor which version becomes vehicle for final legislation.', status: 'S2nd Reading', statusLabel: 'On Floor', hearing: 'Jan 22', sponsor: 'TBD', committee: 'Senate Floor', impact: 'low', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=6061&Year=2025', chamber: 'Senate', alive: true },
+            'HB2270': { number: 'HB 2270', title: 'Lodging Tax Flexibility', shortDesc: 'Providing flexibility for use of lodging tax revenues for small cities.', fullSummary: 'This bill provides specified flexibility for use of lodging tax revenues for small cities, allowing more local control over tourism-related tax collections.', assessment: 'Relevant for hospitality clients in smaller jurisdictions. Provides administrative flexibility for lodging tax administration.', status: 'HFinance', statusLabel: 'In Committee', hearing: 'Jan 12', sponsor: 'TBD', committee: 'House Finance', impact: 'low', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=2270&Year=2025', chamber: 'House', alive: true },
+            'HB2257': { number: 'HB 2257', title: 'DOR Tax Administration', shortDesc: 'Concerning taxes administered by the Department of Revenue.', fullSummary: 'This bill concerns taxes administered by the Department of Revenue, potentially affecting various tax programs and compliance procedures.', assessment: 'Monitor for specific DOR procedure changes. Could affect tax compliance processes for multiple tax types.', status: 'HRules R', statusLabel: 'In Rules', hearing: 'Jan 12', sponsor: 'DOR Request', committee: 'House Rules', impact: 'medium', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=2257&Year=2025', chamber: 'House', alive: true },
+            'SB6113': { number: 'SB 6113', title: 'DOR Tax Administration - Senate', shortDesc: 'Senate version of DOR tax administration changes.', fullSummary: 'Senate companion to HB 2257, concerning taxes administered by the Department of Revenue.', assessment: 'Senate version PASSED. Monitor for House action. May become vehicle for DOR administrative changes.', status: 'SPassed 3rd', statusLabel: 'Passed Senate', hearing: 'Feb 16', sponsor: 'TBD', committee: 'Senate Floor', impact: 'medium', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=6113&Year=2025', chamber: 'Senate', alive: true },
+            'HB2489': { number: 'HB 2489', title: 'Public Space Standards', shortDesc: 'Establishing statewide standards for local enforcement of public space laws.', fullSummary: 'This bill establishes statewide standards for when local governments may enforce laws regulating the use of public space for life-sustaining activities.', assessment: 'Municipal governance issue. May affect local business environments in urban areas. Monitor for enforcement standardization.', status: 'HRules R', statusLabel: 'In Rules', hearing: 'Jan 14', sponsor: 'Gregerson (D)', committee: 'House Rules', impact: 'low', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=2489&Year=2025', chamber: 'House', alive: true },
+            'HB2418': { number: 'HB 2418', title: 'Permit Review Process Reform', shortDesc: 'Concerning permit review processes and streamlining.', fullSummary: 'This bill concerns permit review processes, aiming to streamline and improve the efficiency of permit approvals for development projects.', assessment: 'Important for development and construction clients. Streamlined permitting could reduce project timelines. Passed House, now in Senate. HEARING scheduled Feb 19 at 1:30 PM in Senate Local Government.', status: 'SLoc Gov', statusLabel: 'In Senate Committee', hearing: 'Feb 19 @ 1:30 PM', sponsor: 'TBD', committee: 'Senate Local Government', impact: 'medium', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=2418&Year=2025', chamber: 'House', alive: true },
+            'SB6209': { number: 'SB 6209', title: 'Financial Aid for Private Institutions', shortDesc: 'Concerning financial aid awards for students at private four-year and two-year institutions.', fullSummary: 'This bill concerns financial aid awards for students attending private four-year and two-year institutions of higher education.', assessment: 'Education sector bill. May affect private college enrollment and funding. Monitor for budget implications.', status: 'SWays & Means', statusLabel: 'In Committee', hearing: 'Jan 26', sponsor: 'TBD', committee: 'Senate Ways & Means', impact: 'low', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=6209&Year=2025', chamber: 'Senate', alive: true },
+            'HB2480': { number: 'HB 2480', title: 'Residential Development in Commercial Zones', shortDesc: 'Concerning residential development in commercial and mixed-use zones.', fullSummary: 'This bill concerns residential development in commercial and mixed-use zones, potentially increasing housing density in commercial areas.', assessment: 'LIKELY DEAD - No action since Feb 3 executive session. Missed House policy committee cutoff (Feb 7).', status: 'HLocal Govt', statusLabel: 'LIKELY DEAD', hearing: 'Feb 3', sponsor: 'TBD', committee: 'House Local Government', impact: 'medium', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=2480&Year=2025', chamber: 'House', alive: false },
+            'HB2736': { number: 'HB 2736', title: 'Estate Tax Rates - Reinstatement', shortDesc: 'Reinstating estate tax rates that applied before May 20, 2025.', fullSummary: 'This bill reinstates the estate tax rates that were in effect prior to May 20, 2025, applying to estates of decedents dying on or after July 1, 2026.', assessment: 'LIKELY DEAD - Still in House Finance Committee. Missed policy committee cutoff (Feb 7).', status: 'HFinance', statusLabel: 'LIKELY DEAD', hearing: 'Feb 20', sponsor: 'Frame (D)', committee: 'House Finance', impact: 'medium', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=2736&Year=2025', chamber: 'House', alive: false },
+            'HB1833': { number: 'HB 1833', title: 'Spark Act - AI Grant Program', shortDesc: 'Establishing an AI grant program for innovation and ethical pilot projects.', fullSummary: 'Creates the Spark Act, establishing an artificial intelligence grant program administered by the Department of Commerce to promote AI innovation and ethical AI pilot projects.', assessment: 'Direct funding opportunity for AI sector clients. Scheduled for hearing Mar 25 in Environment, Energy & Technology.', status: 'HEnvEnergy', statusLabel: 'Scheduled', hearing: 'Mar 25', sponsor: 'Kloba (D)', committee: 'Environment, Energy & Technology', impact: 'high', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=1833&Year=2025', chamber: 'House', alive: true },
+            'HB2225': { number: 'HB 2225', title: 'AI Companion Chatbot Regulation', shortDesc: 'Regulating AI companion chatbots with mental health safeguards.', fullSummary: 'Regulates artificial intelligence companion chatbots, requiring mental health safeguards and consumer protections for AI-powered companion applications.', assessment: 'Affects AI consumer applications. Monitoring for compliance requirements that may affect AI product development.', status: 'HTech', statusLabel: 'In Committee', hearing: 'Jan 14', sponsor: 'Ferguson (Gov)', committee: 'Technology, Economic Development, & Veterans', impact: 'medium', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=2225&Year=2025', chamber: 'House', alive: true },
+            'HB2446': { number: 'HB 2446', title: 'Quantum Technology Industry Development', shortDesc: 'Developing quantum technology into economic and workforce strategy.', fullSummary: 'Developing the quantum technology industry into the state\'s economic development and workforce strategy.', assessment: 'Emerging tech sector opportunity. Quantum technology aligns with space/tech sector focus. Monitor for funding opportunities.', status: 'HApprops', statusLabel: 'In Committee', hearing: 'Jan 20', sponsor: 'TBD', committee: 'Appropriations', impact: 'medium', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=2446&Year=2025', chamber: 'House', alive: true },
+            'SB6173': { number: 'SB 6173', title: 'Apple Health Employer Assessment', shortDesc: 'Creating an apple health employer assessment for employers with over 100 employees.', fullSummary: 'This bill creates an Apple Health employer assessment targeting employers with over 100 employees. This represents a significant new fee/tax on larger employers to fund health programs.', assessment: '🔴 HIGH PRIORITY - Major cost impact for employers over 100 employees. Executive session scheduled Feb 19 at 4:00 PM in Senate Ways & Means. Could significantly affect labor costs and hiring decisions for large employers.', status: 'SWays & Means', statusLabel: 'In Committee', hearing: 'Feb 19 @ 4:00 PM', sponsor: 'TBD', committee: 'Senate Ways & Means', impact: 'high', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=6173&Year=2025', chamber: 'Senate', alive: true }
+        };
+
+        // Legislator data
+        const legislatorsData = {
+            'slatter': {
+                name: 'Vandana Slatter',
+                role: 'House Innovation Chair',
+                district: '48th District',
+                party: 'Democrat',
+                score: 95,
+                email: 'vandana.slatter@leg.wa.gov',
+                phone: '(360) 786-7934',
+                office: 'John L. O\'Brien Building, Room 330',
+                bio: 'Rep. Slatter has been a leading voice for technology policy and innovation economy in Washington. She brings 15 years of experience in the tech sector prior to entering politics.',
+                priorities: ['Technology Policy', 'Aerospace', 'STEM Education'],
+                recentBills: ['HB 2736', 'HB 6289'],
+                scoreBreakdown: {
+                    leadership: 'Committee Chair (+30)',
+                    chamber: 'House (+10)',
+                    topicFocus: 'High - Direct jurisdiction over tech/space bills (+55)'
+                }
+            },
+            'frame': {
+                name: 'Noel Frame',
+                role: 'House Finance Chair',
+                district: '36th District',
+                party: 'Democrat',
+                score: 92,
+                email: 'noel.frame@leg.wa.gov',
+                phone: '(360) 786-7814',
+                office: 'John L. O\'Brien Building, Room 475',
+                bio: 'Rep. Frame is a champion of progressive tax reform and fiscal policy. She has served as Finance Chair since 2021 and previously worked in nonprofit sector finance.',
+                priorities: ['Tax Reform', 'Economic Justice', 'Budget Policy'],
+                recentBills: ['HB 6026', 'HB 2325'],
+                scoreBreakdown: {
+                    leadership: 'Committee Chair (+30)',
+                    chamber: 'House (+10)',
+                    topicFocus: 'High - Controls tax policy affecting all sectors (+52)'
+                }
+            },
+            'liias': {
+                name: 'Marko Liias',
+                role: 'Senate Business Chair',
+                district: '21st District',
+                party: 'Democrat',
+                score: 88,
+                email: 'marko.liias@leg.wa.gov',
+                phone: '(360) 786-7640',
+                office: 'Legislative Building, Room 215',
+                bio: 'Sen. Liias has been a strong advocate for economic development and transportation infrastructure. He previously served in the House before joining the Senate in 2014.',
+                priorities: ['Economic Development', 'Transportation', 'Tourism'],
+                recentBills: ['HB 2278', 'SB 5767'],
+                scoreBreakdown: {
+                    leadership: 'Committee Chair (+30)',
+                    chamber: 'Senate (+15)',
+                    topicFocus: 'Medium - Business development alignment (+43)'
+                }
+            },
+            'rolfes': {
+                name: 'Christine Rolfes',
+                role: 'Senate Environment Chair',
+                district: '23rd District',
+                party: 'Democrat',
+                score: 82,
+                email: 'christine.rolfes@leg.wa.gov',
+                phone: '(360) 786-7644',
+                office: 'Legislative Building, Room 305',
+                bio: 'Sen. Rolfes has been a leader on environmental policy and climate action. She brings expertise in land use planning and environmental science to her committee work.',
+                priorities: ['Climate Action', 'Environmental Protection', 'Clean Energy'],
+                recentBills: ['HB 2257', 'SB 5722'],
+                scoreBreakdown: {
+                    leadership: 'Committee Chair (+30)',
+                    chamber: 'Senate (+15)',
+                    topicFocus: 'Medium - Energy sector overlap (+37)'
+                }
+            },
+            'robinson': {
+                name: 'June Robinson',
+                role: 'Senate Ways & Means Chair',
+                district: '38th District',
+                party: 'Democrat',
+                score: 96,
+                email: 'june.robinson@leg.wa.gov',
+                phone: '(360) 786-7654',
+                office: 'Legislative Building, Room 404',
+                bio: 'Sen. Robinson chairs the Senate\'s powerful fiscal committee, controlling the state budget and all tax legislation. She determines which fiscal bills reach the Senate floor.',
+                priorities: ['Budget', 'Health Care', 'Tax Policy'],
+                recentBills: ['SB 5767', 'SB 5900'],
+                scoreBreakdown: {
+                    leadership: 'Fiscal Committee Chair (+35)',
+                    chamber: 'Senate (+15)',
+                    topicFocus: 'High - Controls all spending/tax bills (+46)'
+                }
+            }
+        };
+
+        // Tracked bills - all 16 (2 likely dead)
+        let trackedBills = ['HB2730','SB6346','HB2100','SB6093','HB1319','SB6229','HB2615','HB2278','HB2325','SB6061','HB2270','HB2257','SB6113','HB2489','HB2418','SB6209','HB2480','HB2736'];
+
+        function showPage(page, btn) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+            
+            document.getElementById(page + '-page').classList.add('active');
+            if (btn) btn.classList.add('active');
+            else document.getElementById('nav-' + page).classList.add('active');
+            
+            if (page === 'bills') renderTrackedBills();
+            if (page === 'legislators') renderLegislators();
+            if (page === 'dashboard') renderStatusTable();
+        }
+
+        function renderTrackedBills() {
+            const container = document.getElementById('tracked-bills-grid');
+            if (!container) return;
+            
+            const allBillIds = Object.keys(billsData);
+            
+            container.innerHTML = allBillIds.map(billId => {
+                const bill = billsData[billId];
+                if (!bill) return '';
+                
+                const isDead = bill.alive === false;
+                
+                return `
+                    <div class="bill-card" onclick="toggleBillExpand('${billId}')" style="${isDead ? 'opacity: 0.6; border-left-color: #ff6b6b;' : ''} margin-bottom: 0;">
+                        <button class="bill-remove-btn" onclick="event.stopPropagation(); removeBill('${billId}')">Remove</button>
+                        <div class="bill-header">
+                            <span class="bill-number">${bill.number}</span>
+                            <span class="bill-status" style="${isDead ? 'background: rgba(255, 107, 107, 0.2); color: #ff6b6b;' : ''}">${bill.statusLabel}</span>
+                        </div>
+                        <div class="bill-title" style="font-size: 13px;">${bill.title}${isDead ? ' <span class="dead-badge">DEAD</span>' : ''}</div>
+                        <div class="bill-description" style="font-size: 11px; line-height: 1.4;">${bill.shortDesc}</div>
+                        <div class="bill-meta" style="font-size: 10px; flex-wrap: wrap;">
+                            <span>📅 ${bill.hearing}</span>
+                            <span>👤 ${bill.sponsor}</span>
+                            <span>🏛️ ${bill.committee}</span>
+                        </div>
+                        <div class="bill-impact" style="font-size: 11px;">
+                            <span class="impact-${bill.impact}">${bill.impact === 'high' ? '🔴' : bill.impact === 'medium' ? '🟡' : '🟢'} ${bill.impact.charAt(0).toUpperCase() + bill.impact.slice(1)} Impact</span>
+                        </div>
+                        <div class="bill-expand" id="expand-${billId}">
+                            <div class="bill-assessment"><strong>🌟 Hoshi Sora Assessment</strong>${bill.assessment}</div>
+                            <a href="${bill.billUrl}" target="_blank" class="bill-link" onclick="event.stopPropagation()">📄 View on leg.wa.gov →</a>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function addBill() {
+            const input = document.getElementById('new-bill-input');
+            const billNum = input.value.trim().toUpperCase().replace(/\s/g, '');
+            if (billNum && !trackedBills.includes(billNum)) {
+                trackedBills.push(billNum);
+                input.value = '';
+                renderTrackedBills();
+                updateStatCount();
+            }
+        }
+
+        function removeBill(billId) {
+            trackedBills = trackedBills.filter(b => b !== billId);
+            renderTrackedBills();
+            updateStatCount();
+        }
+
+        function updateStatCount() {
+            document.getElementById('stat-bills').textContent = trackedBills.length;
+        }
+
+        function renderStatusTable() {
+            const tbody = document.getElementById('status-table-body');
+            if (!tbody) return;
+            
+            // Get all bill IDs from billsData
+            const allBillIds = Object.keys(billsData);
+            
+            tbody.innerHTML = allBillIds.map(billId => {
+                const bill = billsData[billId];
+                if (!bill) return '';
+                
+                let statusClass = 'status-committee';
+                if (bill.statusLabel && bill.statusLabel.includes('Passed')) statusClass = 'status-passed';
+                else if (bill.statusLabel && (bill.statusLabel.includes('Reading') || bill.statusLabel.includes('Floor'))) statusClass = 'status-floor';
+                else if (bill.statusLabel && bill.statusLabel.includes('Rules')) statusClass = 'status-rules';
+                else if (bill.alive === false) statusClass = 'status-dead';
+                
+                let impactEmoji = '🟢';
+                if (bill.impact === 'high') impactEmoji = '🔴';
+                else if (bill.impact === 'medium') impactEmoji = '🟡';
+                
+                const rowStyle = bill.alive === false ? 'style="opacity: 0.5; text-decoration: line-through;"' : '';
+                const chamberClass = bill.chamber ? `chamber-${bill.chamber.toLowerCase()}` : '';
+                
+                return `
+                    <tr onclick="navigateToBill('${billId}')" style="cursor: pointer;" ${rowStyle}>
+                        <td><span class="bill-link-table">${bill.number || billId}</span></td>
+                        <td>${bill.title}</td>
+                        <td class="${chamberClass}">${bill.chamber}</td>
+                        <td><span class="status-badge ${statusClass}">${bill.statusLabel || bill.status}</span></td>
+                        <td>${bill.committee}</td>
+                        <td>${impactEmoji} ${bill.impact ? bill.impact.charAt(0).toUpperCase() + bill.impact.slice(1) : 'Low'}</td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        function renderLegislators() {
+            const container = document.getElementById('legislators-list');
+            container.innerHTML = Object.entries(legislatorsData).map(([id, leg]) => `
+                <div class="legislator-detail">
+                    <div class="legislator-photo">${leg.name.split(' ').map(n => n[0]).join('')}</div>
+                    <div class="legislator-details">
+                        <h3>${leg.name}</h3>
+                        <p><strong>${leg.role}</strong> • ${leg.district} • ${leg.party}</p>
+                        <p style="margin-top: 8px;">${leg.bio}</p>
+                        <p style="margin-top: 8px; color: var(--hoshi-gold);">Priorities: ${leg.priorities.join(', ')}</p>
+                        <p style="margin-top: 8px; font-size: 12px;">
+                            📧 ${leg.email}<br>
+                            📞 ${leg.phone}<br>
+                            📍 ${leg.office}
+                        </p>
+                        <a href="mailto:${leg.email}" class="contact-btn">Contact Legislator</a>
+                    </div>
+                    <div style="text-align: center;">
+                        <div class="legislator-score" style="font-size: 48px;">${leg.score}</div>
+                        <div class="score-explanation">
+                            <strong>Influence Score Breakdown</strong><br><br>
+                            ${leg.scoreBreakdown.leadership}<br>
+                            ${leg.scoreBreakdown.chamber}<br>
+                            ${leg.scoreBreakdown.topicFocus}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function showBillDetail(billId) {
+            showPage('bills', document.getElementById('nav-bills'));
+            setTimeout(() => {
+                toggleBillExpand(billId);
+                const billElement = document.getElementById('expand-' + billId);
+                if (billElement) {
+                    billElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }, 100);
+        }
+
+        function showLegislatorDetail(legId) {
+            showPage('legislators', document.getElementById('nav-legislators'));
+        }
+
+        function searchBills(query) {
+            const resultsDiv = document.getElementById('search-results');
+            const resultsList = document.getElementById('search-results-list');
+            const resultCount = document.getElementById('result-count');
+            
+            if (!query || query.trim() === '') {
+                resultsDiv.style.display = 'none';
+                return;
+            }
+            
+            const searchTerm = query.toLowerCase();
+            const allBillIds = Object.keys(billsData);
+            
+            const matches = allBillIds.filter(billId => {
+                const bill = billsData[billId];
+                if (!bill) return false;
+                
+                return (bill.number && bill.number.toLowerCase().includes(searchTerm)) ||
+                       (bill.title && bill.title.toLowerCase().includes(searchTerm)) ||
+                       (bill.shortDesc && bill.shortDesc.toLowerCase().includes(searchTerm)) ||
+                       (bill.committee && bill.committee.toLowerCase().includes(searchTerm)) ||
+                       (bill.statusLabel && bill.statusLabel.toLowerCase().includes(searchTerm));
+            });
+            
+            if (matches.length === 0) {
+                resultsList.innerHTML = '<p style="padding: 20px; color: rgba(197, 227, 240, 0.5); text-align: center;">No bills found matching "' + query + '".</p>';
+            } else {
+                resultsList.innerHTML = matches.map(billId => {
+                    const bill = billsData[billId];
+                    const isDead = bill.alive === false;
+                    
+                    return `
+                        <div class="bill-card" onclick="navigateToBill('${billId}')" style="margin-bottom: 10px; ${isDead ? 'opacity: 0.6;' : ''}">
+                            <div class="bill-header">
+                                <span class="bill-number">${bill.number}</span>
+                                <span class="bill-status" style="${isDead ? 'background: rgba(255, 107, 107, 0.2); color: #ff6b6b;' : ''}">${bill.statusLabel}</span>
+                            </div>
+                            <div class="bill-title" style="font-size: 13px;">${bill.title}${isDead ? ' <span class="dead-badge">DEAD</span>' : ''}</div>
+                            <div class="bill-description" style="font-size: 11px;">${bill.shortDesc}</div>
+                        </div>
+                    `;
+                }).join('');
+            }
+            
+            resultCount.textContent = matches.length + ' result' + (matches.length !== 1 ? 's' : '');
+            resultsDiv.style.display = 'block';
+        }
+
+        function clearSearch() {
+            document.getElementById('bill-search').value = '';
+            document.getElementById('search-results').style.display = 'none';
+        }
+
+        function toggleBillExpand(billId) {
+            const expandDiv = document.getElementById('expand-' + billId);
+            const billCard = expandDiv.closest('.bill-card');
+            expandDiv.classList.toggle('active');
+            billCard.classList.toggle('active');
+        }
+
+        function navigateToBill(billId) {
+            showPage('bills', document.getElementById('nav-bills'));
+            setTimeout(() => {
+                const billElement = document.getElementById('expand-' + billId);
+                const billCard = billElement?.closest('.bill-card');
+                if (billElement) {
+                    billElement.classList.add('active');
+                    billCard?.classList.add('active');
+                    billElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }, 100);
+        }
+
+        // Initialize the status table on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            renderStatusTable();
+        });
+    </script>
 </body>
 </html>
