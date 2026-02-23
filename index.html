@@ -556,25 +556,20 @@
                 <!-- Stats -->
                 <div class="stats-row">
                     <div class="stat-card">
-                        <div class="stat-value" id="stat-bills">18</div>
-                        <div class="stat-label">Bills Tracked</div>
+                        <div class="stat-value" id="stat-bills">7</div>
+                        <div class="stat-label">Tracked Bills</div>
                     </div>
                     <div class="stat-card" style="background: rgba(78, 205, 196, 0.15); border: 1px solid rgba(78, 205, 196, 0.3);">
-                        <div class="stat-value" style="color: #4ecdc4;">14</div>
-                        <div class="stat-label" style="color: #4ecdc4;">Alive</div>
+                        <div class="stat-value" style="color: #4ecdc4;">6</div>
+                        <div class="stat-label" style="color: #4ecdc4;">Active</div>
                     </div>
-                    <div class="stat-card" style="background: rgba(255, 107, 107, 0.15); border: 1px solid rgba(255, 107, 107, 0.3);">
-                        <div class="stat-value" style="color: #ff6b6b;">3</div>
-                        <div class="stat-label" style="color: #ff6b6b;">Likely Dead</div>
+                    <div class="stat-card" style="background: rgba(255, 217, 61, 0.15); border: 1px solid rgba(255, 217, 61, 0.3);">
+                        <div class="stat-value" style="color: #ffd93d;">2</div>
+                        <div class="stat-label" style="color: #ffd93d;">Stalled</div>
                     </div>
                     <div class="stat-card" style="background: rgba(212, 165, 116, 0.15); border: 1px solid rgba(212, 165, 116, 0.3); cursor: pointer;" onclick="window.open('forecasts.html', '_self')">
                         <div class="stat-value" style="color: var(--hoshi-gold);">🔮</div>
                         <div class="stat-label" style="color: var(--hoshi-gold);">Forecasts</div>
-                    </div>
-                </div>
-                    <div class="stat-card">
-                        <div class="stat-value">2</div>
-                        <div class="stat-label">Passed Chamber</div>
                     </div>
                 </div>
 
@@ -587,32 +582,32 @@
                     
                     <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
                         <!-- Tax Bills -->
-                        <div class="bill-card" onclick="showBillDetail('SB6346')" style="border-left-color: #4ecdc4; cursor: pointer;">
+                        <div class="bill-card" onclick="showBillDetail('SB6346')" style="border-left-color: #ffd93d; cursor: pointer;">
                             <div class="bill-header">
                                 <span class="bill-number">SB 6346</span>
-                                <span class="bill-status" style="background: rgba(78, 205, 196, 0.2); color: #4ecdc4;">Passed Senate</span>
+                                <span class="bill-status" style="background: rgba(255, 217, 61, 0.2); color: #ffd93d;">🗓️ Hearing Feb 24</span>
                             </div>
                             <div class="bill-title">Millionaires Tax <span style="color: var(--hoshi-gold);">[Tax]</span></div>
-                            <div class="bill-description" style="font-size: 11px;">High impact for high-net-worth clients. Passed Senate, moves to House.</div>
+                            <div class="bill-description" style="font-size: 11px;">High impact for high-net-worth clients. Now in House Finance Committee.</div>
                             <div class="bill-meta" style="font-size: 10px;">
-                                <span>📅 Feb 16</span>
+                                <span>📅 Feb 24 @ 8:00 AM</span>
                                 <span>🔴 High Impact</span>
                             </div>
-                            <a href="https://app.leg.wa.gov/billsummary?BillNumber=6346&Year=2025" target="_blank" style="font-size: 10px; color: var(--hoshi-gold); text-decoration: none; display: inline-block; margin-top: 8px;" onclick="event.stopPropagation();">📄 View on leg.wa.gov →</a>
+                            <a href="https://app.leg.wa.gov/billsummary?BillNumber=6346&Year=2026" target="_blank" style="font-size: 10px; color: var(--hoshi-gold); text-decoration: none; display: inline-block; margin-top: 8px;" onclick="event.stopPropagation();">📄 View on leg.wa.gov →</a>
                         </div>
 
-                        <div class="bill-card" onclick="showBillDetail('SB6173')" style="border-left-color: #ff4757; border: 2px solid #ff4757; cursor: pointer;">
+                        <div class="bill-card" onclick="showBillDetail('SB6173')" style="border-left-color: #ffd93d; cursor: pointer;">
                             <div class="bill-header">
                                 <span class="bill-number">SB 6173</span>
-                                <span class="bill-status" style="background: rgba(255, 71, 87, 0.3); color: #ff4757; font-weight: bold;">🚨 HIGH PRIORITY</span>
+                                <span class="bill-status" style="background: rgba(255, 217, 61, 0.2); color: #ffd93d;">⏸️ No Action Taken</span>
                             </div>
                             <div class="bill-title">Apple Health Employer Assessment <span style="color: var(--hoshi-gold);">[Tax]</span></div>
-                            <div class="bill-description" style="font-size: 11px;"><strong>MAJOR fee/tax on employers with 100+ employees.</strong> Executive session Feb 19.</div>
+                            <div class="bill-description" style="font-size: 11px;"><strong>MAJOR fee/tax on employers with 100+ employees.</strong> Executive session Feb 19 - NO ACTION.</div>
                             <div class="bill-meta" style="font-size: 10px;">
-                                <span>📅 Feb 19 @ 4:00 PM</span>
+                                <span>📅 Feb 19 - Stalled</span>
                                 <span>🔴 CRITICAL IMPACT</span>
                             </div>
-                            <a href="https://app.leg.wa.gov/billsummary?BillNumber=6173&Year=2025" target="_blank" style="font-size: 10px; color: var(--hoshi-gold); text-decoration: none; display: inline-block; margin-top: 8px;" onclick="event.stopPropagation();">📄 View on leg.wa.gov →</a>
+                            <a href="https://app.leg.wa.gov/billsummary?BillNumber=6173&Year=2026" target="_blank" style="font-size: 10px; color: var(--hoshi-gold); text-decoration: none; display: inline-block; margin-top: 8px;" onclick="event.stopPropagation();">📄 View on leg.wa.gov →</a>
                         </div>
 
                         <div class="bill-card" onclick="showBillDetail('HB2100')" style="border-left-color: #ffd93d; cursor: pointer;">
@@ -630,32 +625,32 @@
                         </div>
 
                         <!-- Permitting Bills -->
-                        <div class="bill-card" onclick="showBillDetail('HB2418')" style="border-left-color: #7fb3d5; cursor: pointer;">
+                        <div class="bill-card" onclick="showBillDetail('HB2418')" style="border-left-color: #4ecdc4; cursor: pointer;">
                             <div class="bill-header">
                                 <span class="bill-number">HB 2418</span>
-                                <span class="bill-status" style="background: rgba(255, 193, 7, 0.2); color: #ffc107;">🗓️ HEARING FEB 19</span>
+                                <span class="bill-status" style="background: rgba(78, 205, 196, 0.2); color: #4ecdc4;">✅ Senate Action Taken</span>
                             </div>
                             <div class="bill-title">Permit Review Process Reform <span style="color: var(--hoshi-gold);">[Permitting]</span></div>
-                            <div class="bill-description" style="font-size: 11px;">Streamlined permitting for development. Senate Local Government hearing at 1:30 PM.</div>
+                            <div class="bill-description" style="font-size: 11px;">Streamlined permitting for development. Executive action taken Feb 23 in Senate Local Government.</div>
                             <div class="bill-meta" style="font-size: 10px;">
-                                <span>📅 Feb 19 @ 1:30 PM</span>
+                                <span>📅 Feb 23 @ 1:30 PM</span>
                                 <span>🟡 Medium Impact</span>
                             </div>
-                            <a href="https://app.leg.wa.gov/billsummary?BillNumber=2418&Year=2025" target="_blank" style="font-size: 10px; color: var(--hoshi-gold); text-decoration: none; display: inline-block; margin-top: 8px;" onclick="event.stopPropagation();">📄 View on leg.wa.gov →</a>
+                            <a href="https://app.leg.wa.gov/billsummary?BillNumber=2418&Year=2026" target="_blank" style="font-size: 10px; color: var(--hoshi-gold); text-decoration: none; display: inline-block; margin-top: 8px;" onclick="event.stopPropagation();">📄 View on leg.wa.gov →</a>
                         </div>
 
-                        <div class="bill-card" onclick="showBillDetail('SB6026')" style="border-left-color: #4ecdc4; cursor: pointer;">
+                        <div class="bill-card" onclick="showBillDetail('SB6026')" style="border-left-color: #ffd93d; cursor: pointer;">
                             <div class="bill-header">
                                 <span class="bill-number">SB 6026</span>
-                                <span class="bill-status" style="background: rgba(78, 205, 196, 0.2); color: #4ecdc4;">Passed Senate</span>
+                                <span class="bill-status" style="background: rgba(255, 217, 61, 0.2); color: #ffd93d;">🗓️ Exec Session Feb 25</span>
                             </div>
                             <div class="bill-title">Residential Dev in Commercial Zones <span style="color: var(--hoshi-gold);">[Permitting]</span></div>
-                            <div class="bill-description" style="font-size: 11px;">Removes ground-floor commercial mandates. Passed Senate 35-14.</div>
+                            <div class="bill-description" style="font-size: 11px;">Removes ground-floor commercial mandates. Passed Senate, now in House Local Government.</div>
                             <div class="bill-meta" style="font-size: 10px;">
                                 <span>📅 Feb 25 @ 8:00 AM</span>
                                 <span>🟡 Medium Impact</span>
                             </div>
-                            <a href="https://app.leg.wa.gov/billsummary?BillNumber=6026&Year=2025" target="_blank" style="font-size: 10px; color: var(--hoshi-gold); text-decoration: none; display: inline-block; margin-top: 8px;" onclick="event.stopPropagation();">📄 View on leg.wa.gov →</a>
+                            <a href="https://app.leg.wa.gov/billsummary?BillNumber=6026&Year=2026" target="_blank" style="font-size: 10px; color: var(--hoshi-gold); text-decoration: none; display: inline-block; margin-top: 8px;" onclick="event.stopPropagation();">📄 View on leg.wa.gov →</a>
                         </div>
 
                         <!-- Tourism Bills -->
@@ -667,10 +662,10 @@
                             <div class="bill-title">Tourism Promotion Areas <span style="color: var(--hoshi-gold);">[Tourism]</span></div>
                             <div class="bill-description" style="font-size: 11px;">Framework for tourism promotion districts. Moved to Rules Committee.</div>
                             <div class="bill-meta" style="font-size: 10px;">
-                                <span>📅 Jan 21</span>
+                                <span>📅 Jan 30</span>
                                 <span>🟢 Low Impact</span>
                             </div>
-                            <a href="https://app.leg.wa.gov/billsummary?BillNumber=2278&Year=2025" target="_blank" style="font-size: 10px; color: var(--hoshi-gold); text-decoration: none; display: inline-block; margin-top: 8px;" onclick="event.stopPropagation();">📄 View on leg.wa.gov →</a>
+                            <a href="https://app.leg.wa.gov/billsummary?BillNumber=2278&Year=2026" target="_blank" style="font-size: 10px; color: var(--hoshi-gold); text-decoration: none; display: inline-block; margin-top: 8px;" onclick="event.stopPropagation();">📄 View on leg.wa.gov →</a>
                         </div>
 
                         <div class="bill-card" onclick="showBillDetail('HB2325')" style="border-left-color: #7fb3d5; cursor: pointer;">
@@ -719,15 +714,15 @@
                         <div class="bill-card" onclick="showBillDetail('SB6229')" style="border-left-color: #ffd93d; cursor: pointer;">
                             <div class="bill-header">
                                 <span class="bill-number">SB 6229</span>
-                                <span class="bill-status badge-active">In Committee</span>
+                                <span class="bill-status" style="background: rgba(255, 217, 61, 0.2); color: #ffd93d;">⏸️ No Action Taken</span>
                             </div>
                             <div class="bill-title">Small Business Stock Taxation <span style="color: var(--hoshi-gold);">[Econ Dev]</span></div>
-                            <div class="bill-description" style="font-size: 11px;">QSBS taxation affects startup investors. Executive session Feb 19.</div>
+                            <div class="bill-description" style="font-size: 11px;">QSBS taxation affects startup investors. Executive session Feb 19 - NO ACTION.</div>
                             <div class="bill-meta" style="font-size: 10px;">
-                                <span>📅 Feb 19</span>
+                                <span>📅 Feb 19 - Stalled</span>
                                 <span>🟡 Medium Impact</span>
                             </div>
-                            <a href="https://app.leg.wa.gov/billsummary?BillNumber=6229&Year=2025" target="_blank" style="font-size: 10px; color: var(--hoshi-gold); text-decoration: none; display: inline-block; margin-top: 8px;" onclick="event.stopPropagation();">📄 View on leg.wa.gov →</a>
+                            <a href="https://app.leg.wa.gov/billsummary?BillNumber=6229&Year=2026" target="_blank" style="font-size: 10px; color: var(--hoshi-gold); text-decoration: none; display: inline-block; margin-top: 8px;" onclick="event.stopPropagation();">📄 View on leg.wa.gov →</a>
                         </div>
                     </div>
                 </div>
@@ -741,24 +736,24 @@
                     </div>
                     <div class="timeline">
                         <div class="timeline-item">
-                            <div class="timeline-date">Today, 10:23 AM</div>
-                            <div class="timeline-content">HB 2736 scheduled for hearing in House Innovation Committee</div>
+                            <div class="timeline-date">Feb 23, 1:30 PM</div>
+                            <div class="timeline-content">✅ HB 2418 - Executive action taken in Senate Local Government</div>
                         </div>
                         <div class="timeline-item">
-                            <div class="timeline-date">Today, 9:15 AM</div>
-                            <div class="timeline-content">Amendment proposed to HB 6026 - tax credit cap increased</div>
+                            <div class="timeline-date">Feb 19, 4:00 PM</div>
+                            <div class="timeline-content">⏸️ SB 6173 - NO ACTION in Senate Ways & Means executive session</div>
                         </div>
                         <div class="timeline-item">
-                            <div class="timeline-date">Yesterday, 4:30 PM</div>
-                            <div class="timeline-content">Rep. Slatter spoke favorably on space industry incentives</div>
+                            <div class="timeline-date">Feb 19, 4:00 PM</div>
+                            <div class="timeline-content">⏸️ SB 6229 - NO ACTION in Senate Ways & Means executive session</div>
                         </div>
                         <div class="timeline-item">
-                            <div class="timeline-date">Yesterday, 2:00 PM</div>
-                            <div class="timeline-content">HB 2257 moved to Environment committee schedule</div>
+                            <div class="timeline-date">Feb 17</div>
+                            <div class="timeline-content">SB 6346 referred to House Finance; SB 6026 referred to House Local Gov</div>
                         </div>
                         <div class="timeline-item">
-                            <div class="timeline-date">Feb 16, 11:00 AM</div>
-                            <div class="timeline-content">New bill introduced: HB 6289 (AI Workforce Development)</div>
+                            <div class="timeline-date">Feb 16</div>
+                            <div class="timeline-content">SB 6346 passed Senate floor with amendments</div>
                         </div>
                     </div>
                 </div>
@@ -815,11 +810,11 @@
                 <!-- Bill Status Table -->
                 <div class="card" style="grid-column: span 12;">
                     <div class="card-header">
-                        <div class="card-title">All Bills Status Overview</div>
+                        <div class="card-title">Tracked Bills Status Overview</div>
                         <div style="display: flex; gap: 10px;">
-                            <span class="card-badge badge-active">15 Active</span>
-                            <span class="card-badge" style="background: rgba(255, 71, 87, 0.2); color: #ff4757;">🚨 SB 6173 Critical</span>
-                            <span class="card-badge" style="background: rgba(255, 107, 107, 0.2); color: #ff6b6b;">3 Likely Dead</span>
+                            <span class="card-badge badge-active">6 Active</span>
+                            <span class="card-badge" style="background: rgba(255, 217, 61, 0.2); color: #ffd93d;">2 Stalled</span>
+                            <span class="card-badge" style="background: rgba(255, 107, 107, 0.2); color: #ff6b6b;">Feb 24 Update</span>
                         </div>
                     </div>
                     <div style="overflow-x: auto;">
@@ -896,14 +891,14 @@
                         <div class="card-title">Weekly Summary</div>
                     </div>
                     <div class="summary-box">
-                        <div class="summary-title">Key Developments</div>
+                        <div class="summary-title">Key Developments - Feb 24, 2026</div>
                         <div class="summary-text">
-                            This week sees critical movement on space industry tax incentives (HB 2736) with a hearing scheduled for Thursday. The AI/Blockchain sandbox proposal (HB 6026) received a favorable amendment increasing tax credits. Energy permitting reform continues to advance with bipartisan support.
+                            SB 6173 (Apple Health Employer Assessment) and SB 6229 (Small Business Stock) both stalled in Senate Ways & Means with NO ACTION on Feb 19. HB 2418 (Permit Reform) advanced with executive action in Senate Local Government on Feb 23. SB 6346 (Millionaires Tax) now in House Finance with hearing Feb 24.
                         </div>
                     </div>
-                    <div style="margin-top: 16px; padding: 12px; background: rgba(78, 205, 196, 0.1); border-radius: 8px; border-left: 3px solid var(--success);">
-                        <div style="font-size: 11px; color: var(--success); margin-bottom: 4px;">✓ RECOMMENDED ACTION</div>
-                        <div style="font-size: 13px; color: var(--sky-soft);">Contact Rep. Slatter's office before Thursday's hearing on HB 2736</div>
+                    <div style="margin-top: 16px; padding: 12px; background: rgba(255, 217, 61, 0.1); border-radius: 8px; border-left: 3px solid var(--warning);">
+                        <div style="font-size: 11px; color: var(--warning); margin-bottom: 4px;">⚠️ WATCH CLOSELY</div>
+                        <div style="font-size: 13px; color: var(--sky-soft);">SB 6026 executive session Feb 25 @ 8:00 AM in House Local Government</div>
                     </div>
                 </div>
             </div>
@@ -1297,29 +1292,29 @@
     <script>
         // Bill data with full summaries - ALL 17 BILLS
         const billsData = {
-            'HB2730': { number: 'HB 2730', title: 'Aerospace Tax Preferences - Effectiveness Metrics', shortDesc: 'Clarifying the metric for judging the effectiveness of aerospace tax preferences.', fullSummary: 'This bill clarifies how the effectiveness of aerospace tax incentives will be measured, specifically regarding job creation and retention metrics. Important for aerospace companies operating in Washington.', assessment: 'Important for aerospace/space sector clients. The clarified metrics will affect how companies demonstrate compliance with tax incentive requirements. Recommend monitoring for changes to reporting obligations.', status: 'HFinance', statusLabel: 'In Committee', hearing: 'Feb 20', sponsor: 'TBD', committee: 'House Finance', impact: 'medium', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=2730&Year=2025', chamber: 'House', alive: true },
-            'SB6346': { number: 'SB 6346', title: 'Millionaires Tax', shortDesc: 'Establishing a tax on millionaires.', fullSummary: 'This bill establishes a tax on millionaires to fund state services. It targets high-net-worth individuals and could affect wealthy business owners and investors.', assessment: 'High impact for high-net-worth clients. This tax could affect business owners considering relocation or restructuring. Monitor amendments that might adjust thresholds or exemptions.', status: 'SPassed 3rd', statusLabel: 'Passed Senate', hearing: 'Feb 16', sponsor: 'TBD', committee: 'Senate Ways & Means', impact: 'high', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=6346&Year=2025', chamber: 'Senate', alive: true },
+            'HB2730': { number: 'HB 2730', title: 'Aerospace Tax Preferences - Effectiveness Metrics', shortDesc: 'Clarifying the metric for judging the effectiveness of aerospace tax preferences.', fullSummary: 'This bill clarifies how the effectiveness of aerospace tax incentives will be measured, specifically regarding job creation and retention metrics. Important for aerospace companies operating in Washington.', assessment: 'Important for aerospace/space sector clients. Public hearing scheduled for Feb 9 was NOT HEARD. Bill may be stalled in House Finance Committee.', status: 'HFinance', statusLabel: 'Not Heard', hearing: 'Feb 9 - Stalled', sponsor: 'TBD', committee: 'House Finance', impact: 'medium', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=2730&Year=2026', chamber: 'House', alive: true },
+            'SB6346': { number: 'SB 6346', title: 'Millionaires Tax', shortDesc: 'Establishing a tax on millionaires.', fullSummary: 'This bill establishes a tax on millionaires to fund state services. It targets high-net-worth individuals and could affect wealthy business owners and investors.', assessment: 'High impact for high-net-worth clients. Now in House Finance Committee with hearing Feb 24 and executive session Feb 27. Monitor for amendments that might adjust thresholds or exemptions.', status: 'HFinance', statusLabel: 'In House Finance', hearing: 'Feb 24 @ 8:00 AM', sponsor: 'TBD', committee: 'House Finance', impact: 'high', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=6346&Year=2026', chamber: 'Senate', alive: true },
             'HB2100': { number: 'HB 2100', title: 'Payroll Tax for Well Washington Fund', shortDesc: 'Enacting an excise tax on large operating companies on payroll expenses above minimum wage threshold.', fullSummary: 'This bill enacts an excise tax on large operating companies based on payroll expenses above the minimum wage threshold to fund services benefiting Washingtonians through the Well Washington fund.', assessment: 'Significant impact for large employers. The payroll tax structure could affect hiring decisions and wage strategies. Monitor for threshold definitions and credit mechanisms.', status: 'HFinance', statusLabel: 'In Committee', hearing: 'Jan 22', sponsor: 'TBD', committee: 'House Finance', impact: 'high', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=2100&Year=2025', chamber: 'House', alive: true },
             'SB6093': { number: 'SB 6093', title: 'Payroll Tax - Senate Version', shortDesc: 'Senate version of excise tax on large operating companies payroll expenses.', fullSummary: 'Senate companion bill to HB 2100, enacting an excise tax on large operating companies based on payroll expenses above minimum wage threshold to fund the Well Washington fund.', assessment: 'Parallel track to HB 2100. Monitor which version moves forward. Senate version may have different thresholds or implementation timelines.', status: 'SWays & Means', statusLabel: 'In Committee', hearing: 'Jan 13', sponsor: 'TBD', committee: 'Senate Ways & Means', impact: 'high', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=6093&Year=2025', chamber: 'Senate', alive: true },
             'HB1319': { number: 'HB 1319', title: 'Wealth Tax on Financial Assets', shortDesc: 'Enacting a wealth tax on ownership of stocks, bonds, and other financial intangible property.', fullSummary: 'This bill enacts a wealth tax on the ownership of stocks, bonds, and other financial intangible property. Targets high-net-worth individuals with significant investment portfolios.', assessment: 'LIKELY DEAD - No action since Jan 15. Missed policy committee cutoff (Feb 7).', status: 'HFinance', statusLabel: 'LIKELY DEAD', hearing: 'Jan 15', sponsor: 'OFM Request', committee: 'House Finance', impact: 'high', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=1319&Year=2025', chamber: 'House', alive: false },
-            'SB6229': { number: 'SB 6229', title: 'Small Business Stock Taxation', shortDesc: 'Concerning taxation of long-term capital gain of section 1202 small business stock.', fullSummary: 'This bill addresses taxation of long-term capital gains from section 1202 small business stock, affecting startup investors and founders.', assessment: 'Important for startup ecosystem. Changes to QSBS taxation could affect investment decisions and startup formation. Executive session scheduled Feb 19.', status: 'SWays & Means', statusLabel: 'In Committee', hearing: 'Feb 19', sponsor: 'TBD', committee: 'Senate Ways & Means', impact: 'medium', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=6229&Year=2025', chamber: 'Senate', alive: true },
+            'SB6229': { number: 'SB 6229', title: 'Small Business Stock Taxation', shortDesc: 'Concerning taxation of long-term capital gain of section 1202 small business stock.', fullSummary: 'This bill addresses taxation of long-term capital gains from section 1202 small business stock, affecting startup investors and founders.', assessment: 'Important for startup ecosystem. Executive session on Feb 19 resulted in NO ACTION TAKEN. Changes to QSBS taxation could affect investment decisions and startup formation.', status: 'SWays & Means', statusLabel: 'No Action Taken', hearing: 'Feb 19 - Stalled', sponsor: 'TBD', committee: 'Senate Ways & Means', impact: 'medium', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=6229&Year=2026', chamber: 'Senate', alive: true },
             'HB2615': { number: 'HB 2615', title: 'Tax Amnesty Program', shortDesc: 'Codifying voluntary disclosure tax program and authorizing temporary tax amnesty.', fullSummary: 'This bill codifies the voluntary disclosure tax program and authorizes a temporary tax amnesty period, allowing taxpayers to come into compliance with reduced penalties.', assessment: 'Opportunity for clients with tax compliance issues. Amnesty programs provide limited windows for voluntary disclosure. Monitor effective dates and eligibility.', status: 'HApprops', statusLabel: 'In Committee', hearing: 'Feb 6', sponsor: 'TBD', committee: 'House Appropriations', impact: 'medium', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=2615&Year=2025', chamber: 'House', alive: true },
-            'HB2278': { number: 'HB 2278', title: 'Tourism Promotion Areas', shortDesc: 'Concerning tourism promotion areas and destination marketing.', fullSummary: 'This bill establishes a framework for creating tourism promotion areas throughout Washington State, enabling local jurisdictions to form tourism promotion districts with dedicated funding.', assessment: 'Lower priority for tech clients but relevant for hospitality sector. The local control aspect allows targeted investment in tourism infrastructure.', status: 'HRules R', statusLabel: 'In Rules', hearing: 'Jan 21', sponsor: 'Gregerson (D)', committee: 'Technology, Economic Development, & Veterans', impact: 'low', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=2278&Year=2025', chamber: 'House', alive: true },
+            'HB2278': { number: 'HB 2278', title: 'Tourism Promotion Areas', shortDesc: 'Concerning tourism promotion areas and destination marketing.', fullSummary: 'This bill establishes a framework for creating tourism promotion areas throughout Washington State, enabling local jurisdictions to form tourism promotion districts with dedicated funding.', assessment: 'Lower priority for tech clients but relevant for hospitality sector. Currently in House Rules Committee awaiting floor scheduling.', status: 'HRules R', statusLabel: 'In Rules', hearing: 'Jan 30', sponsor: 'Gregerson (D)', committee: 'House Rules', impact: 'low', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=2278&Year=2026', chamber: 'House', alive: true },
             'HB2325': { number: 'HB 2325', title: 'Tourism Self-Supported Assessment', shortDesc: 'Establishing tourism self-supported assessment program for statewide promotion.', fullSummary: 'This bill establishes a tourism self-supported assessment program to fund statewide tourism promotion, creating a dedicated revenue stream for destination marketing.', assessment: 'Related to HB 2278. Assessment-based funding model for tourism promotion. Monitor for overlap with other tourism bills.', status: 'H2nd Reading', statusLabel: 'On Floor', hearing: 'Jan 21', sponsor: 'TBD', committee: 'House Floor', impact: 'low', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=2325&Year=2025', chamber: 'House', alive: true },
             'SB6061': { number: 'SB 6061', title: 'Tourism Assessment - Senate', shortDesc: 'Senate version of tourism self-supported assessment program.', fullSummary: 'Senate companion to HB 2325, establishing a tourism self-supported assessment program to fund statewide tourism promotion.', assessment: 'Senate version moving faster - already on floor. Monitor which version becomes vehicle for final legislation.', status: 'S2nd Reading', statusLabel: 'On Floor', hearing: 'Jan 22', sponsor: 'TBD', committee: 'Senate Floor', impact: 'low', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=6061&Year=2025', chamber: 'Senate', alive: true },
             'HB2270': { number: 'HB 2270', title: 'Lodging Tax Flexibility', shortDesc: 'Providing flexibility for use of lodging tax revenues for small cities.', fullSummary: 'This bill provides specified flexibility for use of lodging tax revenues for small cities, allowing more local control over tourism-related tax collections.', assessment: 'Relevant for hospitality clients in smaller jurisdictions. Provides administrative flexibility for lodging tax administration.', status: 'HFinance', statusLabel: 'In Committee', hearing: 'Jan 12', sponsor: 'TBD', committee: 'House Finance', impact: 'low', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=2270&Year=2025', chamber: 'House', alive: true },
             'HB2257': { number: 'HB 2257', title: 'DOR Tax Administration', shortDesc: 'Concerning taxes administered by the Department of Revenue.', fullSummary: 'This bill concerns taxes administered by the Department of Revenue, potentially affecting various tax programs and compliance procedures.', assessment: 'Monitor for specific DOR procedure changes. Could affect tax compliance processes for multiple tax types.', status: 'HRules R', statusLabel: 'In Rules', hearing: 'Jan 12', sponsor: 'DOR Request', committee: 'House Rules', impact: 'medium', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=2257&Year=2025', chamber: 'House', alive: true },
             'SB6113': { number: 'SB 6113', title: 'DOR Tax Administration - Senate', shortDesc: 'Senate version of DOR tax administration changes.', fullSummary: 'Senate companion to HB 2257, concerning taxes administered by the Department of Revenue.', assessment: 'Senate version PASSED. Monitor for House action. May become vehicle for DOR administrative changes.', status: 'SPassed 3rd', statusLabel: 'Passed Senate', hearing: 'Feb 16', sponsor: 'TBD', committee: 'Senate Floor', impact: 'medium', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=6113&Year=2025', chamber: 'Senate', alive: true },
             'HB2489': { number: 'HB 2489', title: 'Public Space Standards', shortDesc: 'Establishing statewide standards for local enforcement of public space laws.', fullSummary: 'This bill establishes statewide standards for when local governments may enforce laws regulating the use of public space for life-sustaining activities.', assessment: 'Municipal governance issue. May affect local business environments in urban areas. Monitor for enforcement standardization.', status: 'HRules R', statusLabel: 'In Rules', hearing: 'Jan 14', sponsor: 'Gregerson (D)', committee: 'House Rules', impact: 'low', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=2489&Year=2025', chamber: 'House', alive: true },
-            'HB2418': { number: 'HB 2418', title: 'Permit Review Process Reform', shortDesc: 'Concerning permit review processes and streamlining.', fullSummary: 'This bill concerns permit review processes, aiming to streamline and improve the efficiency of permit approvals for development projects.', assessment: 'Important for development and construction clients. Streamlined permitting could reduce project timelines. Passed House, now in Senate. HEARING scheduled Feb 19 at 1:30 PM in Senate Local Government.', status: 'SLoc Gov', statusLabel: 'In Senate Committee', hearing: 'Feb 19 @ 1:30 PM', sponsor: 'TBD', committee: 'Senate Local Government', impact: 'medium', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=2418&Year=2025', chamber: 'House', alive: true },
+            'HB2418': { number: 'HB 2418', title: 'Permit Review Process Reform', shortDesc: 'Concerning permit review processes and streamlining.', fullSummary: 'This bill concerns permit review processes, aiming to streamline and improve the efficiency of permit approvals for development projects.', assessment: 'Important for development and construction clients. Executive action taken Feb 23 in Senate Local Government. Bill is advancing through the Senate.', status: 'SLoc Gov', statusLabel: 'Senate Action Taken', hearing: 'Feb 23 @ 1:30 PM', sponsor: 'TBD', committee: 'Senate Local Government', impact: 'medium', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=2418&Year=2026', chamber: 'House', alive: true },
             'SB6209': { number: 'SB 6209', title: 'Financial Aid for Private Institutions', shortDesc: 'Concerning financial aid awards for students at private four-year and two-year institutions.', fullSummary: 'This bill concerns financial aid awards for students attending private four-year and two-year institutions of higher education.', assessment: 'Education sector bill. May affect private college enrollment and funding. Monitor for budget implications.', status: 'SWays & Means', statusLabel: 'In Committee', hearing: 'Jan 26', sponsor: 'TBD', committee: 'Senate Ways & Means', impact: 'low', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=6209&Year=2025', chamber: 'Senate', alive: true },
             'HB2480': { number: 'HB 2480', title: 'Residential Development in Commercial Zones', shortDesc: 'Concerning residential development in commercial and mixed-use zones.', fullSummary: 'This bill concerns residential development in commercial and mixed-use zones, potentially increasing housing density in commercial areas.', assessment: 'LIKELY DEAD - No action since Feb 3 executive session. Missed House policy committee cutoff (Feb 7).', status: 'HLocal Govt', statusLabel: 'LIKELY DEAD', hearing: 'Feb 3', sponsor: 'TBD', committee: 'House Local Government', impact: 'medium', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=2480&Year=2025', chamber: 'House', alive: false },
             'HB2736': { number: 'HB 2736', title: 'Estate Tax Rates - Reinstatement', shortDesc: 'Reinstating estate tax rates that applied before May 20, 2025.', fullSummary: 'This bill reinstates the estate tax rates that were in effect prior to May 20, 2025, applying to estates of decedents dying on or after July 1, 2026.', assessment: 'LIKELY DEAD - Still in House Finance Committee. Missed policy committee cutoff (Feb 7).', status: 'HFinance', statusLabel: 'LIKELY DEAD', hearing: 'Feb 20', sponsor: 'Frame (D)', committee: 'House Finance', impact: 'medium', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=2736&Year=2025', chamber: 'House', alive: false },
             'HB1833': { number: 'HB 1833', title: 'Spark Act - AI Grant Program', shortDesc: 'Establishing an AI grant program for innovation and ethical pilot projects.', fullSummary: 'Creates the Spark Act, establishing an artificial intelligence grant program administered by the Department of Commerce to promote AI innovation and ethical AI pilot projects.', assessment: 'Direct funding opportunity for AI sector clients. Scheduled for hearing Mar 25 in Environment, Energy & Technology.', status: 'HEnvEnergy', statusLabel: 'Scheduled', hearing: 'Mar 25', sponsor: 'Kloba (D)', committee: 'Environment, Energy & Technology', impact: 'high', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=1833&Year=2025', chamber: 'House', alive: true },
             'HB2225': { number: 'HB 2225', title: 'AI Companion Chatbot Regulation', shortDesc: 'Regulating AI companion chatbots with mental health safeguards.', fullSummary: 'Regulates artificial intelligence companion chatbots, requiring mental health safeguards and consumer protections for AI-powered companion applications.', assessment: 'Affects AI consumer applications. Monitoring for compliance requirements that may affect AI product development.', status: 'HTech', statusLabel: 'In Committee', hearing: 'Jan 14', sponsor: 'Ferguson (Gov)', committee: 'Technology, Economic Development, & Veterans', impact: 'medium', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=2225&Year=2025', chamber: 'House', alive: true },
             'HB2446': { number: 'HB 2446', title: 'Quantum Technology Industry Development', shortDesc: 'Developing quantum technology into economic and workforce strategy.', fullSummary: 'Developing the quantum technology industry into the state\'s economic development and workforce strategy.', assessment: 'Emerging tech sector opportunity. Quantum technology aligns with space/tech sector focus. Monitor for funding opportunities.', status: 'HApprops', statusLabel: 'In Committee', hearing: 'Jan 20', sponsor: 'TBD', committee: 'Appropriations', impact: 'medium', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=2446&Year=2025', chamber: 'House', alive: true },
-            'SB6173': { number: 'SB 6173', title: 'Apple Health Employer Assessment', shortDesc: 'Creating an apple health employer assessment for employers with over 100 employees.', fullSummary: 'This bill creates an Apple Health employer assessment targeting employers with over 100 employees. This represents a significant new fee/tax on larger employers to fund health programs.', assessment: '🔴 HIGH PRIORITY - Major cost impact for employers over 100 employees. Executive session scheduled Feb 19 at 4:00 PM in Senate Ways & Means. Could significantly affect labor costs and hiring decisions for large employers.', status: 'SWays & Means', statusLabel: 'In Committee', hearing: 'Feb 19 @ 4:00 PM', sponsor: 'TBD', committee: 'Senate Ways & Means', impact: 'high', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=6173&Year=2025', chamber: 'Senate', alive: true },
-            'SB6026': { number: 'SB 6026', title: 'Residential Development in Commercial Zones', shortDesc: 'Removing ground-floor commercial mandates for residential development in commercial zones.', fullSummary: 'This bill removes the requirement for ground-floor commercial space in certain commercial zones, allowing for more residential development. Passed Senate 35-14 on Feb 12.', assessment: 'Passed Senate, now in House Local Government. Executive session scheduled Feb 25 at 8:00 AM. Could increase housing supply by reducing commercial space requirements.', status: 'HLocGov', statusLabel: 'In House', hearing: 'Feb 25 @ 8:00 AM', sponsor: 'TBD', committee: 'House Local Government', impact: 'medium', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=6026&Year=2025', chamber: 'Senate', alive: true },
+            'SB6173': { number: 'SB 6173', title: 'Apple Health Employer Assessment', shortDesc: 'Creating an apple health employer assessment for employers with over 100 employees.', fullSummary: 'This bill creates an Apple Health employer assessment targeting employers with over 100 employees. This represents a significant new fee/tax on larger employers to fund health programs.', assessment: '🔴 CRITICAL - Executive session on Feb 19 resulted in NO ACTION TAKEN. Bill may be stalled in Senate Ways & Means. Major cost impact for employers over 100 employees if it moves forward.', status: 'SWays & Means', statusLabel: 'No Action Taken', hearing: 'Feb 19 - Stalled', sponsor: 'TBD', committee: 'Senate Ways & Means', impact: 'high', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=6173&Year=2026', chamber: 'Senate', alive: true },
+            'SB6026': { number: 'SB 6026', title: 'Residential Development in Commercial Zones', shortDesc: 'Removing ground-floor commercial mandates for residential development in commercial zones.', fullSummary: 'This bill removes the requirement for ground-floor commercial space in certain commercial zones, allowing for more residential development. Passed Senate, now in House.', assessment: 'Passed Senate, now in House Local Government. Executive session scheduled Feb 25 at 8:00 AM. Could increase housing supply by reducing commercial space requirements.', status: 'HLocGov', statusLabel: 'In House', hearing: 'Feb 25 @ 8:00 AM', sponsor: 'TBD', committee: 'House Local Government', impact: 'medium', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=6026&Year=2026', chamber: 'Senate', alive: true },
             'SB6347': { number: 'SB 6347', title: 'Estate Tax Reinstatement', shortDesc: 'Reinstating estate tax rates for large estates effective July 1, 2026.', fullSummary: 'This bill reinstates higher estate tax rates for large estates, effective July 1, 2026. Applies to estates of decedents dying on or after that date.', assessment: 'In House Finance Committee. Hearing scheduled Feb 26 at 8:00 AM. Affects estate planning for high-net-worth individuals.', status: 'HFinance', statusLabel: 'In House Finance', hearing: 'Feb 26 @ 8:00 AM', sponsor: 'TBD', committee: 'House Finance', impact: 'high', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=6347&Year=2025', chamber: 'Senate', alive: true }
         };
 
