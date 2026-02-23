@@ -28,6 +28,9 @@
             min-height: 100vh;
         }
         .container { max-width: 1400px; margin: 0 auto; padding: 20px; }
+        .container.bills-tab {
+            padding: 10px;
+        }
         header {
             display: flex;
             justify-content: space-between;
@@ -80,6 +83,12 @@
             display: grid;
             grid-template-columns: repeat(12, 1fr);
             gap: 20px;
+        }
+        #bills-page .dashboard {
+            gap: 10px;
+        }
+        #bills-page .card {
+            padding: 15px;
         }
         .card {
             background: rgba(26, 47, 74, 0.35);
@@ -887,8 +896,8 @@
 
         <!-- Tracked Bills Page -->
         <div id="bills-page" class="page">
-            <div class="dashboard">
-                <div class="card" style="grid-column: span 12;">
+            <div class="dashboard" style="padding: 0 10px;">
+                <div class="card" style="grid-column: span 12; padding: 15px; margin: 10px;">
                     <div class="card-header">
                         <div class="card-title">Tracked Bills</div>
                         <button class="nav-btn" onclick="showPage('dashboard', document.getElementById('nav-dashboard'))">← Back to Dashboard</button>
