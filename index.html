@@ -447,36 +447,37 @@
         }
         .legislator-detail {
             display: flex;
-            gap: 20px;
-            padding: 20px;
+            gap: 15px;
+            padding: 15px;
             background: rgba(10, 22, 40, 0.3);
-            border-radius: 12px;
-            margin-bottom: 16px;
+            border-radius: 10px;
+            margin-bottom: 12px;
         }
         .legislator-photo {
-            width: 100px; height: 100px;
+            width: 60px; height: 60px;
             border-radius: 50%;
             background: linear-gradient(135deg, var(--sky-blue), var(--sky-teal));
             display: flex; align-items: center; justify-content: center;
-            font-size: 36px;
+            font-size: 20px;
+            flex-shrink: 0;
         }
         .legislator-details h3 {
-            font-size: 18px; color: var(--sky-soft);
-            margin-bottom: 8px;
+            font-size: 16px; color: var(--sky-soft);
+            margin-bottom: 4px;
         }
         .legislator-details p {
-            font-size: 13px; color: rgba(197, 227, 240, 0.7);
-            margin-bottom: 4px;
+            font-size: 12px; color: rgba(197, 227, 240, 0.7);
+            margin-bottom: 2px;
         }
         .contact-btn {
             display: inline-block;
-            margin-top: 12px;
-            padding: 8px 16px;
+            margin-top: 8px;
+            padding: 6px 12px;
             background: rgba(78, 205, 196, 0.2);
             border: 1px solid rgba(78, 205, 196, 0.3);
             border-radius: 6px;
             color: var(--success);
-            font-size: 12px;
+            font-size: 11px;
             text-decoration: none;
         }
         .coming-soon {
@@ -1076,7 +1077,7 @@
                         <button class="nav-btn" onclick="showPage('dashboard', document.getElementById('nav-dashboard'))">← Back to Dashboard</button>
                     </div>
                     
-                    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 15px; margin-top: 20px;">
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 20px;">
                         <!-- Bill Briefs -->
                         <div class="bill-card" onclick="window.open('reports/SB6346-brief.html', '_blank')" style="cursor: pointer;">
                             <div class="bill-header">
