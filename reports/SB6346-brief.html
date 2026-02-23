@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SB 6346 Brief | Hoshi Sora</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        @page {
+            size: letter;
+            margin: 0.75in;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: #fff;
+            color: #1a1a2e;
+            line-height: 1.6;
+            max-width: 8.5in;
+            margin: 0 auto;
+            padding: 0.5in;
+        }
+        .page {
+            page-break-after: always;
+            min-height: 10in;
+        }
+        .page:last-child {
+            page-break-after: auto;
+        }
+        
+        /* Header */
+        .brief-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #d4a574;
+            margin-bottom: 30px;
+        }
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #d4a574, #ffd700);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 4px 15px rgba(212, 165, 116, 0.3);
+        }
+        .logo-text h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 24px;
+            font-weight: 600;
+            color: #0a1628;
+            letter-spacing: 2px;
+        }
+        .logo-text p {
+            font-size: 12px;
+            color: #666;
+            letter-spacing: 1px;
+        }
+        .brief-meta {
+            text-align: right;
+        }
+        .brief-type {
+            display: inline-block;
+            padding: 6px 16px;
+            background: rgba(212, 165, 116, 0.15);
+            border: 1px solid #d4a574;
+            border-radius: 20px;
+            font-size: 11px;
+            color: #d4a574;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .brief-date {
+            font-size: 12px;
+            color: #666;
+            margin-top: 8px;
+        }
+        
+        /* Bill Header */
+        .bill-header-section {
+            background: linear-gradient(135deg, #0a1628 0%, #1a2f4a 100%);
+            color: #c5e3f0;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+        }
+        .bill-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 42px;
+            font-weight: 700;
+            color: #d4a574;
+            margin-bottom: 10px;
+        }
+        .bill-title {
+            font-size: 22px;
+            font-weight: 500;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+        .bill-status-bar {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .status-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+        }
+        .status-badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+        .status-passed { background: rgba(78, 205, 196, 0.2); color: #4ecdc4; }
+        .status-high { background: rgba(255, 71, 87, 0.2); color: #ff4757; }
+        
+        /* Content Sections */
+        .section {
+            margin-bottom: 25px;
+        }
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            color: #0a1628;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #d4a574;
+            display: inline-block;
+        }
+        .section-content {
+            font-size: 13px;
+            line-height: 1.8;
+            color: #333;
+        }
+        
+        /* Key Points */
+        .key-points {
+            background: rgba(212, 165, 116, 0.08);
+            border-left: 4px solid #d4a574;
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 20px 0;
+        }
+        .key-points ul {
+            list-style: none;
+            padding: 0;
+        }
+        .key-points li {
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+            font-size: 13px;
+        }
+        .key-points li::before {
+            content: "✦";
+            position: absolute;
+            left: 0;
+            color: #d4a574;
+            font-weight: bold;
+        }
+        
+        /* Impact Box */
+        .impact-box {
+            background: linear-gradient(135deg, rgba(255, 71, 87, 0.08) 0%, rgba(255, 71, 87, 0.02) 100%);
+            border: 1px solid rgba(255, 71, 87, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .impact-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            color: #ff4757;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 24px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #d4a574;
+        }
+        .timeline-item {
+            position: relative;
+            padding-bottom: 20px;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -20px;
+            top: 4px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #d4a574;
+            border: 2px solid #fff;
+        }
+        .timeline-date {
+            font-size: 11px;
+            color: #d4a574;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .timeline-content {
+            font-size: 13px;
+            color: #333;
+            margin-top: 4px;
+        }
+        
+        /* Footer */
+        .page-footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(212, 165, 116, 0.3);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 11px;
+            color: #666;
+        }
+        .confidential {
+            padding: 4px 10px;
+            background: rgba(10, 22, 40, 0.05);
+            border-radius: 4px;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Print Styles */
+        @media print {
+            body { padding: 0; }
+            .page { page-break-after: always; }
+            .no-print { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <!-- PAGE 1 -->
+    <div class="page">
+        <div class="brief-header">
+            <div class="logo-section">
+                <div class="logo-icon">✦</div>
+                <div class="logo-text">
+                    <h1>HOSHI SORA</h1>
+                    <p>Legislative Intelligence</p>
+                </div>
+            </div>
+            <div class="brief-meta">
+                <div class="brief-type">Legislative Brief</div>
+                <div class="brief-date">February 18, 2026</div>
+            </div>
+        </div>
+
+        <div class="bill-header-section">
+            <div class="bill-number">SB 6346</div>
+            <div class="bill-title">Washington State Millionaires Tax</div>
+            <div class="bill-status-bar">
+                <div class="status-item">
+                    <span class="status-badge status-passed">● PASSED SENATE</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-badge status-high">● HIGH IMPACT</span>
+                </div>
+                <div class="status-item">📍 Now in House Finance</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Executive Summary</div>
+            <div class="section-content">
+                <p>SB 6346 establishes a 9.9% tax on individual income exceeding $1 million annually. The bill passed the Washington State Senate on February 16, 2026, by a vote of 36-12 and now moves to the House of Representatives for consideration. If enacted, this would be Washington's first personal income tax and would significantly alter the state's tax landscape for high-net-worth individuals.</p>
+            </div>
+        </div>
+
+        <div class="impact-box">
+            <div class="impact-title">🚨 CLIENT IMPACT ALERT</div>
+            <div class="section-content">
+                <p>This legislation directly affects high-net-worth clients with annual income exceeding $1 million. Business owners considering relocation or restructuring should monitor amendments that might adjust thresholds or exemptions. The 9.9% rate would apply to income above the threshold, effective January 1, 2028.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Key Provisions</div>
+            <div class="key-points">
+                <ul>
+                    <li><strong>Tax Rate:</strong> 9.9% on adjusted gross income exceeding $1 million</li>
+                    <li><strong>Effective Date:</strong> January 1, 2028</li>
+                    <li><strong>Tax Base:</strong> Federal adjusted gross income minus standard deduction</li>
+                    <li><strong>Revenue Allocation:</strong> Education and workforce development programs</li>
+                    <li><strong>Filing Requirement:</strong> Annual returns for affected taxpayers</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Legislative Timeline</div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">February 16, 2026</div>
+                    <div class="timeline-content">Passed Senate 36-12</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Current</div>
+                    <div class="timeline-content">Referred to House Finance Committee</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Next</div>
+                    <div class="timeline-content">House committee hearings and markup</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">March 7, 2026</div>
+                    <div class="timeline-content">House policy committee cutoff</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-footer">
+            <div class="confidential">Confidential - Client Use Only</div>
+            <div>Page 1 of 2 | SB 6346 Brief</div>
+        </div>
+    </div>
+
+    <!-- PAGE 2 -->
+    <div class="page">
+        <div class="brief-header">
+            <div class="logo-section">
+                <div class="logo-icon">✦</div>
+                <div class="logo-text">
+                    <h1>HOSHI SORA</h1>
+                    <p>Legislative Intelligence</p>
+                </div>
+            </div>
+            <div class="brief-meta">
+                <div class="brief-type">Legislative Brief</div>
+                <div class="brief-date">February 18, 2026</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Strategic Analysis</div>
+            <div class="section-content">
+                <p><strong>Political Landscape:</strong> The Senate passage with a 36-12 vote indicates strong Democratic support. The bill faces a more challenging path in the House, where moderates may seek amendments to thresholds or rates.</p>
+                
+                <p style="margin-top: 15px;"><strong>Legal Considerations:</strong> Washington's constitution has historically been interpreted to prohibit income taxes. However, proponents argue this is an excise tax on the privilege of earning high income, not a property tax on income itself. Legal challenges are expected if enacted.</p>
+                
+                <p style="margin-top: 15px;"><strong>Economic Impact:</strong> The Department of Revenue estimates $3-5 billion in annual revenue. Opponents argue it may drive high earners to relocate to no-income-tax states like Texas or Florida.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Client Action Items</div>
+            <div class="key-points">
+                <ul>
+                    <li><strong>Monitor Amendments:</strong> Watch for changes to threshold ($1M may increase) or rate (9.9% may decrease)</li>
+                    <li><strong>Relocation Analysis:</strong> Evaluate tax implications of moving primary residence</li>
+                    <li><strong>Income Timing:</strong> Consider accelerating income into 2027 before potential 2028 effective date</li>
+                    <li><strong>Business Structure:</strong> Review entity structures for potential tax optimization</li>
+                    <li><strong>Estate Planning:</strong> Coordinate with estate counsel on wealth transfer strategies</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Key Legislators</div>
+            <div class="section-content">
+                <p><strong>House Finance Committee (Where bill is headed):</strong></p>
+                <p style="margin-left: 20px; margin-top: 8px;">• <strong>Chair:</strong> Rep. Noel Frame (D-36) - Progressive tax advocate, likely supportive</p>
+                <p style="margin-left: 20px;">• <strong>Ranking Member:</strong> Rep. Peter Abbarno (R-20) - Expected opposition leader</p>
+                
+                <p style="margin-top: 15px;"><strong>Senate Sponsors:</strong></p>
+                <p style="margin-left: 20px; margin-top: 8px;">• Sen. June Robinson (D-38) - Primary sponsor, Ways & Means Chair</p>
+                <p style="margin-left: 20px;">• Sen. Jamie Pedersen (D-43) - Co-sponsor, Majority Leader</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Resources & References</div>
+            <div class="section-content">
+                <p>📄 <strong>Full Bill Text:</strong> <a href="https://app.leg.wa.gov/billsummary?BillNumber=6346&Year=2025">app.leg.wa.gov/billsummary?BillNumber=6346</a></p>
+                <p style="margin-top: 8px;">📊 <strong>Fiscal Note:</strong> Available from WA Department of Revenue</p>
+                <p style="margin-top: 8px;">🏛️ <strong>Committee Schedule:</strong> House Finance hearings TBD</p>
+                <p style="margin-top: 8px;">📰 <strong>News Coverage:</strong> Washington State Standard, Feb 17, 2026</p>
+            </div>
+        </div>
+
+        <div class="impact-box">
+            <div class="impact-title">📞 RECOMMENDED ACTION</div>
+            <div class="section-content">
+                <p>Contact Rep. Noel Frame's office to express concerns about threshold and rate levels. Consider coalition building with business groups opposing the measure. Prepare contingency plans for potential 2028 implementation.</p>
+            </div>
+        </div>
+
+        <div class="page-footer">
+            <div class="confidential">Confidential - Client Use Only</div>
+            <div>Page 2 of 2 | SB 6346 Brief</div>
+        </div>
+    </div>
+</body>
+</html>

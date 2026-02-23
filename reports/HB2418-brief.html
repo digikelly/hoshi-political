@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HB 2418 Brief | Hoshi Sora</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        @page {
+            size: letter;
+            margin: 0.75in;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: #fff;
+            color: #1a1a2e;
+            line-height: 1.6;
+            max-width: 8.5in;
+            margin: 0 auto;
+            padding: 0.5in;
+        }
+        .page {
+            page-break-after: always;
+            min-height: 10in;
+        }
+        .page:last-child {
+            page-break-after: auto;
+        }
+        
+        /* Header */
+        .brief-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #d4a574;
+            margin-bottom: 30px;
+        }
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #d4a574, #ffd700);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 4px 15px rgba(212, 165, 116, 0.3);
+        }
+        .logo-text h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 24px;
+            font-weight: 600;
+            color: #0a1628;
+            letter-spacing: 2px;
+        }
+        .logo-text p {
+            font-size: 12px;
+            color: #666;
+            letter-spacing: 1px;
+        }
+        .brief-meta {
+            text-align: right;
+        }
+        .brief-type {
+            display: inline-block;
+            padding: 6px 16px;
+            background: rgba(212, 165, 116, 0.15);
+            border: 1px solid #d4a574;
+            border-radius: 20px;
+            font-size: 11px;
+            color: #d4a574;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .brief-date {
+            font-size: 12px;
+            color: #666;
+            margin-top: 8px;
+        }
+        
+        /* Bill Header */
+        .bill-header-section {
+            background: linear-gradient(135deg, #0a1628 0%, #1a2f4a 100%);
+            color: #c5e3f0;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+        }
+        .bill-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 42px;
+            font-weight: 700;
+            color: #d4a574;
+            margin-bottom: 10px;
+        }
+        .bill-title {
+            font-size: 22px;
+            font-weight: 500;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+        .bill-status-bar {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .status-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+        }
+        .status-badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+        .status-active { background: rgba(255, 217, 61, 0.2); color: #ffd93d; }
+        .status-medium { background: rgba(255, 193, 7, 0.2); color: #ffc107; }
+        
+        /* Content Sections */
+        .section {
+            margin-bottom: 25px;
+        }
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            color: #0a1628;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #d4a574;
+            display: inline-block;
+        }
+        .section-content {
+            font-size: 13px;
+            line-height: 1.8;
+            color: #333;
+        }
+        
+        /* Key Points */
+        .key-points {
+            background: rgba(212, 165, 116, 0.08);
+            border-left: 4px solid #d4a574;
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 20px 0;
+        }
+        .key-points ul {
+            list-style: none;
+            padding: 0;
+        }
+        .key-points li {
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+            font-size: 13px;
+        }
+        .key-points li::before {
+            content: "✦";
+            position: absolute;
+            left: 0;
+            color: #d4a574;
+            font-weight: bold;
+        }
+        
+        /* Impact Box */
+        .impact-box {
+            background: linear-gradient(135deg, rgba(255, 193, 7, 0.08) 0%, rgba(255, 193, 7, 0.02) 100%);
+            border: 1px solid rgba(255, 193, 7, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .impact-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            color: #ffc107;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 24px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #d4a574;
+        }
+        .timeline-item {
+            position: relative;
+            padding-bottom: 20px;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -20px;
+            top: 4px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #d4a574;
+            border: 2px solid #fff;
+        }
+        .timeline-date {
+            font-size: 11px;
+            color: #d4a574;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .timeline-content {
+            font-size: 13px;
+            color: #333;
+            margin-top: 4px;
+        }
+        
+        /* Footer */
+        .page-footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(212, 165, 116, 0.3);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 11px;
+            color: #666;
+        }
+        .confidential {
+            padding: 4px 10px;
+            background: rgba(10, 22, 40, 0.05);
+            border-radius: 4px;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Print Styles */
+        @media print {
+            body { padding: 0; }
+            .page { page-break-after: always; }
+            .no-print { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <!-- PAGE 1 -->
+    <div class="page">
+        <div class="brief-header">
+            <div class="logo-section">
+                <div class="logo-icon">✦</div>
+                <div class="logo-text">
+                    <h1>HOSHI SORA</h1>
+                    <p>Legislative Intelligence</p>
+                </div>
+            </div>
+            <div class="brief-meta">
+                <div class="brief-type">Legislative Brief</div>
+                <div class="brief-date">February 18, 2026</div>
+            </div>
+        </div>
+
+        <div class="bill-header-section">
+            <div class="bill-number">HB 2418</div>
+            <div class="bill-title">Permit Review Process Reform</div>
+            <div class="bill-status-bar">
+                <div class="status-item">
+                    <span class="status-badge status-active">● IN SENATE</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-badge status-medium">● MEDIUM IMPACT</span>
+                </div>
+                <div class="status-item">📍 Local Government Committee</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Executive Summary</div>
+            <div class="section-content">
+                <p>HB 2418 reforms permit review processes for residential housing projects in urban growth areas. The bill establishes clear timelines for permit approvals ("shot clocks") and strengthens project vesting protections. Passed the House on February 13, 2026, the bill now awaits Senate consideration. This legislation directly impacts development timelines and costs in Redmond and other growing Washington cities.</p>
+            </div>
+        </div>
+
+        <div class="impact-box">
+            <div class="impact-title">🏛️ REDMOND IMPACT</div>
+            <div class="section-content">
+                <p>This legislation directly affects Redmond's development approval processes. Councilmember Melissa Stuart (Planning/Public Works Chair) will oversee implementation. Streamlined permitting could accelerate housing development in Redmond's growth areas, including projects near Marymoor Village Station.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Key Provisions</div>
+            <div class="key-points">
+                <ul>
+                    <li><strong>Permit Vesting:</strong> Projects vest under regulations in effect at application date</li>
+                    <li><strong>Timeline Requirements:</strong> 120-day shot clock for complete applications</li>
+                    <li><strong>Urban Growth Areas:</strong> Applies to residential housing in designated UGAs</li>
+                    <li><strong>Administrative Appeals:</strong> Streamlined appeal process with deadlines</li>
+                    <li><strong>Completeness Review:</strong> 30-day limit for determining application completeness</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Legislative Timeline</div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">January 23, 2026</div>
+                    <div class="timeline-content">House Local Government Committee vote</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">February 13, 2026</div>
+                    <div class="timeline-content">Passed House (engrossed)</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Current</div>
+                    <div class="timeline-content">In Senate Local Government Committee</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">March 7, 2026</div>
+                    <div class="timeline-content">Senate policy committee cutoff</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-footer">
+            <div class="confidential">Confidential - Client Use Only</div>
+            <div>Page 1 of 2 | HB 2418 Brief</div>
+        </div>
+    </div>
+
+    <!-- PAGE 2 -->
+    <div class="page">
+        <div class="brief-header">
+            <div class="logo-section">
+                <div class="logo-icon">✦</div>
+                <div class="logo-text">
+                    <h1>HOSHI SORA</h1>
+                    <p>Legislative Intelligence</p>
+                </div>
+            </div>
+            <div class="brief-meta">
+                <div class="brief-type">Legislative Brief</div>
+                <div class="brief-date">February 18, 2026</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Strategic Analysis</div>
+            <div class="section-content">
+                <p><strong>Pro-Development Impact:</strong> The bill reduces uncertainty for developers by establishing clear timelines and vesting protections. This could accelerate housing production in high-demand areas like Redmond.</p>
+                
+                <p style="margin-top: 15px;"><strong>Local Government Concerns:</strong> Some cities worry about losing flexibility in permit review. The 120-day clock may pressure understaffed planning departments.</p>
+                
+                <p style="margin-top: 15px;"><strong>Housing Supply:</strong> Proponents argue faster permitting will increase housing supply and moderate prices. The bill aligns with Washington's housing production goals.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Client Action Items</div>
+            <div class="key-points">
+                <ul>
+                    <li><strong>Monitor Senate Action:</strong> Track Senate Local Government Committee hearings</li>
+                    <li><strong>Engage Redmond Council:</strong> Contact Melissa Stuart on implementation planning</li>
+                    <li><strong>Project Pipeline:</strong> Identify development projects that could benefit from streamlined permitting</li>
+                    <li><strong>Marymoor TOD:</strong> Assess impact on transit-oriented development timeline</li>
+                    <li><strong>Stakeholder Coalition:</strong> Coordinate with housing advocates supporting the bill</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Key Legislators</div>
+            <div class="section-content">
+                <p><strong>Senate Local Government Committee:</strong></p>
+                <p style="margin-left: 20px; margin-top: 8px;">• <strong>Chair:</strong> Sen. Marko Liias (D-21) - Generally pro-housing development</p>
+                <p style="margin-left: 20px;">• <strong>Ranking Member:</strong> Sen. Ron Muzzall (R-10) - Rural interests, may seek amendments</p>
+                
+                <p style="margin-top: 15px;"><strong>House Sponsors:</strong></p>
+                <p style="margin-left: 20px; margin-top: 8px;">• Rep. Davina Duerr (D-1) - Primary sponsor</p>
+                <p style="margin-left: 20px;">• Rep. Bill Ramos (D-5) - Co-sponsor</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Resources & References</div>
+            <div class="section-content">
+                <p>📄 <strong>Full Bill Text:</strong> <a href="https://app.leg.wa.gov/billsummary?BillNumber=2418&Year=2025">app.leg.wa.gov/billsummary?BillNumber=2418</a></p>
+                <p style="margin-top: 8px;">📊 <strong>Fiscal Note:</strong> Minimal state impact; local implementation costs vary</p>
+                <p style="margin-top: 8px;">🏛️ <strong>Redmond Contact:</strong> Melissa Stuart, Planning/Public Works Chair</p>
+                <p style="margin-top: 8px;">📰 <strong>WA Cities Analysis:</strong> Association of Washington Cities support with amendments</p>
+            </div>
+        </div>
+
+        <div class="impact-box">
+            <div class="impact-title">📞 RECOMMENDED ACTION</div>
+            <div class="section-content">
+                <p>Contact Sen. Marko Liias's office to express support for the bill. Coordinate with Redmond planning staff on implementation readiness. Prepare for accelerated project timelines if bill passes Senate.</p>
+            </div>
+        </div>
+
+        <div class="page-footer">
+            <div class="confidential">Confidential - Client Use Only</div>
+            <div>Page 2 of 2 | HB 2418 Brief</div>
+        </div>
+    </div>
+</body>
+</html>

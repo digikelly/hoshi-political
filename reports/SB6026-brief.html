@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SB 6026 Brief | Hoshi Sora</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --night-deep: #0a1628;
+            --night-mid: #1a2f4a;
+            --sky-soft: #c5e3f0;
+            --hoshi-gold: #d4a574;
+            --success: #4ecdc4;
+            --warning: #ffd93d;
+            --danger: #ff6b6b;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: linear-gradient(180deg, var(--night-deep) 0%, var(--night-mid) 50%, #2a4563 100%);
+            color: var(--sky-soft);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+        .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--hoshi-gold);
+            text-decoration: none;
+            font-size: 14px;
+            margin-bottom: 30px;
+            transition: opacity 0.2s;
+        }
+        .back-link:hover { opacity: 0.8; }
+        .brief-header {
+            background: rgba(26, 47, 74, 0.6);
+            border: 1px solid rgba(197, 227, 240, 0.2);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        .bill-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--hoshi-gold);
+            margin-bottom: 10px;
+        }
+        .bill-title {
+            font-size: 24px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .meta-item {
+            background: rgba(10, 22, 40, 0.4);
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .meta-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: rgba(197, 227, 240, 0.5);
+            margin-bottom: 5px;
+        }
+        .meta-value {
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .status-active { color: var(--warning); }
+        .section {
+            background: rgba(26, 47, 74, 0.4);
+            border: 1px solid rgba(197, 227, 240, 0.1);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+        .section h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 18px;
+            color: var(--hoshi-gold);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(197, 227, 240, 0.1);
+        }
+        .section p {
+            font-size: 15px;
+            color: rgba(197, 227, 240, 0.85);
+            margin-bottom: 12px;
+        }
+        .section ul {
+            margin-left: 20px;
+            color: rgba(197, 227, 240, 0.85);
+        }
+        .section li {
+            margin-bottom: 8px;
+        }
+        .impact-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            background: rgba(255, 217, 61, 0.2);
+            color: var(--warning);
+        }
+        .hearing-alert {
+            background: rgba(255, 107, 107, 0.15);
+            border: 1px solid rgba(255, 107, 107, 0.3);
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+        .hearing-alert strong {
+            color: var(--danger);
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(197, 227, 240, 0.1);
+            font-size: 12px;
+            color: rgba(197, 227, 240, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Dashboard</a>
+        
+        <div class="brief-header">
+            <div class="bill-number">SB 6026</div>
+            <div class="bill-title">Residential Development in Commercial Zones</div>
+            
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <div class="meta-label">Status</div>
+                    <div class="meta-value status-active">In House Local Government</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Impact Level</div>
+                    <div class="meta-value"><span class="impact-badge">🟡 Medium Impact</span></div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Sponsor</div>
+                    <div class="meta-value">Sen. Alvarado (D)</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Next Action</div>
+                    <div class="meta-value">Executive Session Feb 25 @ 8:00 AM</div>
+                </div>
+            </div>
+            
+            <div class="hearing-alert">
+                <strong>⚠️ UPCOMING:</strong> House Local Government executive session scheduled for <strong>Tuesday, February 25, 2026 at 8:00 AM</strong>. Committee vote possible.
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📋 Bill Summary</h2>
+            <p>This bill prohibits local governments from requiring ground-floor commercial space in residential developments within commercial and mixed-use zones. It aims to reduce barriers to housing development by eliminating mandates that can make projects financially infeasible.</p>
+            <p>The legislation targets a specific zoning requirement that often forces developers to include retail space on the ground floor of mixed-use buildings, even when market conditions don't support it.</p>
+        </div>
+
+        <div class="section">
+            <h2>🎯 Key Provisions</h2>
+            <ul>
+                <li>Prohibits local governments from mandating ground-floor commercial space in residential developments</li>
+                <li>Applies to commercial and mixed-use zones</li>
+                <li>Removes "amenity space" requirements that function as commercial mandates</li>
+                <li>Preserves local authority over other zoning and design standards</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>💼 Business Impact</h2>
+            <p><strong>Development/Real Estate:</strong> Reduces costs and complexity for mixed-use projects. Eliminates need to find retail tenants for ground-floor space, potentially accelerating project timelines.</p>
+            <p><strong>Local Governments:</strong> Limits zoning authority in commercial areas. Cities like Redmond with active commercial corridors may lose ability to require retail activation.</p>
+            <p><strong>Retail Sector:</strong> Mixed impact — reduces supply of small retail spaces but may result in more viable, market-driven commercial development.</p>
+        </div>
+
+        <div class="section">
+            <h2>📊 Legislative Status</h2>
+            <ul>
+                <li><strong>Feb 12:</strong> Passed Senate 35-14</li>
+                <li><strong>Feb 13:</strong> Referred to House Local Government</li>
+                <li><strong>Feb 20:</strong> Public hearing held</li>
+                <li><strong>Feb 25:</strong> Executive session scheduled @ 8:00 AM</li>
+            </ul>
+            <p>The bill passed the Senate with bipartisan support (35-14), suggesting relatively broad appeal as a housing supply measure.</p>
+        </div>
+
+        <div class="section">
+            <h2>🔮 Outlook</h2>
+            <p><strong>Passage Probability: 75%</strong></p>
+            <p>Strong Senate vote and housing crisis context favor passage. House Local Government Committee is generally supportive of housing supply measures. Watch for amendments that might:</p>
+            <ul>
+                <li>Preserve some local flexibility for designated commercial corridors</li>
+                <li>Add affordability requirements in exchange for reduced commercial mandates</li>
+                <li>Delay implementation for certain zone types</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>🔗 Resources</h2>
+            <p><a href="https://app.leg.wa.gov/billsummary?BillNumber=6026&Year=2025" style="color: var(--hoshi-gold);" target="_blank">Official Bill Page →</a></p>
+            <p><a href="https://leg.wa.gov/about-the-legislature/committees/house-of-representatives/LOC" style="color: var(--hoshi-gold);" target="_blank">House Local Government Committee →</a></p>
+        </div>
+
+        <div class="footer">
+            <p>Hoshi Sora Legislative Intelligence | February 24, 2026</p>
+        </div>
+    </div>
+</body>
+</html>

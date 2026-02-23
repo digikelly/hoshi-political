@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SB 6347 Brief | Hoshi Sora</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        @page {
+            size: letter;
+            margin: 0.75in;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: #fff;
+            color: #1a1a2e;
+            line-height: 1.5;
+            max-width: 8.5in;
+            margin: 0 auto;
+            padding: 0.4in;
+        }
+        .page {
+            page-break-after: always;
+            page-break-inside: avoid;
+        }
+        .page:last-child {
+            page-break-after: avoid;
+        }
+        
+        /* Header - Compact */
+        .brief-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #d4a574;
+            margin-bottom: 12px;
+        }
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .logo-icon {
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, #d4a574, #ffd700);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+        .logo-text h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            color: #0a1628;
+            letter-spacing: 1px;
+        }
+        .logo-text p {
+            font-size: 8px;
+            color: #666;
+            letter-spacing: 0.5px;
+        }
+        .brief-meta {
+            text-align: right;
+        }
+        .brief-type {
+            display: inline-block;
+            padding: 3px 8px;
+            background: rgba(212, 165, 116, 0.15);
+            border: 1px solid #d4a574;
+            border-radius: 20px;
+            font-size: 9px;
+            color: #d4a574;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .brief-date {
+            font-size: 9px;
+            color: #666;
+            margin-top: 4px;
+        }
+        
+        /* Bill Header - Compact */
+        .bill-header-section {
+            background: linear-gradient(135deg, #0a1628 0%, #1a2f4a 100%);
+            color: #c5e3f0;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+        .bill-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: #d4a574;
+            margin-bottom: 4px;
+        }
+        .bill-title {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+        .bill-status-bar {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .status-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 10px;
+        }
+        .status-badge {
+            padding: 2px 8px;
+            border-radius: 20px;
+            font-size: 9px;
+            font-weight: 600;
+        }
+        .status-passed { background: rgba(78, 205, 196, 0.2); color: #4ecdc4; }
+        .status-high { background: rgba(255, 71, 87, 0.2); color: #ff4757; }
+        
+        /* Content Sections - Compact */
+        .section {
+            margin-bottom: 14px;
+        }
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            color: #0a1628;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+            padding-bottom: 6px;
+            border-bottom: 2px solid #d4a574;
+            display: inline-block;
+        }
+        .section-content {
+            font-size: 12px;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        /* Key Points - Compact */
+        .key-points {
+            background: rgba(212, 165, 116, 0.08);
+            border-left: 3px solid #d4a574;
+            padding: 10px;
+            border-radius: 0 6px 6px 0;
+            margin: 10px 0;
+        }
+        .key-points ul {
+            list-style: none;
+            padding: 0;
+        }
+        .key-points li {
+            padding: 5px 0;
+            padding-left: 20px;
+            position: relative;
+            font-size: 12px;
+        }
+        .key-points li::before {
+            content: "✦";
+            position: absolute;
+            left: 0;
+            color: #d4a574;
+            font-weight: bold;
+        }
+        
+        /* Impact Box - Compact */
+        .impact-box {
+            background: linear-gradient(135deg, rgba(255, 71, 87, 0.08) 0%, rgba(255, 71, 87, 0.02) 100%);
+            border: 1px solid rgba(255, 71, 87, 0.3);
+            border-radius: 8px;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        .impact-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            color: #ff4757;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        /* Timeline - Compact */
+        .timeline {
+            position: relative;
+            padding-left: 20px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 6px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #d4a574;
+        }
+        .timeline-item {
+            position: relative;
+            padding-bottom: 8px;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -18px;
+            top: 3px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #d4a574;
+            border: 2px solid #fff;
+        }
+        .timeline-date {
+            font-size: 10px;
+            color: #d4a574;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .timeline-content {
+            font-size: 12px;
+            color: #333;
+            margin-top: 2px;
+        }
+        
+        /* Footer - Compact */
+        .page-footer {
+            margin-top: 20px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(212, 165, 116, 0.3);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 10px;
+            color: #666;
+        }
+        .confidential {
+            padding: 3px 8px;
+            background: rgba(10, 22, 40, 0.05);
+            border-radius: 4px;
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Print Styles */
+        @media print {
+            body { padding: 0; margin: 0; }
+            .page { page-break-after: always; page-break-inside: avoid; }
+            .page:last-child { page-break-after: auto; }
+            .no-print { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <!-- PAGE 1 -->
+    <div class="page">
+        <div class="brief-header">
+            <div class="logo-section">
+                <div class="logo-icon">✦</div>
+                <div class="logo-text">
+                    <h1>HOSHI SORA</h1>
+                    <p>Legislative Intelligence</p>
+                </div>
+            </div>
+            <div class="brief-meta">
+                <div class="brief-type">Legislative Brief</div>
+                <div class="brief-date">February 21, 2026</div>
+            </div>
+        </div>
+
+        <div class="bill-header-section">
+            <div class="bill-number">SB 6347</div>
+            <div class="bill-title">Estate Tax Rate Reduction</div>
+            <div class="bill-status-bar">
+                <div class="status-item">
+                    <span class="status-badge status-passed">● PASSED SENATE</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-badge" style="background: rgba(78, 205, 196, 0.2); color: #4ecdc4;">● POSITIVE</span>
+                </div>
+                <div class="status-item">📍 House Finance Hearing Feb 26</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Executive Summary</div>
+            <div class="section-content">
+                <p>SB 6347 rolls back Washington's estate tax rate from 35% to 20% for estates of decedents dying on or after July 1, 2026. This legislation reverses the rate increase enacted in 2025, which had raised the top rate from 20% to 35% — making Washington's estate tax the highest in the nation. The bill restores the prior 20% rate that had been in place for years, providing substantial tax relief for large estates. The bill passed the Senate on February 16, 2026, and is scheduled for a House Finance Committee public hearing on February 26, 2026, at 8:00 AM.</p>
+            </div>
+        </div>
+
+        <div class="impact-box" style="background: linear-gradient(135deg, rgba(78, 205, 196, 0.08) 0%, rgba(78, 205, 196, 0.02) 100%); border-color: rgba(78, 205, 196, 0.3);">
+            <div class="impact-title" style="color: #4ecdc4;">✅ IMPACT — POSITIVE</div>
+            <div class="section-content">
+                <p>This legislation provides a rate reduction from 35% to 20% rolling back increases from 2025. Clients with large estates will benefit from substantially reduced tax liabilities, preserving more wealth for heirs and beneficiaries. Business owners and real estate holders in the Puget Sound region should welcome this change.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Key Provisions</div>
+            <div class="key-points">
+                <ul>
+                    <li><strong>Rate Restoration:</strong> Rolls back 2025 rate increase — returns top rate from 35% to 20%</li>
+                    <li><strong>Effective Date:</strong> July 1, 2026 — applies to estates of decedents dying on or after this date</li>
+                    <li><strong>Threshold:</strong> Washington estate tax applies to estates exceeding $2.193 million (unchanged)</li>
+                    <li><strong>Top Rate Applies:</strong> Estates exceeding $11.93 million return to 20% rate (was 35%)</li>
+                    <li><strong>Historical Context:</strong> Restores rate that had been stable for years before 2025 increase</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Legislative Timeline</div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">February 16, 2026</div>
+                    <div class="timeline-content">Floor amendments adopted; passed Senate</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">February 17, 2026</div>
+                    <div class="timeline-content">First reading in House, referred to Finance</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">February 26, 2026</div>
+                    <div class="timeline-content">House Finance public hearing @ 8:00 AM</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-footer">
+            <div class="confidential">Confidential - Client Use Only</div>
+            <div>Page 1 of 2 | SB 6347 Brief</div>
+        </div>
+    </div>
+
+    <!-- PAGE 2 -->
+    <div class="page">
+        <div class="brief-header">
+            <div class="logo-section">
+                <div class="logo-icon">✦</div>
+                <div class="logo-text">
+                    <h1>HOSHI SORA</h1>
+                    <p>Legislative Intelligence</p>
+                </div>
+            </div>
+            <div class="brief-meta">
+                <div class="brief-type">Legislative Brief</div>
+                <div class="brief-date">February 21, 2026</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Strategic Analysis</div>
+            <div class="section-content">
+                <p><strong>2025 Rate Increase:</strong> Last year, the legislature passed a bill raising Washington's estate tax rate from 20% to 35%, making it the highest in the nation. This increase was enacted despite concerns about competitiveness and the burden on family businesses and farms.</p>
+                
+                <p style="margin-top: 12px;"><strong>2026 Rollback:</strong> SB 6347 reverses that decision, returning the rate to its previous 20% level. This is not a new tax cut but rather a restoration of the long-standing rate that had been in place for years before the 2025 increase.</p>
+                
+                <p style="margin-top: 12px;"><strong>Political Landscape:</strong> The bill passed the Senate with bipartisan support. Republicans like Rep. Abbarno, who opposed the 2025 increase, are expected to support this rollback. The House Finance Committee hearing on February 26 will determine final passage.</p>
+                
+                <p style="margin-top: 12px;"><strong>Competitive Positioning:</strong> The 35% rate made Washington an outlier — even states with estate taxes typically cap rates at 16-20%. Restoring the 20% rate aligns Washington with peer states and removes a significant disincentive for wealthy retirees and business owners considering relocation.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Action Items</div>
+            <div class="key-points">
+                <ul>
+                    <li><strong>Send Letter of Support:</strong> Submit written testimony supporting the rate reduction to House Finance Committee</li>
+                    <li><strong>Consider Testifying:</strong> Deliver oral testimony at the February 26 public hearing to demonstrate support</li>
+                    <li><strong>Monitor Passage:</strong> Track House Finance Committee action to confirm rate reduction takes effect</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Key Legislators</div>
+            <div class="section-content">
+                <p><strong>House Finance Committee:</strong></p>
+                <p style="margin-left: 16px; margin-top: 6px;">• <strong>Chair:</strong> Rep. Noel Frame (D-36) — Will oversee hearing on Feb 26</p>
+                <p style="margin-left: 16px;">• <strong>Ranking Member:</strong> Rep. Peter Abbarno (R-20) — Expected to support rate reduction</p>
+                
+                <p style="margin-top: 12px;"><strong>Senate Sponsors:</strong></p>
+                <p style="margin-left: 16px; margin-top: 6px;">• Primary sponsor from Senate Finance Committee</p>
+                <p style="margin-left: 16px;">• Passed with bipartisan amendments in Senate</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Resources & References</div>
+            <div class="section-content">
+                <p>📄 <strong>Full Bill Text:</strong> <a href="https://app.leg.wa.gov/billsummary?BillNumber=6347&Year=2025">app.leg.wa.gov/billsummary?BillNumber=6347</a></p>
+                <p style="margin-top: 6px;">📊 <strong>Fiscal Note:</strong> Available from WA Department of Revenue</p>
+                <p style="margin-top: 6px;">🏛️ <strong>Committee Materials:</strong> <a href="https://app.leg.wa.gov/committeeschedules/Home/Documents/34046">House Finance Feb 26 Hearing</a></p>
+                <p style="margin-top: 6px;">📅 <strong>Current Status:</strong> Engrossed - ESB 6347 in House Finance</p>
+            </div>
+        </div>
+
+        <div class="impact-box" style="background: linear-gradient(135deg, rgba(78, 205, 196, 0.08) 0%, rgba(78, 205, 196, 0.02) 100%); border-color: rgba(78, 205, 196, 0.3);">
+            <div class="impact-title" style="color: #4ecdc4;">📞 RECOMMENDED ACTION — SUPPORT</div>
+            <div class="section-content">
+                <p>Consider submitting supportive testimony at the February 26 House Finance hearing. This rate reduction benefits large estates and improves Washington's competitive position. Contact Rep. Noel Frame's office to express support for maintaining the 20% rate without amendments.</p>
+            </div>
+        </div>
+
+        <div class="page-footer">
+            <div class="confidential">Confidential - Client Use Only</div>
+            <div>Page 2 of 2 | SB 6347 Brief</div>
+        </div>
+    </div>
+</body>
+</html>

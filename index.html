@@ -111,21 +111,32 @@
         .badge-urgent { background: rgba(255, 107, 107, 0.2); color: var(--danger); }
         .stats-row {
             grid-column: span 12;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
         }
         .stat-card {
-            padding: 18px;
+            padding: 12px 20px;
             background: rgba(10, 22, 40, 0.4);
-            border-radius: 10px;
+            border-radius: 20px;
             text-align: center;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            min-width: auto;
         }
         .stat-value {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 32px; font-weight: 300;
+            font-size: 20px;
+            font-weight: 600;
             color: var(--sky-soft);
-            margin-bottom: 4px;
+        }
+        .stat-label {
+            font-size: 12px;
+            color: rgba(197, 227, 240, 0.7);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         .stat-label {
             font-size: 11px;
@@ -546,6 +557,11 @@
                         <div class="stat-value" style="color: #ff6b6b;">3</div>
                         <div class="stat-label" style="color: #ff6b6b;">Likely Dead</div>
                     </div>
+                    <div class="stat-card" style="background: rgba(212, 165, 116, 0.15); border: 1px solid rgba(212, 165, 116, 0.3); cursor: pointer;" onclick="window.open('forecasts.html', '_self')">
+                        <div class="stat-value" style="color: var(--hoshi-gold);">🔮</div>
+                        <div class="stat-label" style="color: var(--hoshi-gold);">Forecasts</div>
+                    </div>
+                </div>
                     <div class="stat-card">
                         <div class="stat-value">2</div>
                         <div class="stat-label">Passed Chamber</div>
@@ -1194,11 +1210,79 @@
 
         <!-- Reports Page -->
         <div id="reports-page" class="page">
-            <div class="coming-soon">
-                <div class="coming-soon-icon">📊</div>
-                <h2>Reports Coming Soon</h2>
-                <p>Detailed analytics and reporting features are under development.</p>
-                <button class="nav-btn" onclick="showPage('dashboard', document.getElementById('nav-dashboard'))" style="margin-top: 20px;">Back to Dashboard</button>
+            <div class="dashboard">
+                <div class="card" style="grid-column: span 12;">
+                    <div class="card-header">
+                        <div class="card-title">📊 Legislative Reports</div>
+                        <button class="nav-btn" onclick="showPage('dashboard', document.getElementById('nav-dashboard'))">← Back to Dashboard</button>
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 15px; margin-top: 20px;">
+                        <!-- Bill Briefs -->
+                        <div class="bill-card" onclick="window.open('reports/SB6346-brief.html', '_blank')" style="cursor: pointer;">
+                            <div class="bill-header">
+                                <span class="bill-number">SB 6346</span>
+                                <span class="bill-status" style="background: rgba(255, 107, 107, 0.2); color: #ff6b6b;">2 Pages</span>
+                            </div>
+                            <div class="bill-title">Millionaires Tax Brief</div>
+                            <div class="bill-description">9.9% tax on income exceeding $1M annually. OneRedmond OPPOSED.</div>
+                        </div>
+                        
+                        <div class="bill-card" onclick="window.open('reports/SB6173-brief.html', '_blank')" style="cursor: pointer;">
+                            <div class="bill-header">
+                                <span class="bill-number">SB 6173</span>
+                                <span class="bill-status" style="background: rgba(255, 107, 107, 0.2); color: #ff6b6b;">2 Pages</span>
+                            </div>
+                            <div class="bill-title">Apple Health Employer Assessment Brief</div>
+                            <div class="bill-description">Critical employer assessment for Apple Health funding.</div>
+                        </div>
+                        
+                        <div class="bill-card" onclick="window.open('reports/SB6347-brief.html', '_blank')" style="cursor: pointer;">
+                            <div class="bill-header">
+                                <span class="bill-number">SB 6347</span>
+                                <span class="bill-status" style="background: rgba(255, 217, 61, 0.2); color: #ffd93d;">2 Pages</span>
+                            </div>
+                            <div class="bill-title">Estate Tax Reinstatement Brief</div>
+                            <div class="bill-description">Reinstates higher estate tax rates for large estates.</div>
+                        </div>
+                        
+                        <div class="bill-card" onclick="window.open('reports/HB2418-brief.html', '_blank')" style="cursor: pointer;">
+                            <div class="bill-header">
+                                <span class="bill-number">HB 2418</span>
+                                <span class="bill-status" style="background: rgba(78, 205, 196, 0.2); color: #4ecdc4;">2 Pages</span>
+                            </div>
+                            <div class="bill-title">Permit Review Reform Brief</div>
+                            <div class="bill-description">Streamlines permitting with 120-day shot clocks. Direct Redmond impact.</div>
+                        </div>
+                        
+                        <div class="bill-card" onclick="window.open('reports/SB6026-brief.html', '_blank')" style="cursor: pointer;">
+                            <div class="bill-header">
+                                <span class="bill-number">SB 6026</span>
+                                <span class="bill-status" style="background: rgba(78, 205, 196, 0.2); color: #4ecdc4;">2 Pages</span>
+                            </div>
+                            <div class="bill-title">Residential Development in Commercial Zones Brief</div>
+                            <div class="bill-description">Removes ground-floor commercial mandates for residential development.</div>
+                        </div>
+                        
+                        <div class="bill-card" onclick="window.open('reports/SB6347.html', '_blank')" style="cursor: pointer;">
+                            <div class="bill-header">
+                                <span class="bill-number">Analysis</span>
+                                <span class="bill-status" style="background: rgba(212, 165, 116, 0.2); color: var(--hoshi-gold);">Full Report</span>
+                            </div>
+                            <div class="bill-title">SB 6347 Full Analysis</div>
+                            <div class="bill-description">Detailed analysis of Estate Tax Reinstatement bill.</div>
+                        </div>
+                        
+                        <div class="bill-card" onclick="window.open('forecasts.html', '_self')" style="cursor: pointer; background: rgba(212, 165, 116, 0.1);">
+                            <div class="bill-header">
+                                <span class="bill-number">🔮 Forecasts</span>
+                                <span class="bill-status" style="background: rgba(212, 165, 116, 0.3); color: var(--hoshi-gold);">Live</span>
+                            </div>
+                            <div class="bill-title">Bill Passage Forecasts</div>
+                            <div class="bill-description">AI-powered probability forecasts from Numinous (Bittensor Subnet 6).</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 

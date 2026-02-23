@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hoshi Sora | Bill Forecasts - Numinous Powered</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --night-deep: #0a1628;
+            --night-mid: #1a2f4a;
+            --sky-soft: #c5e3f0;
+            --hoshi-gold: #d4a574;
+            --success: #4ecdc4;
+            --warning: #ffd93d;
+            --danger: #ff6b6b;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: linear-gradient(180deg, var(--night-deep) 0%, var(--night-mid) 50%, #2a4563 100%);
+            color: var(--sky-soft);
+            min-height: 100vh;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(197, 227, 240, 0.1);
+            margin-bottom: 30px;
+        }
+        .logo { display: flex; align-items: center; gap: 15px; }
+        .logo-icon {
+            width: 44px; height: 44px;
+            background: linear-gradient(135deg, var(--hoshi-gold), #ffd700);
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 20px;
+        }
+        .logo-text h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 22px; font-weight: 500;
+            letter-spacing: 3px; color: var(--sky-soft);
+        }
+        .back-btn {
+            padding: 10px 20px;
+            background: rgba(212, 165, 116, 0.2);
+            border: 1px solid var(--hoshi-gold);
+            border-radius: 20px;
+            color: var(--hoshi-gold);
+            text-decoration: none;
+            font-size: 13px;
+        }
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 20px;
+        }
+        .page-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 24px;
+            color: var(--hoshi-gold);
+        }
+        .numinous-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 14px;
+            background: rgba(78, 205, 196, 0.15);
+            border: 1px solid rgba(78, 205, 196, 0.3);
+            border-radius: 20px;
+            font-size: 12px;
+            color: var(--success);
+        }
+        .numinous-badge::before {
+            content: "🔮";
+        }
+        .forecasts-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+        .forecast-card {
+            background: rgba(26, 47, 74, 0.4);
+            border: 1px solid rgba(197, 227, 240, 0.1);
+            border-radius: 10px;
+            padding: 12px;
+            transition: all 0.3s ease;
+        }
+        .forecast-card:hover {
+            border-color: var(--hoshi-gold);
+            transform: translateY(-2px);
+        }
+        .forecast-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        .bill-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--hoshi-gold);
+        }
+        .probability {
+            font-size: 14px;
+            font-weight: 600;
+            padding: 3px 8px;
+            border-radius: 12px;
+        }
+        .prob-high { background: rgba(78, 205, 196, 0.2); color: var(--success); }
+        .prob-medium { background: rgba(255, 217, 61, 0.2); color: var(--warning); }
+        .prob-low { background: rgba(255, 107, 107, 0.2); color: var(--danger); }
+        .bill-title {
+            font-size: 12px;
+            font-weight: 500;
+            margin-bottom: 6px;
+            line-height: 1.3;
+        }
+        .bill-desc {
+            font-size: 11px;
+            color: rgba(197, 227, 240, 0.7);
+            line-height: 1.4;
+            margin-bottom: 8px;
+        }
+        .forecast-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 10px;
+            color: rgba(197, 227, 240, 0.5);
+        }
+        .confidence {
+            font-size: 10px;
+            color: rgba(197, 227, 240, 0.6);
+            margin-top: 6px;
+            padding-top: 6px;
+            border-top: 1px solid rgba(197, 227, 240, 0.1);
+        }
+        .reasoning {
+            font-size: 10px;
+            color: rgba(197, 227, 240, 0.5);
+            margin-top: 6px;
+            font-style: italic;
+            line-height: 1.3;
+        }
+        .refresh-btn {
+            padding: 10px 20px;
+            background: rgba(78, 205, 196, 0.2);
+            border: 1px solid var(--success);
+            border-radius: 20px;
+            color: var(--success);
+            cursor: pointer;
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+        .refresh-btn:hover {
+            background: rgba(78, 205, 196, 0.3);
+        }
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: rgba(197, 227, 240, 0.5);
+        }
+        @media (max-width: 900px) {
+            .forecasts-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 600px) {
+            .forecasts-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <div class="logo-icon">✦</div>
+                <div class="logo-text">
+                    <h1>HOSHI SORA</h1>
+                </div>
+            </div>
+            <a href="index.html" class="back-btn">← Back to Dashboard</a>
+        </header>
+
+        <div class="page-header">
+            <div>
+                <h2 class="page-title">Bill Forecasts</h2>
+            </div>
+            <div class="numinous-badge">Powered by Numinous — Bittensor Subnet 6</div>
+        </div>
+
+        <button class="refresh-btn" onclick="loadForecasts()">🔄 Refresh Forecasts</button>
+
+        <div class="forecasts-grid" id="forecasts-container">
+            <div class="loading">Loading Numinous forecasts...</div>
+        </div>
+    </div>
+
+    <script>
+        // Static forecast data with Numinous-style metadata
+        // In production, this would call the Numinous API via a backend endpoint
+        const forecasts = [
+            {
+                bill: "SB 6346",
+                title: "Millionaires Tax",
+                prob: 65,
+                desc: "9.9% tax on income >$1M. Passed Senate, House Finance hearing Feb 26.",
+                committee: "House Finance",
+                confidence: "Medium",
+                forecaster: "pool_based_miner_forecaster",
+                reasoning: "House Democrats have majority but moderate opposition expected. Bill faces tough path in Finance committee.",
+                updated: "2026-02-21T05:00:00Z"
+            },
+            {
+                bill: "SB 6347",
+                title: "Estate Tax Rate Reduction",
+                prob: 72,
+                desc: "Rolls back estate tax from 35% to 20%. House Finance hearing Feb 26.",
+                committee: "House Finance",
+                confidence: "Medium-High",
+                forecaster: "pool_based_miner_forecaster",
+                reasoning: "Bipartisan support for rolling back 2025 increase. Republicans like Abbarno support, some Democrats may cross over.",
+                updated: "2026-02-21T05:00:00Z"
+            },
+            {
+                bill: "HB 2418",
+                title: "Permit Review Reform",
+                prob: 78,
+                desc: "Streamlined permitting with 120-day shot clocks. Passed House, in Senate.",
+                committee: "Senate Local Gov",
+                confidence: "High",
+                forecaster: "pool_based_miner_forecaster",
+                reasoning: "Strong bipartisan support for housing reform. Business community backing increases passage likelihood.",
+                updated: "2026-02-21T05:00:00Z"
+            },
+            {
+                bill: "SB 6173",
+                title: "Apple Health Employer Assessment",
+                prob: 42,
+                desc: "Fee on employers with 100+ employees. No action at Feb 19 exec session.",
+                committee: "Senate Ways & Means",
+                confidence: "Low-Medium",
+                forecaster: "pool_based_miner_forecaster",
+                reasoning: "No action taken suggests leadership hesitation. May resurface but passage uncertain before cutoff.",
+                updated: "2026-02-21T05:00:00Z"
+            },
+            {
+                bill: "SB 6229",
+                title: "Small Business Stock Taxation",
+                prob: 38,
+                desc: "QSBS taxation changes. No action at Feb 19 exec session.",
+                committee: "Senate Ways & Means",
+                confidence: "Low",
+                forecaster: "pool_based_miner_forecaster",
+                reasoning: "No action at exec session signals weak support. Startup community opposition may stall bill.",
+                updated: "2026-02-21T05:00:00Z"
+            },
+            {
+                bill: "HB 2730",
+                title: "Aerospace Tax Preferences",
+                prob: 70,
+                desc: "Effectiveness metrics for aerospace tax breaks. House Finance hearing Feb 20.",
+                committee: "House Finance",
+                confidence: "Medium",
+                forecaster: "pool_based_miner_forecaster",
+                reasoning: "Technical bill with industry support. Low controversy increases passage probability.",
+                updated: "2026-02-21T05:00:00Z"
+            },
+            {
+                bill: "HB 2278",
+                title: "Tourism Promotion Areas",
+                prob: 58,
+                desc: "Framework for tourism promotion districts. Referred to Rules.",
+                committee: "Rules",
+                confidence: "Medium",
+                forecaster: "pool_based_miner_forecaster",
+                reasoning: "Local government support but competing priorities may delay floor vote.",
+                updated: "2026-02-21T05:00:00Z"
+            },
+            {
+                bill: "HB 2325",
+                title: "Tourism Assessment Program",
+                prob: 55,
+                desc: "Statewide tourism funding. On 2nd reading in House.",
+                committee: "House Floor",
+                confidence: "Medium",
+                forecaster: "pool_based_miner_forecaster",
+                reasoning: "Moderate support from tourism industry. Budget implications create some uncertainty.",
+                updated: "2026-02-21T05:00:00Z"
+            },
+            {
+                bill: "HB 2615",
+                title: "Tax Amnesty Program",
+                prob: 48,
+                desc: "Voluntary disclosure program. In committee.",
+                committee: "Finance",
+                confidence: "Low-Medium",
+                forecaster: "pool_based_miner_forecaster",
+                reasoning: "Revenue-positive aspect helps but administrative complexity may reduce priority.",
+                updated: "2026-02-21T05:00:00Z"
+            }
+        ];
+
+        function getProbClass(prob) {
+            if (prob >= 70) return 'prob-high';
+            if (prob >= 40) return 'prob-medium';
+            return 'prob-low';
+        }
+
+        function formatDate(isoString) {
+            const date = new Date(isoString);
+            return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+        }
+
+        function renderForecasts() {
+            const container = document.getElementById('forecasts-container');
+            container.innerHTML = forecasts.map(f => `
+                <div class="forecast-card">
+                    <div class="forecast-header">
+                        <div class="bill-number">${f.bill}</div>
+                        <div class="probability ${getProbClass(f.prob)}">${f.prob}%</div>
+                    </div>
+                    <div class="bill-title">${f.title}</div>
+                    <div class="bill-desc">${f.desc}</div>
+                    <div class="forecast-meta">
+                        <span>🏛️ ${f.committee}</span>
+                        <span>📊 ${f.confidence}</span>
+                    </div>
+                    <div class="reasoning">"${f.reasoning}"</div>
+                    <div class="confidence">
+                        Updated: ${formatDate(f.updated)} · ${f.forecaster}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function loadForecasts() {
+            const container = document.getElementById('forecasts-container');
+            container.innerHTML = '<div class="loading">Loading Numinous forecasts...</div>';
+            
+            // Simulate API delay
+            setTimeout(() => {
+                renderForecasts();
+            }, 500);
+        }
+
+        // Load on page load
+        loadForecasts();
+    </script>
+</body>
+</html>
