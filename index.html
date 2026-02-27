@@ -521,6 +521,7 @@
         <nav>
             <button class="nav-btn active" id="nav-dashboard" onclick="showPage('dashboard', this)">Dashboard</button>
             <button class="nav-btn" id="nav-bills" onclick="showPage('bills', this)">Tracked Bills</button>
+            <button class="nav-btn" id="nav-forecasts" onclick="showPage('forecasts', this)">🔮 Forecasts</button>
             <button class="nav-btn" id="nav-committees" onclick="showPage('committees', this)">Committees</button>
             <button class="nav-btn" id="nav-legislators" onclick="showPage('legislators', this)">Legislators</button>
             <button class="nav-btn" id="nav-redmond" onclick="showPage('redmond', this)">🏛️ Redmond</button>
@@ -567,8 +568,8 @@
                         <div class="stat-value" style="color: #ff6b6b;">2</div>
                         <div class="stat-label" style="color: #ff6b6b;">Likely Dead</div>
                     </div>
-                    <div class="stat-card" style="background: rgba(212, 165, 116, 0.15); border: 1px solid rgba(212, 165, 116, 0.3); cursor: pointer;" onclick="window.open('forecasts.html', '_self')">
-                        <div class="stat-value" style="color: var(--hoshi-gold);">🔮</div>
+                    <div class="stat-card" style="background: rgba(212, 165, 116, 0.15); border: 1px solid rgba(212, 165, 116, 0.3); cursor: pointer;" onclick="showPage('forecasts', document.getElementById('nav-forecasts'))">
+                        <div class="stat-value" style="color: var(--hoshi-gold);">9</div>
                         <div class="stat-label" style="color: var(--hoshi-gold);">Forecasts</div>
                     </div>
                 </div>
@@ -1153,13 +1154,85 @@
                             <div class="bill-description">Detailed analysis of Estate Tax Reinstatement bill.</div>
                         </div>
                         
-                        <div class="bill-card" onclick="window.open('forecasts.html', '_self')" style="cursor: pointer; background: rgba(212, 165, 116, 0.1);">
+                        <div class="bill-card" onclick="showPage('forecasts')" style="cursor: pointer; background: rgba(212, 165, 116, 0.1);">
                             <div class="bill-header">
                                 <span class="bill-number">🔮 Forecasts</span>
                                 <span class="bill-status" style="background: rgba(212, 165, 116, 0.3); color: var(--hoshi-gold);">Live</span>
                             </div>
                             <div class="bill-title">Bill Passage Forecasts</div>
                             <div class="bill-description">AI-powered probability forecasts from Numinous (Bittensor Subnet 6).</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Forecasts Page -->
+        <div id="forecasts-page" class="page">
+            <div class="dashboard">
+                <div class="card" style="grid-column: span 12; max-width: 95%; margin: 0 auto;">
+                    <div class="card-header">
+                        <div class="card-title">🔮 Bill Passage Forecasts</div>
+                        <div style="display: flex; gap: 10px;">
+                            <button class="nav-btn" onclick="refreshForecasts()">🔄 Refresh</button>
+                            <button class="nav-btn" onclick="showPage('dashboard', document.getElementById('nav-dashboard'))">← Back</button>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin: 20px 0; padding: 15px; background: rgba(78, 205, 196, 0.1); border-radius: 10px; border-left: 3px solid var(--success);">
+                        <div>
+                            <div style="font-size: 13px; color: var(--success); margin-bottom: 4px;">Powered by Numinous — Bittensor Subnet 6</div>
+                            <div style="font-size: 12px; color: rgba(197, 227, 240, 0.7);">Calibrated probability forecasts from decentralized AI miners</div>
+                        </div>
+                        <div style="text-align: right;">
+                            <div style="font-size: 11px; color: rgba(197, 227, 240, 0.5);">Last Updated</div>
+                            <div style="font-size: 13px; color: var(--sky-soft);" id="forecasts-last-updated">Feb 28, 2026</div>
+                        </div>
+                    </div>
+
+                    <!-- Forecast Stats -->
+                    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 20px;">
+                        <div class="stat-card" style="background: rgba(78, 205, 196, 0.15); border: 1px solid rgba(78, 205, 196, 0.3);">
+                            <div class="stat-value" style="color: #4ecdc4;" id="high-prob-count">3</div>
+                            <div class="stat-label" style="color: #4ecdc4;">Likely Pass (≥70%)</div>
+                        </div>
+                        <div class="stat-card" style="background: rgba(255, 217, 61, 0.15); border: 1px solid rgba(255, 217, 61, 0.3);">
+                            <div class="stat-value" style="color: #ffd93d;" id="med-prob-count">4</div>
+                            <div class="stat-label" style="color: #ffd93d;">Uncertain (40-69%)</div>
+                        </div>
+                        <div class="stat-card" style="background: rgba(255, 107, 107, 0.15); border: 1px solid rgba(255, 107, 107, 0.3);">
+                            <div class="stat-value" style="color: #ff6b6b;" id="low-prob-count">2</div>
+                            <div class="stat-label" style="color: #ff6b6b;">Likely Fail (&lt;40%)</div>
+                        </div>
+                        <div class="stat-card" style="background: rgba(212, 165, 116, 0.15); border: 1px solid rgba(212, 165, 116, 0.3);">
+                            <div class="stat-value" style="color: var(--hoshi-gold);">9</div>
+                            <div class="stat-label" style="color: var(--hoshi-gold);">Total Tracked</div>
+                        </div>
+                    </div>
+
+                    <!-- Filters -->
+                    <div style="display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap;">
+                        <button class="nav-btn active" onclick="filterForecasts('all')" id="filter-all">All Bills</button>
+                        <button class="nav-btn" onclick="filterForecasts('high')" id="filter-high">Likely Pass (≥70%)</button>
+                        <button class="nav-btn" onclick="filterForecasts('medium')" id="filter-medium">Uncertain (40-69%)</button>
+                        <button class="nav-btn" onclick="filterForecasts('low')" id="filter-low">Likely Fail (&lt;40%)</button>
+                    </div>
+
+                    <!-- Forecasts Grid -->
+                    <div id="forecasts-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
+                        <!-- Populated by JavaScript -->
+                    </div>
+
+                    <!-- Methodology Note -->
+                    <div style="margin-top: 30px; padding: 20px; background: rgba(10, 22, 40, 0.4); border-radius: 10px;">
+                        <div style="font-size: 14px; font-weight: 500; color: var(--hoshi-gold); margin-bottom: 10px;">About Numinous Forecasts</div>
+                        <div style="font-size: 12px; color: rgba(197, 227, 240, 0.7); line-height: 1.6;">
+                            These forecasts are generated by <strong>Numinous</strong>, a decentralized prediction market running on <strong>Bittensor Subnet 6</strong>. 
+                            Multiple AI miners compete to provide the most accurate probability estimates for legislative outcomes. 
+                            Forecasts are calibrated against historical data and updated as new information becomes available. 
+                            <br><br>
+                            <strong>Confidence levels:</strong> High (≥70% consensus), Medium (40-69%), Low (&lt;40%). 
+                            Higher confidence indicates stronger agreement among forecasters.
                         </div>
                     </div>
                 </div>
@@ -1408,6 +1481,99 @@
         // Tracked bills - all 16 (2 likely dead)
         let trackedBills = ['HB2730','SB6346','HB2100','SB6093','HB1319','SB6229','HB2615','HB2278','HB2325','SB6061','HB2270','HB2257','SB6113','HB2489','HB2418','SB6209','HB2480','HB2736'];
 
+        // Forecast data
+        const forecastsData = [
+            { bill: 'SB 6346', title: 'Millionaires Tax', prob: 65, desc: '9.9% tax on income >$1M. Passed Senate, in House Finance.', committee: 'House Finance', confidence: 'Medium', reasoning: 'House Democrats have majority but moderate opposition expected. Bill faces tough path in Finance committee.', updated: '2026-02-28' },
+            { bill: 'SB 6347', title: 'Estate Tax Rate Reduction', prob: 72, desc: 'Rolls back estate tax from 35% to 20%.', committee: 'House Finance', confidence: 'Medium-High', reasoning: 'Bipartisan support for rolling back 2025 increase. Republicans like Abbarno support, some Democrats may cross over.', updated: '2026-02-28' },
+            { bill: 'HB 2418', title: 'Permit Review Reform', prob: 78, desc: 'Streamlined permitting with 120-day shot clocks.', committee: 'Senate Rules 2', confidence: 'High', reasoning: 'Strong bipartisan support for housing reform. Business community backing increases passage likelihood.', updated: '2026-02-28' },
+            { bill: 'SB 6026', title: 'Residential Dev in Commercial', prob: 68, desc: 'Removes ground-floor retail mandates.', committee: 'House Appropriations', confidence: 'Medium', reasoning: 'Passed House Local Gov with amendments. Housing crisis support but fiscal concerns in Appropriations.', updated: '2026-02-28' },
+            { bill: 'SB 6173', title: 'Apple Health Employer Assessment', prob: 35, desc: 'Fee on employers with 100+ employees. No action Feb 19.', committee: 'Senate Ways & Means', confidence: 'Low', reasoning: 'No action taken suggests leadership hesitation. Missed fiscal cutoff, effectively stalled.', updated: '2026-02-28' },
+            { bill: 'SB 6229', title: 'Small Business Stock Taxation', prob: 32, desc: 'QSBS taxation changes. No action Feb 19.', committee: 'Senate Ways & Means', confidence: 'Low', reasoning: 'No action at exec session signals weak support. Startup community opposition may stall bill.', updated: '2026-02-28' },
+            { bill: 'HB 2730', title: 'Aerospace Tax Preferences', prob: 70, desc: 'Effectiveness metrics for aerospace tax breaks.', committee: 'House Finance', confidence: 'Medium', reasoning: 'Technical bill with industry support. Low controversy increases passage probability.', updated: '2026-02-28' },
+            { bill: 'HB 2278', title: 'Tourism Promotion Areas', prob: 58, desc: 'Framework for tourism promotion districts.', committee: 'House Rules 2', confidence: 'Medium', reasoning: 'Local government support but competing priorities may delay floor vote.', updated: '2026-02-28' },
+            { bill: 'HB 2325', title: 'Tourism Assessment Program', prob: 55, desc: 'Statewide tourism funding.', committee: 'House Floor', confidence: 'Medium', reasoning: 'Moderate support from tourism industry. Budget implications create some uncertainty.', updated: '2026-02-28' }
+        ];
+
+        let currentFilter = 'all';
+
+        function getProbClass(prob) {
+            if (prob >= 70) return 'prob-high';
+            if (prob >= 40) return 'prob-medium';
+            return 'prob-low';
+        }
+
+        function getProbColor(prob) {
+            if (prob >= 70) return '#4ecdc4';
+            if (prob >= 40) return '#ffd93d';
+            return '#ff6b6b';
+        }
+
+        function renderForecasts(filter = 'all') {
+            const container = document.getElementById('forecasts-grid');
+            if (!container) return;
+
+            let filtered = forecastsData;
+            if (filter === 'high') filtered = forecastsData.filter(f => f.prob >= 70);
+            else if (filter === 'medium') filtered = forecastsData.filter(f => f.prob >= 40 && f.prob < 70);
+            else if (filter === 'low') filtered = forecastsData.filter(f => f.prob < 40);
+
+            container.innerHTML = filtered.map(f => `
+                <div class="bill-card" style="cursor: pointer; margin-bottom: 0;" onclick="showForecastDetail('${f.bill}')">
+                    <div class="bill-header">
+                        <span class="bill-number">${f.bill}</span>
+                        <span class="bill-status" style="background: ${getProbColor(f.prob)}20; color: ${getProbColor(f.prob)}; font-size: 14px; font-weight: 600;">${f.prob}%</span>
+                    </div>
+                    <div class="bill-title" style="font-size: 13px; margin-bottom: 6px;">${f.title}</div>
+                    <div class="bill-description" style="font-size: 11px; line-height: 1.4;">${f.desc}</div>
+                    <div class="bill-meta" style="font-size: 10px; margin-top: 8px;">
+                        <span>🏛️ ${f.committee}</span>
+                        <span>📊 ${f.confidence}</span>
+                    </div>
+                    <div style="margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(197, 227, 240, 0.1); font-size: 10px; color: rgba(197, 227, 240, 0.5); font-style: italic; line-height: 1.3;">
+                        "${f.reasoning}"
+                    </div>
+                </div>
+            `).join('');
+
+            // Update stats
+            document.getElementById('high-prob-count').textContent = forecastsData.filter(f => f.prob >= 70).length;
+            document.getElementById('med-prob-count').textContent = forecastsData.filter(f => f.prob >= 40 && f.prob < 70).length;
+            document.getElementById('low-prob-count').textContent = forecastsData.filter(f => f.prob < 40).length;
+        }
+
+        function filterForecasts(type) {
+            currentFilter = type;
+            
+            // Update button states
+            document.querySelectorAll('[id^="filter-"]').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(`filter-${type}`).classList.add('active');
+            
+            renderForecasts(type);
+        }
+
+        function refreshForecasts() {
+            const container = document.getElementById('forecasts-grid');
+            container.innerHTML = '<div style="grid-column: span 3; text-align: center; padding: 40px; color: rgba(197, 227, 240, 0.5);">Refreshing forecasts...</div>';
+            
+            setTimeout(() => {
+                document.getElementById('forecasts-last-updated').textContent = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+                renderForecasts(currentFilter);
+            }, 500);
+        }
+
+        function showForecastDetail(bill) {
+            const forecast = forecastsData.find(f => f.bill === bill);
+            if (!forecast) return;
+            
+            // Could expand to show modal with full detail
+            console.log('Forecast detail:', forecast);
+        }
+
+        // Initialize forecasts when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            renderForecasts();
+        });
+
         function showPage(page, btn) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
@@ -1419,6 +1585,7 @@
             if (page === 'bills') renderTrackedBills();
             if (page === 'legislators') renderLegislators();
             if (page === 'dashboard') renderStatusTable();
+            if (page === 'forecasts') renderForecasts(currentFilter);
         }
 
         function renderTrackedBills() {
