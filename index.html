@@ -968,6 +968,111 @@
                         <button class="nav-btn" onclick="showPage('dashboard', document.getElementById('nav-dashboard'))">← Back to Dashboard</button>
                     </div>
                     
+                    <!-- OneRedmond Active Bills KPI Table -->
+                    <div style="background: linear-gradient(135deg, rgba(26, 82, 118, 0.15), rgba(78, 205, 196, 0.1)); border: 2px solid #1a5276; border-radius: 12px; padding: 25px; margin-bottom: 30px;">
+                        <div style="font-size: 18px; font-weight: 700; color: #1a5276; margin-bottom: 5px; display: flex; align-items: center;">
+                            <span style="background: linear-gradient(135deg, #27ae60, #2ecc71); color: white; padding: 4px 10px; border-radius: 4px; font-size: 11px; margin-right: 10px; text-transform: uppercase;">✓ OneRedmond Active</span>
+                            OneRedmond Engagement Tracking
+                        </div>
+                        <div style="font-size: 13px; color: rgba(197, 227, 240, 0.8); margin-bottom: 20px;">Bills where OneRedmond took an active advocacy position during the 2026 session</div>
+                        
+                        <div style="overflow-x: auto;">
+                            <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
+                                <thead>
+                                    <tr style="background: rgba(26, 82, 118, 0.3);">
+                                        <th style="padding: 12px; text-align: left; color: var(--hoshi-gold); border-bottom: 2px solid #1a5276;">Bill</th>
+                                        <th style="padding: 12px; text-align: left; color: var(--hoshi-gold); border-bottom: 2px solid #1a5276;">Position</th>
+                                        <th style="padding: 12px; text-align: center; color: var(--hoshi-gold); border-bottom: 2px solid #1a5276;">Chair Contacted</th>
+                                        <th style="padding: 12px; text-align: center; color: var(--hoshi-gold); border-bottom: 2px solid #1a5276;">Vice Chair Contacted</th>
+                                        <th style="padding: 12px; text-align: center; color: var(--hoshi-gold); border-bottom: 2px solid #1a5276;">Ranking Member Contacted</th>
+                                        <th style="padding: 12px; text-align: center; color: var(--hoshi-gold); border-bottom: 2px solid #1a5276;">Full Committee</th>
+                                        <th style="padding: 12px; text-align: center; color: var(--hoshi-gold); border-bottom: 2px solid #1a5276;">Leadership Letter</th>
+                                        <th style="padding: 12px; text-align: center; color: var(--hoshi-gold); border-bottom: 2px solid #1a5276;">Letter Sent</th>
+                                        <th style="padding: 12px; text-align: center; color: var(--hoshi-gold); border-bottom: 2px solid #1a5276;">Testimony</th>
+                                        <th style="padding: 12px; text-align: center; color: var(--hoshi-gold); border-bottom: 2px solid #1a5276;">Action Alerts</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- HB 2418 -->
+                                    <tr style="background: rgba(78, 205, 196, 0.1); border-bottom: 1px solid rgba(78, 205, 196, 0.2);">
+                                        <td style="padding: 12px;">
+                                            <div style="font-weight: 700; color: #4ecdc4;">HB 2418</div>
+                                            <div style="font-size: 11px; color: rgba(197, 227, 240, 0.7);">Permit Reform</div>
+                                        </td>
+                                        <td style="padding: 12px;"><span style="background: rgba(78, 205, 196, 0.3); color: #4ecdc4; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: 600;">SUPPORT</span></td>
+                                        <td style="padding: 12px; text-align: center;"><span style="color: #27ae60; font-size: 16px;">☑️</span></td>
+                                        <td style="padding: 12px; text-align: center;"><span style="color: #27ae60; font-size: 16px;">☑️</span></td>
+                                        <td style="padding: 12px; text-align: center;"><span style="color: #27ae60; font-size: 16px;">☑️</span></td>
+                                        <td style="padding: 12px; text-align: center;"><span style="color: #27ae60; font-size: 16px;">☑️</span></td>
+                                        <td style="padding: 12px; text-align: center;"><span style="color: #27ae60; font-size: 16px;">☑️</span></td>
+                                        <td style="padding: 12px; text-align: center;"><a href="#" style="color: #4ecdc4; text-decoration: underline; font-size: 11px;">PDF</a></td>
+                                        <td style="padding: 12px; text-align: center;"><span style="color: #27ae60; font-size: 16px;">☑️</span></td>
+                                        <td style="padding: 12px; text-align: center;"><span style="font-size: 12px; color: rgba(197, 227, 240, 0.8);">3 sent</span></td>
+                                    </tr>
+                                    
+                                    <!-- SB 6346 -->
+                                    <tr style="background: rgba(255, 107, 107, 0.1); border-bottom: 1px solid rgba(255, 107, 107, 0.2);">
+                                        <td style="padding: 12px;">
+                                            <div style="font-weight: 700; color: #ff6b6b;">SB 6346</div>
+                                            <div style="font-size: 11px; color: rgba(197, 227, 240, 0.7);">Millionaires Tax</div>
+                                        </td>
+                                        <td style="padding: 12px;"><span style="background: rgba(255, 107, 107, 0.3); color: #ff6b6b; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: 600;">OPPOSE</span></td>
+                                        <td style="padding: 12px; text-align: center;"><span style="color: #27ae60; font-size: 16px;">☑️</span></td>
+                                        <td style="padding: 12px; text-align: center;"><span style="color: #27ae60; font-size: 16px;">☑️</span></td>
+                                        <td style="padding: 12px; text-align: center;"><span style="color: #27ae60; font-size: 16px;">☑️</span></td>
+                                        <td style="padding: 12px; text-align: center;"><span style="color: #27ae60; font-size: 16px;">☑️</span></td>
+                                        <td style="padding: 12px; text-align: center;"><span style="color: #27ae60; font-size: 16px;">☑️</span></td>
+                                        <td style="padding: 12px; text-align: center;"><a href="#" style="color: #ff6b6b; text-decoration: underline; font-size: 11px;">PDF</a></td>
+                                        <td style="padding: 12px; text-align: center;"><span style="color: #27ae60; font-size: 16px;">☑️</span></td>
+                                        <td style="padding: 12px; text-align: center;"><span style="font-size: 12px; color: rgba(197, 227, 240, 0.8);">4 sent</span></td>
+                                    </tr>
+                                    
+                                    <!-- SB 6347 -->
+                                    <tr style="background: rgba(78, 205, 196, 0.1); border-bottom: 1px solid rgba(78, 205, 196, 0.2);">
+                                        <td style="padding: 12px;">
+                                            <div style="font-weight: 700; color: #4ecdc4;">SB 6347</div>
+                                            <div style="font-size: 11px; color: rgba(197, 227, 240, 0.7);">Estate Tax</div>
+                                        </td>
+                                        <td style="padding: 12px;"><span style="background: rgba(78, 205, 196, 0.3); color: #4ecdc4; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: 600;">SUPPORT</span></td>
+                                        <td style="padding: 12px; text-align: center;"><span style="color: #27ae60; font-size: 16px;">☑️</span></td>
+                                        <td style="padding: 12px; text-align: center;"><span style="color: #27ae60; font-size: 16px;">☑️</span></td>
+                                        <td style="padding: 12px; text-align: center;"><span style="color: #27ae60; font-size: 16px;">☑️</span></td>
+                                        <td style="padding: 12px; text-align: center;"><span style="color: #27ae60; font-size: 16px;">☑️</span></td>
+                                        <td style="padding: 12px; text-align: center;"><span style="color: rgba(197, 227, 240, 0.4); font-size: 16px;">—</span></td>
+                                        <td style="padding: 12px; text-align: center;"><a href="#" style="color: #4ecdc4; text-decoration: underline; font-size: 11px;">PDF</a></td>
+                                        <td style="padding: 12px; text-align: center;"><span style="color: rgba(197, 227, 240, 0.4); font-size: 16px;">—</span></td>
+                                        <td style="padding: 12px; text-align: center;"><span style="font-size: 12px; color: rgba(197, 227, 240, 0.8);">1 sent</span></td>
+                                    </tr>
+                                    
+                                    <!-- SB 6026 -->
+                                    <tr style="background: rgba(255, 193, 7, 0.1); border-bottom: 1px solid rgba(255, 193, 7, 0.2);">
+                                        <td style="padding: 12px;">
+                                            <div style="font-weight: 700; color: #ffc107;">SB 6026</div>
+                                            <div style="font-size: 11px; color: rgba(197, 227, 240, 0.7);">Residential Dev</div>
+                                        </td>
+                                        <td style="padding: 12px;"><span style="background: rgba(255, 193, 7, 0.3); color: #ffc107; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: 600;">MONITOR</span></td>
+                                        <td style="padding: 12px; text-align: center;"><span style="color: #27ae60; font-size: 16px;">☑️</span></td>
+                                        <td style="padding: 12px; text-align: center;"><span style="color: #27ae60; font-size: 16px;">☑️</span></td>
+                                        <td style="padding: 12px; text-align: center;"><span style="color: #27ae60; font-size: 16px;">☑️</span></td>
+                                        <td style="padding: 12px; text-align: center;"><span style="color: #27ae60; font-size: 16px;">☑️</span></td>
+                                        <td style="padding: 12px; text-align: center;"><span style="color: rgba(197, 227, 240, 0.4); font-size: 16px;">—</span></td>
+                                        <td style="padding: 12px; text-align: center;"><a href="#" style="color: #ffc107; text-decoration: underline; font-size: 11px;">PDF</a></td>
+                                        <td style="padding: 12px; text-align: center;"><span style="color: #27ae60; font-size: 16px;">☑️</span></td>
+                                        <td style="padding: 12px; text-align: center;"><span style="font-size: 12px; color: rgba(197, 227, 240, 0.8);">0 sent</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div style="margin-top: 15px; display: flex; gap: 20px; font-size: 12px; color: rgba(197, 227, 240, 0.7);">
+                            <div><span style="color: #27ae60;">☑️</span> = Completed</div>
+                            <div><span style="color: rgba(197, 227, 240, 0.4);">—</span> = Not Required/Minimal</div>
+                            <div><span style="background: rgba(78, 205, 196, 0.2); color: #4ecdc4; padding: 2px 6px; border-radius: 3px;">SUPPORT</span> = OneRedmond Supported</div>
+                            <div><span style="background: rgba(255, 107, 107, 0.2); color: #ff6b6b; padding: 2px 6px; border-radius: 3px;">OPPOSE</span> = OneRedmond Opposed</div>
+                            <div><span style="background: rgba(255, 193, 7, 0.2); color: #ffc107; padding: 2px 6px; border-radius: 3px;">MONITOR</span> = OneRedmond Monitored/Amendments</div>
+                        </div>
+                    </div>
+
                     <div class="add-bill-form">
                         <input type="text" id="new-bill-input" placeholder="Enter bill number (e.g., HB 1234)...">
                         <button onclick="addBill()">Add Bill</button>
