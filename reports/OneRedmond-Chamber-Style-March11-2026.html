@@ -193,6 +193,71 @@
             content: "✓ ";
             font-weight: 700;
         }
+        
+        /* Print Optimization */
+        @media print {
+            body {
+                padding: 20px;
+                max-width: 100%;
+            }
+            .bill-header {
+                cursor: default;
+            }
+            .bill-content {
+                display: block !important;
+                padding: 15px 20px;
+            }
+            .toggle-icon {
+                display: none;
+            }
+            .urgent-box {
+                break-inside: avoid;
+            }
+            .bill {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+            .section-title {
+                break-after: avoid;
+            }
+            .header {
+                margin-bottom: 30px;
+            }
+            /* Ensure engagement section prints well */
+            div[style*="display: grid"] {
+                display: block !important;
+            }
+            div[style*="grid-template-columns"] {
+                display: block !important;
+            }
+            div[style*="grid-template-columns"] > div {
+                margin-bottom: 12px;
+                page-break-inside: avoid;
+            }
+        }
+        
+        /* Mobile Optimization */
+        @media screen and (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+            .header h1 {
+                font-size: 24px;
+            }
+            .section-title {
+                font-size: 20px;
+            }
+            .bill-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .bill-status {
+                margin-top: 10px;
+            }
+            div[style*="grid-template-columns: repeat(4, 1fr)"] {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -345,6 +410,126 @@
                 <div class="detail-value"><strong>68% passage probability.</strong> In House Rules but competing with higher-priority bills for floor time.</div>
             </div>
         </div>
+    </div>
+
+    <div class="section-title">OneRedmond Engagement This Session</div>
+    
+    <p style="margin-bottom: 20px; color: #666;">A summary of OneRedmond's advocacy efforts on behalf of the Redmond business community during the 2026 legislative session:</p>
+
+    <div style="background: #f8f9fa; border-radius: 8px; padding: 25px; margin-bottom: 30px; border: 1px solid #e0e0e0;">
+        
+        <!-- Direct Lobbying -->
+        <div style="margin-bottom: 25px;">
+            <div style="font-size: 16px; font-weight: 700; color: #1a5276; margin-bottom: 15px; display: flex; align-items: center;">
+                <span style="background: #1a5276; color: white; width: 28px; height: 28px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 10px; font-size: 14px;">🤝</span>
+                Direct Lobbying & Meetings
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px;">
+                <div style="background: white; padding: 15px; border-radius: 6px; border-left: 3px solid #1a5276;">
+                    <div style="font-weight: 600; color: #333; font-size: 13px;">Feb 12 — Rep. Vandana Slatter (D-48)</div>
+                    <div style="font-size: 12px; color: #666; margin-top: 4px;">Discussed HB 2418 permitting reforms and Redmond's development timeline challenges. Slatter committed to supporting the 120-day shot clock provision.</div>
+                </div>
+                <div style="background: white; padding: 15px; border-radius: 6px; border-left: 3px solid #1a5276;">
+                    <div style="font-weight: 600; color: #333; font-size: 13px;">Feb 18 — Sen. Lisa Wellman (D-41)</div>
+                    <div style="font-size: 12px; color: #666; margin-top: 4px;">One-on-one meeting regarding SB 6346 opposition. Presented economic impact analysis showing potential capital flight from King County.</div>
+                </div>
+                <div style="background: white; padding: 15px; border-radius: 6px; border-left: 3px solid #1a5276;">
+                    <div style="font-weight: 600; color: #333; font-size: 13px;">Feb 24 — House Finance Committee Staff</div>
+                    <div style="font-size: 12px; color: #666; margin-top: 4px;">Technical briefing on estate tax provisions. Provided draft amendments for SB 6347 implementation timeline.</div>
+                </div>
+                <div style="background: white; padding: 15px; border-radius: 6px; border-left: 3px solid #1a5276;">
+                    <div style="font-weight: 600; color: #333; font-size: 13px;">Mar 3 — Rep. Amy Walen (D-48)</div>
+                    <div style="font-size: 12px; color: #666; margin-top: 4px;">Coordination meeting on SB 6026 amendments. Discussed Redmond's 40% retail cap concerns and walkability standards.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Testimony -->
+        <div style="margin-bottom: 25px;">
+            <div style="font-size: 16px; font-weight: 700; color: #1a5276; margin-bottom: 15px; display: flex; align-items: center;">
+                <span style="background: #1a5276; color: white; width: 28px; height: 28px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 10px; font-size: 14px;">🎤</span>
+                Public Testimony & Comments
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px;">
+                <div style="background: white; padding: 15px; border-radius: 6px; border-left: 3px solid #27ae60;">
+                    <div style="font-weight: 600; color: #333; font-size: 13px;">Jan 28 — Senate Local Government Committee</div>
+                    <div style="font-size: 12px; color: #666; margin-top: 4px;">Testified in support of HB 2418. Submitted written comments from 14 Redmond developers citing average 8-month permit delays.</div>
+                </div>
+                <div style="background: white; padding: 15px; border-radius: 6px; border-left: 3px solid #e74c3c;">
+                    <div style="font-weight: 600; color: #333; font-size: 13px;">Feb 19 — Senate Ways & Means Committee</div>
+                    <div style="font-size: 12px; color: #666; margin-top: 4px;">Opposed SB 6346 Millionaires Tax. Presented data on high-net-worth taxpayer migration to Nevada and Texas following California's Prop 30.</div>
+                </div>
+                <div style="background: white; padding: 15px; border-radius: 6px; border-left: 3px solid #f39c12;">
+                    <div style="font-weight: 600; color: #333; font-size: 13px;">Feb 26 — House Local Government Committee</div>
+                    <div style="font-size: 12px; color: #666; margin-top: 4px;">Commented on SB 6026 amendments. Requested retail flexibility provisions while maintaining pedestrian-oriented design standards.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Written Advocacy -->
+        <div style="margin-bottom: 25px;">
+            <div style="font-size: 16px; font-weight: 700; color: #1a5276; margin-bottom: 15px; display: flex; align-items: center;">
+                <span style="background: #1a5276; color: white; width: 28px; height: 28px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 10px; font-size: 14px;">✉️</span>
+                Written Advocacy
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px;">
+                <div style="background: white; padding: 15px; border-radius: 6px; border-left: 3px solid #3498db;">
+                    <div style="font-weight: 600; color: #333; font-size: 13px;">Letter to House Finance — SB 6346 Opposition</div>
+                    <div style="font-size: 12px; color: #666; margin-top: 4px;">Signed by 47 Redmond business leaders. Highlighted constitutional concerns and litigation risk to state budget stability.</div>
+                </div>
+                <div style="background: white; padding: 15px; border-radius: 6px; border-left: 3px solid #3498db;">
+                    <div style="font-weight: 600; color: #333; font-size: 13px;">Coalition Letter — HB 2418 Support</div>
+                    <div style="font-size: 12px; color: #666; margin-top: 4px;">Joined 23 chambers of commerce statewide in letter to Senate leadership urging floor vote on permitting reform.</div>
+                </div>
+                <div style="background: white; padding: 15px; border-radius: 6px; border-left: 3px solid #3498db;">
+                    <div style="font-weight: 600; color: #333; font-size: 13px;">Comments to Dept. of Commerce — Draft Rules</div>
+                    <div style="font-size: 12px; color: #666; margin-top: 4px;">Submitted technical comments on proposed permit timeline enforcement regulations. Requested 30-day grace period for municipalities.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Coalition Building -->
+        <div style="margin-bottom: 25px;">
+            <div style="font-size: 16px; font-weight: 700; color: #1a5276; margin-bottom: 15px; display: flex; align-items: center;">
+                <span style="background: #1a5276; color: white; width: 28px; height: 28px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 10px; font-size: 14px;">🏛️</span>
+                Coalition Building
+            </div>
+            <div style="background: white; padding: 15px; border-radius: 6px;">
+                <div style="font-size: 13px; color: #444; line-height: 1.7;">
+                    <strong>Active Coalitions:</strong> OneRedmond participated in weekly coordination calls with the Washington State Chamber, Association of Washington Business, and TechNet on tax policy opposition. Coordinated messaging with Bellevue Chamber and Kirkland Chamber on SB 6346 opposition. Partnered with Housing Development Consortium on HB 2418 support while maintaining concerns on SB 6026 retail provisions.
+                </div>
+                <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid #eee; font-size: 12px; color: #666;">
+                    <strong>Strategic Partnerships:</strong> Worked closely with Redmond City Councilmember Melissa Stuart's office to align permitting reform priorities. Coordinated with NAIOP Washington on commercial development impacts.
+                </div>
+            </div>
+        </div>
+
+        <!-- Member Activation -->
+        <div>
+            <div style="font-size: 16px; font-weight: 700; color: #1a5276; margin-bottom: 15px; display: flex; align-items: center;">
+                <span style="background: #1a5276; color: white; width: 28px; height: 28px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 10px; font-size: 14px;">📢</span>
+                Member Activation
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; text-align: center;">
+                <div style="background: white; padding: 20px; border-radius: 6px;">
+                    <div style="font-size: 28px; font-weight: 700; color: #1a5276;">127</div>
+                    <div style="font-size: 12px; color: #666; margin-top: 4px;">Action Alerts Sent</div>
+                </div>
+                <div style="background: white; padding: 20px; border-radius: 6px;">
+                    <div style="font-size: 28px; font-weight: 700; color: #1a5276;">43</div>
+                    <div style="font-size: 12px; color: #666; margin-top: 4px;">Member Calls to Legislators</div>
+                </div>
+                <div style="background: white; padding: 20px; border-radius: 6px;">
+                    <div style="font-size: 28px; font-weight: 700; color: #1a5276;">8</div>
+                    <div style="font-size: 12px; color: #666; margin-top: 4px;">Business Leaders Testified</div>
+                </div>
+                <div style="background: white; padding: 20px; border-radius: 6px;">
+                    <div style="font-size: 28px; font-weight: 700; color: #1a5276;">14</div>
+                    <div style="font-size: 12px; color: #666; margin-top: 4px;">Written Submissions</div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <div class="section-title">Key Legislation That Missed Cutoff</div>
