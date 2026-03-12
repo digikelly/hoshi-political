@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FINAL PUSH: Sine Die Briefing - March 10, 2026 | OneRedmond</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        @page { size: letter; margin: 0.5in; }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            font-size: 9pt;
+            line-height: 1.3;
+            color: #333;
+            max-width: 8.5in;
+            margin: 0 auto;
+            padding: 0.25in;
+        }
+        .header {
+            border-bottom: 3px solid #1a5276;
+            padding-bottom: 8px;
+            margin-bottom: 10px;
+        }
+        .header h1 {
+            font-size: 18pt;
+            color: #1a5276;
+            margin: 0 0 4px 0;
+        }
+        .header-meta {
+            font-size: 8pt;
+            color: #666;
+        }
+        .urgency-banner {
+            background: #c0392b;
+            color: white;
+            padding: 8px 12px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 11pt;
+            margin-bottom: 12px;
+        }
+        .summary-box {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+        .summary-grid {
+            display: flex;
+            gap: 15px;
+            justify-content: space-around;
+        }
+        .summary-item {
+            text-align: center;
+        }
+        .summary-number {
+            font-size: 20pt;
+            font-weight: bold;
+            color: #1a5276;
+        }
+        .summary-label {
+            font-size: 7pt;
+            color: #666;
+            text-transform: uppercase;
+        }
+        h2 {
+            font-size: 12pt;
+            color: #1a5276;
+            border-bottom: 2px solid #1a5276;
+            padding-bottom: 2px;
+            margin: 12px 0 8px 0;
+        }
+        h3 {
+            font-size: 10pt;
+            color: #333;
+            margin: 8px 0 4px 0;
+            background: #e8f4f8;
+            padding: 4px 8px;
+        }
+        .alert {
+            padding: 6px 10px;
+            margin: 8px 0;
+            font-size: 8pt;
+            border-left: 4px solid;
+        }
+        .alert-critical {
+            background: #ffebee;
+            border-left-color: #c0392b;
+        }
+        .alert-warning {
+            background: #fff3e0;
+            border-left-color: #e67e22;
+        }
+        .alert-success {
+            background: #e8f5e9;
+            border-left-color: #27ae60;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 6px 0;
+            font-size: 8pt;
+        }
+        th {
+            background: #1a5276;
+            color: white;
+            padding: 4px 6px;
+            text-align: left;
+            font-weight: 600;
+        }
+        td {
+            padding: 3px 6px;
+            border-bottom: 1px solid #dee2e6;
+            vertical-align: top;
+        }
+        tr:nth-child(even) { background: #f8f9fa; }
+        .bill-id { font-weight: bold; color: #1a5276; }
+        .status-critical { color: #c0392b; font-weight: bold; }
+        .status-warning { color: #e67e22; }
+        .status-success { color: #27ae60; font-weight: bold; }
+        .two-column {
+            display: flex;
+            gap: 12px;
+        }
+        .column { flex: 1; }
+        .compact-list { margin: 4px 0 4px 16px; }
+        .compact-list li { margin: 2px 0; font-size: 8pt; }
+        .budget-box {
+            background: #fff8e1;
+            border: 2px solid #f39c12;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        .budget-title {
+            font-size: 11pt;
+            font-weight: bold;
+            color: #e67e22;
+            margin-bottom: 6px;
+        }
+        .footer {
+            margin-top: 12px;
+            padding-top: 8px;
+            border-top: 2px solid #1a5276;
+            font-size: 7pt;
+            color: #666;
+            text-align: center;
+        }
+        .timeline {
+            margin: 8px 0;
+            padding-left: 20px;
+            border-left: 3px solid #1a5276;
+        }
+        .timeline-item {
+            margin: 6px 0;
+            font-size: 8pt;
+        }
+        .timeline-date {
+            font-weight: bold;
+            color: #1a5276;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🏛️ FINAL PUSH: Washington Legislative Session</h1>
+        <div class="header-meta">
+            <strong>Client:</strong> OneRedmond | <strong>Date:</strong> Tuesday, March 10, 2026 | <strong>Session Ends:</strong> Thursday, March 12 (2 DAYS)
+        </div>
+    </div>
+    
+    <div class="urgency-banner">
+        ⏰ SINE DIE: 48-72 HOURS REMAINING — FINAL FLOOR VOTES THIS WEEK
+    </div>
+    
+    <div class="summary-box">
+        <div class="summary-grid">
+            <div class="summary-item">
+                <div class="summary-number">10</div>
+                <div class="summary-label">Bills Alive</div>
+            </div>
+            <div class="summary-item">
+                <div class="summary-number" style="color: #27ae60;">4</div>
+                <div class="summary-label">Likely Pass</div>
+            </div>
+            <div class="summary-item">
+                <div class="summary-number" style="color: #e67e22;">3</div>
+                <div class="summary-label">At Risk</div>
+            </div>
+            <div class="summary-item">
+                <div class="summary-number" style="color: #c0392b;">2</div>
+                <div class="summary-label">Days Left</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- BUDGET & INCOME TAX SECTION -->
+    <div class="budget-box">
+        <div class="budget-title">💰 BUDGET CRISIS & THE INCOME TAX GAMBLE</div>
+        
+        <p style="margin-bottom: 8px;"><strong>The Structural Problem:</strong> Washington's tax system is the most regressive in America. We rely on sales tax (7-10.5%) and B&O tax, which hammer low-income residents while wealthy residents pay virtually no income tax. The state faces recurring revenue shortfalls because this system doesn't capture wealth.</p>
+        
+        <p style="margin-bottom: 8px;"><strong>SB 6346 (Millionaires Tax) — The Revenue Solution:</strong></p>
+        <ul class="compact-list">
+            <li><strong>What it does:</strong> 1% tax on capital gains over $250K ($500K joint filers)</li>
+            <li><strong>Revenue:</strong> $500-800 million annually for education/early learning</li>
+            <li><strong>Status:</strong> House Finance took exec action Feb 27 — advancing to floor</li>
+            <li><strong>OneRedmond Position:</strong> OPPOSED (affects wealthy business owners, investors)</li>
+        </ul>
+        
+        <div class="alert alert-critical">
+            <strong>⚖️ THE COURT GAMBLE:</strong> If SB 6346 passes, it <em>will</em> be challenged immediately. Washington's Constitution (Article VII, Section 1) requires taxes to be "uniform upon the same class of property." The Supreme Court struck down an income tax in 1933 and has upheld that precedent for 90 years.
+            <br><br>
+            <strong>The Strategy:</u003e/strong> Democrats are calling this an "excise tax on capital asset sales" rather than income. If courts buy that framing, it creates $500M+ in new revenue. If courts reject it, the tax dies and the budget loses that funding — but Democrats can say they tried to tax the wealthy.
+        </div>
+        
+        <p><strong>Budget Reality:</u003e/strong> Without SB 6346, the Legislature must either cut education funding, raise sales/B&O taxes (hitting everyone), or raid the rainy day fund. The budget writers are likely treating this revenue as "aspirational" — they'll account for it but have backup plans if courts kill it.</p>
+    </div>
+    
+    <h2>🎯 ONE REDMOND TRACKED BILLS — FINAL STATUS</h2>
+    
+    <h3>🔴 CRITICAL: HB 2418 — Permit Review Reform (78% PASSAGE)</h3>    
+    <div class="alert alert-success">
+        <strong>Status:</strong> Senate Floor, 2nd Reading | <strong>Melissa Stuart's Bill</strong> | <strong>Direct Redmond Impact</strong>
+        <br><br>
+        <strong>What it does:</strong> 120-day shot clocks for permit approvals, creates appeal process for delays, prohibits endless "additional information" requests from cities.
+        <br><br>
+        <strong>Why it matters for Redmond:</strong> Redmond has some of the longest permit timelines in King County. This bill forces the city to process permits faster or face legal challenges. It passed the House 78-20 with bipartisan support and is ready for Senate final passage.
+        <br><br>
+        <strong>Outlook:</strong> <span style="color: #27ae60; font-size: 10pt;">NEAR-CERTAIN PASSAGE</span> — Floor vote expected Wednesday/Thursday.
+    </div>
+    
+    <h3>🟡 HIGH PRIORITY: SB 6346 — Millionaires Tax (65% PASSAGE)</h3>    
+    <div class="alert alert-warning">
+        <strong>Status:</strong> House Finance → Floor | <strong>OneRedmond OPPOSED</strong> | <strong>Budget Critical</strong>
+        <br><br>
+        <strong>The Politics:</strong> House Democrats have the votes. This is their top revenue priority. It will pass the House this week.
+        <br><br>
+        <strong>The Legal Risk:</strong> 50/50 chance it survives court challenge. If struck down (likely), budget loses $500M+ and faces mid-year cuts or special session.
+        <br><br>
+        <strong>Client Impact:</strong> Affects high-net-worth individuals, business owners with equity, investors. Estate planning complexity increases.
+    </div>
+    
+    <h3>🟡 HIGH PRIORITY: SB 6347 — Estate Tax Reinstatement (75% PASSAGE)</h3>    
+    <div class="alert alert-success">
+        <strong>Status:</strong> House Rules | <strong>Advanced from Finance</strong>
+        <br><br>
+        <strong>What it does:</strong> Rolls back 2025 estate tax rate increase (35% → 20%). Bipartisan support.
+        <br><br>
+        <strong>Outlook:</strong> <span style="color: #27ae60;">LIKELY PASS</span> — In House Rules, should get floor vote this week.
+    </div>
+    
+    <h3>🟡 MEDIUM: SB 6026 — Residential Development (68% PASSAGE)</h3>    
+    <div class="alert alert-warning">
+        <strong>Status:</strong> House Rules | Advanced from Appropriations March 4
+        <br><br>
+        <strong>What it does:</strong> Removes ground-floor retail mandates for residential development in commercial zones. Increases housing density.
+        <br><br>
+        <strong>Redmond Impact:</strong> Could increase housing stock but Redmond officials raised walkability concerns. Housing is a session priority.
+        <br><br>
+        <strong>Outlook:</strong> Moderate chance. Rules Committee may prioritize higher-profile bills.
+    </div>
+    
+    <h3>🟢 OTHER ALIVE BILLS (Lower Priority)</h3>    
+    <table>
+        <thead>
+            <tr>
+                <th>Bill</th>
+                <th>Status</th>
+                <th>Outlook</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="bill-id">HB 2257</td>
+                <td>DOR Tax Admin — House Rules</td>
+                <td>Likely pass if scheduled</td>
+            </tr>
+            <tr>
+                <td class="bill-id">SB 6113</td>
+                <td>DOR Tax — Passed Senate</td>
+                <td>Awaiting House action</td>
+            </tr>
+            <tr>
+                <td class="bill-id">HB 2278</td>
+                <td>Tourism — House Rules (since Feb 5)</td>
+                <td class="status-warning">⚠️ AT RISK — May not get scheduled</td>
+            </tr>
+            <tr>
+                <td class="bill-id">HB 2325</td>
+                <td>Tourism — House Floor</td>
+                <td>Low priority, may stall</td>
+            </tr>
+            <tr>
+                <td class="bill-id">SB 6061</td>
+                <td>Tourism — Senate Floor</td>
+                <td>Low priority</td>
+            </tr>
+            <tr>
+                <td class="bill-id">HB 2489</td>
+                <td>Public Space — House Rules</td>
+                <td>Uncertain</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h2>📅 FINAL 48 HOURS — WHAT TO WATCH</h2>    
+    
+    <div class="timeline">
+        <div class="timeline-item">
+            <span class="timeline-date">TODAY (Tue Mar 10):</span> Rules Committee meetings — bills get scheduled for floor votes. Watch for HB 2418, SB 6346, SB 6347, SB 6026 getting calendar slots.
+        </div>
+        <div class="timeline-item">
+            <span class="timeline-date">WEDNESDAY (Mar 11):</span> Floor votes begin. Late night expected. Priority bills move first (budget, revenue, HB 2418).
+        </div>
+        <div class="timeline-item">
+            <span class="timeline-date">THURSDAY (Mar 12):</span> <strong>SINE DIE</strong> — Midnight deadline. Anything not voted on dies. Expect marathon session ending at 11:59 PM.
+        </div>
+    </div>
+    
+    <h2>🎲 SCENARIOS & OUTCOMES</h2>    
+    
+    <div class="two-column">
+        <div class="column">
+            <h3>Scenario A: "The Trifecta" (60% Likely)</h3>
+            <div class="alert alert-success">
+                <strong>HB 2418, SB 6346, SB 6347 ALL PASS</strong>
+                <ul class="compact-list">
+                    <li>Redmond gets permit reform win</li>
+                    <li>Millionaires tax creates $500M+ revenue</li>
+                    <li>Estate tax relief for wealthy</li>
+                    <li>Budget balanced... for now</li>
+                </ul>
+                <strong>Then the lawsuits begin.</strong>
+            </div>        
+        </div>
+        
+        <div class="column">
+            <h3>Scenario B: "The Court Fight" (40% Likely)</h3>
+            <div class="alert alert-warning">
+                <strong>HB 2418 PASSES, SB 6346 FAILS or DIES IN COURT</strong>
+                <ul class="compact-list">
+                    <li>Redmond still gets permit reform</li>
+                    <li>No new revenue = budget crisis</li>
+                    <li>Special session or mid-year cuts</li>
+                    <li>2026 elections become referendum on taxes</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <h2㺬TION ITEMS FOR ONE REDMOND</h2>    
+    
+    <div class="alert alert-critical">
+        <strong>1. MONITOR RULES COMMITTEES TODAY:</strong> Check leg.wa.gov after 2 PM for floor calendar postings. HB 2418 MUST be scheduled today to pass.
+        <br><br>
+        <strong>2. PREPARE FOR THURSDAY:</strong> Final votes happen fast. Have stakeholder alerts ready for HB 2418 passage announcement.
+        <br><br>
+        <strong>3. BUDGET WATCH:</strong> If SB 6346 passes, prepare for legal challenge news by summer. If it fails, prepare for "budget crisis" headlines and potential special session call.
+    </div>
+    
+    <div class="footer">
+        <strong>Hoshi Political Dashboard</strong> | https://hoshi-political.pages.dev | Report: March 10, 2026<br>
+        <em>For real-time updates during Sine Die, monitor dashboard or contact legislative liaison.</em>
+    </div>
+</body>
+</html>

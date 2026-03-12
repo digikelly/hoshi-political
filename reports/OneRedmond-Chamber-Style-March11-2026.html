@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OneRedmond Legislative Update - March 11, 2026</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: #fff;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 3px solid #1a5276;
+        }
+        .header h1 {
+            color: #1a5276;
+            font-size: 32px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        .header .subtitle {
+            color: #666;
+            font-size: 18px;
+            font-weight: 400;
+        }
+        .header .date {
+            color: #999;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .intro {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 40px;
+            border-left: 4px solid #1a5276;
+        }
+        .intro p {
+            margin: 0;
+            font-size: 16px;
+            color: #444;
+        }
+        .section-title {
+            color: #1a5276;
+            font-size: 24px;
+            font-weight: 700;
+            margin: 40px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        .bill {
+            margin-bottom: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .bill-header {
+            background: #f8f9fa;
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.2s;
+        }
+        .bill-header:hover {
+            background: #e8f4f8;
+        }
+        .bill-title-section {
+            flex: 1;
+        }
+        .bill-number {
+            display: inline-block;
+            background: #1a5276;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .bill-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        .bill-topic {
+            font-size: 13px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .bill-status {
+            text-align: right;
+        }
+        .status-badge {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+        .status-alive {
+            background: #d4edda;
+            color: #155724;
+        }
+        .status-dead {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        .status-risk {
+            background: #fff3cd;
+            color: #856404;
+        }
+        .toggle-icon {
+            font-size: 20px;
+            color: #1a5276;
+            margin-left: 15px;
+        }
+        .bill-content {
+            padding: 25px;
+            display: none;
+            background: white;
+        }
+        .bill-content.active {
+            display: block;
+        }
+        .detail-row {
+            margin-bottom: 15px;
+        }
+        .detail-label {
+            font-weight: 600;
+            color: #1a5276;
+            font-size: 13px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+        .detail-value {
+            color: #444;
+            font-size: 15px;
+        }
+        .highlight-box {
+            background: #e8f4f8;
+            border-left: 4px solid #1a5276;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .urgent-box {
+            background: #fff3cd;
+            border-left: 4px solid #e67e22;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 4px;
+        }
+        .urgent-box h3 {
+            color: #e67e22;
+            margin-top: 0;
+        }
+        .footer {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 2px solid #e0e0e0;
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+        }
+        .footer a {
+            color: #1a5276;
+            text-decoration: none;
+        }
+        .onerdm-badge {
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            color: white;
+            font-size: 10px;
+            padding: 3px 8px;
+            border-radius: 4px;
+            margin-left: 8px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .onerdm-badge::before {
+            content: "✓ ";
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>OneRedmond</h1>
+        <div class="subtitle">Legislative Update</div>
+        <div class="date">Wednesday, March 11, 2026 | Sine Die: 36 Hours Remaining</div>
+    </div>
+
+    <div class="intro">
+        <p>The Washington State Legislature enters its final 36 hours. Wednesday floor votes are underway with Thursday's midnight deadline looming. Out of 24 bills OneRedmond tracked this session, 10 remain alive and positioned for potential passage. HB 2418 (permit reform) and SB 6346 (Millionaires Tax) are the key bills to watch today. Below is the status of legislation critical to the Redmond business community.</p>
+    </div>
+
+    <div class="urgent-box">
+        <h3>⏰ FINAL 36 HOURS</h3>
+        <p><strong>Wednesday, March 11 (TODAY):</strong> Floor votes begin. Watch for HB 2418 Senate vote, SB 6346 House action. Rules Committees finalize calendars by 2 PM.</p>
+        <p><strong>Thursday, March 12:</strong> Final marathon session. All bills must pass both chambers by midnight or die.</p>
+        <p><strong style="color: #c0392b;">🔥 CRITICAL:</strong> 10 bills alive. 6-8 expected passage. Thursday 11:59 PM = hard deadline.</p>
+    </div>
+
+    <div class="section-title">Bills We're Watching</div>
+
+    <div class="bill">
+        <div class="bill-header" onclick="toggleBill(this)">
+            <div class="bill-title-section">
+                <div class="bill-number">HB 2418</div><span class="onerdm-badge">OneRedmond Active</span>
+                <div class="bill-name">Permit Review Process Reform</div>
+                <div class="bill-topic">Housing / Permitting</div>
+            </div>
+            <div class="bill-status">
+                <span class="status-badge status-alive">Senate Floor — Likely Pass</span>
+                <span class="toggle-icon">+</span>
+            </div>
+        </div>
+        <div class="bill-content">
+            <div class="detail-row">
+                <div class="detail-label">Description</div>
+                <div class="detail-value">Establishes 120-day shot clocks for permit approvals, creates appeal process for delays, and prohibits cities from requesting endless "additional information." This is Melissa Stuart's priority bill with direct Redmond impact.</div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label">Current Status</div>
+                <div class="detail-value">Passed House 78-20 with bipartisan support. Cleared Senate Local Government Committee. Now on Senate floor for 2nd reading, positioned for final passage vote.</div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label">OneRedmond Position</div>
+                <div class="detail-value">SUPPORT. Redmond has some of the longest permit timelines in King County. This bill would force faster processing or expose the city to legal challenges.</div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label">Outlook</div>
+                <div class="detail-value"><strong>78% passage probability.</strong> Strong bipartisan support, ready for floor vote. Expected to pass Wednesday or Thursday.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bill">
+        <div class="bill-header" onclick="toggleBill(this)">
+            <div class="bill-title-section">
+                <div class="bill-number">SB 6346</div><span class="onerdm-badge">OneRedmond Active</span>
+                <div class="bill-name">Millionaires Tax (Capital Gains)</div>
+                <div class="bill-topic">Tax / Revenue</div>
+            </div>
+            <div class="bill-status">
+                <span class="status-badge status-risk">Advancing — Court Risk</span>
+                <span class="toggle-icon">+</span>
+            </div>
+        </div>
+        <div class="bill-content">
+            <div class="detail-row">
+                <div class="detail-label">Description</div>
+                <div class="detail-value">Creates 1% tax on capital gains over $250,000 ($500,000 joint). Expected to raise $500-800 million annually for education and early learning. Democrats' top revenue priority.</div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label">Current Status</div>
+                <div class="detail-value">Passed Senate. House Finance Committee took executive action February 27. Advancing to House floor for vote this week.</div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label">Constitutional Risk</div>
+                <div class="detail-value">Washington's Constitution (Article VII, Section 1) requires taxes be "uniform upon the same class of property." The Supreme Court struck down an income tax in 1933. SB 6346 attempts to frame this as an "excise tax on capital asset sales" rather than income. <strong>50/50 chance it survives court challenge.</strong></div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label">OneRedmond Position</div>
+                <div class="detail-value">OPPOSE. Affects high-net-worth business owners, investors, and creates estate planning complexity. Litigation risk means budget instability even if it passes.</div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label">Outlook</div>
+                <div class="detail-value"><strong>65% passage probability.</strong> House Democrats have votes to pass. Will face immediate litigation if signed. Budget writers treating revenue as "aspirational" with backup plans if courts kill it.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bill">
+        <div class="bill-header" onclick="toggleBill(this)">
+            <div class="bill-title-section">
+                <div class="bill-number">SB 6347</div><span class="onerdm-badge">OneRedmond Active</span>
+                <div class="bill-name">Estate Tax Reinstatement</div>
+                <div class="bill-topic">Tax</div>
+            </div>
+            <div class="bill-status">
+                <span class="status-badge status-alive">House Rules — Likely Pass</span>
+                <span class="toggle-icon">+</span>
+            </div>
+        </div>
+        <div class="bill-content">
+            <div class="detail-row">
+                <div class="detail-label">Description</div>
+                <div class="detail-value">Rolls back 2025 estate tax rate increase from 35% to 20%. Affects estates of decedents dying on or after July 1, 2026.</div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label">Current Status</div>
+                <div class="detail-value">Passed Senate. Advanced from House Finance Committee to House Rules. Awaiting floor scheduling.</div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label">OneRedmond Position</div>
+                <div class="detail-value">SUPPORT. Provides relief for high-net-worth estate planning. Bipartisan backing increases passage likelihood.</div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label">Outlook</div>
+                <div class="detail-value"><strong>75% passage probability.</strong> Bipartisan support in both chambers. Should pass this week.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bill">
+        <div class="bill-header" onclick="toggleBill(this)">
+            <div class="bill-title-section">
+                <div class="bill-number">SB 6026</div><span class="onerdm-badge">OneRedmond Active</span>
+                <div class="bill-name">Residential Development in Commercial Zones</div>
+                <div class="bill-topic">Housing / Zoning</div>
+            </div>
+            <div class="bill-status">
+                <span class="status-badge status-alive">House Rules — Moderate</span>
+                <span class="toggle-icon">+</span>
+            </div>
+        </div>
+        <div class="bill-content">
+            <div class="detail-row">
+                <div class="detail-label">Description</div>
+                <div class="detail-value">Removes ground-floor retail mandates for residential development in commercial zones. Amended version caps retail requirements at 40% of eligible areas with height incentives up to 85 feet.</div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label">Current Status</div>
+                <div class="detail-value">Passed Senate. Passed House Local Government Committee February 26 (amended). Advanced from House Appropriations to House Rules on March 4.</div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label">OneRedmond Position</div>
+                <div class="detail-value">MONITOR. Increases housing density potential but Redmond officials raised walkability concerns about reduced retail requirements. Housing is a session priority.</div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label">Outlook</div>
+                <div class="detail-value"><strong>68% passage probability.</strong> In House Rules but competing with higher-priority bills for floor time.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">Key Legislation That Missed Cutoff</div>
+
+    <p style="margin-bottom: 20px; color: #666;">The following bills stalled in fiscal committees and are dead for the 2026 session:</p>
+
+    <div class="bill">
+        <div class="bill-header" onclick="toggleBill(this)">
+            <div class="bill-title-section">
+                <div class="bill-number" style="background: #721c24;">DEAD</div>
+                <div class="bill-name">Payroll Tax Bills (HB 2100 / SB 6093)</div>
+                <div class="bill-topic">Tax / Revenue</div>
+            </div>
+            <div class="bill-status">
+                <span class="status-badge status-dead">No Action</span>
+                <span class="toggle-icon">+</span>
+            </div>
+        </div>
+        <div class="bill-content">
+            <div class="detail-value">Both bills stalled in their respective fiscal committees (House Finance and Senate Ways & Means) with no action taken by the March 2 cutoff. Would have imposed excise tax on large employer payroll expenses to fund the Well Washington Fund. Alternative revenue source to Millionaires Tax that failed to advance.</div>
+        </div>
+    </div>
+
+    <div class="bill">
+        <div class="bill-header" onclick="toggleBill(this)">
+            <div class="bill-title-section">
+                <div class="bill-number" style="background: #721c24;">DEAD</div>
+                <div class="bill-name">Aerospace Tax Preferences (HB 2730)</div>
+                <div class="bill-topic">Economic Development</div>
+            </div>
+            <div class="bill-status">
+                <span class="status-badge status-dead">No Action</span>
+                <span class="toggle-icon">+</span>
+            </div>
+        </div>
+        <div class="bill-content">
+            <div class="detail-value">Clarifies effectiveness metrics for aerospace tax incentives. Public hearing held February 20 in House Finance, but no executive action taken. Stuck in committee, missed March 2 fiscal cutoff. Important for aerospace/space sector but failed to advance despite industry support.</div>
+        </div>
+    </div>
+
+    <div class="highlight-box">
+        <strong>Total Tracked Bills:</strong> 24 | <strong>Alive:</strong> 10 | <strong>Dead:</strong> 14 | <strong>Passage Expected:</strong> 6-8 bills
+    </div>
+
+    <div style="background: #f0f7ff; border-left: 4px solid #3498db; padding: 15px; margin: 20px 0; border-radius: 4px;">
+        <div style="font-weight: 600; color: #1a5276; margin-bottom: 10px; font-size: 14px;">📊 Understanding the Numbers</div>
+        <div style="font-size: 13px; line-height: 1.6; color: #444;">
+            <p style="margin-bottom: 8px;"><strong>24 Tracked Bills:</strong> OneRedmond is monitoring 24 bills this session that affect Redmond businesses, taxes, housing, and economic development.</p>
+            
+            <p style="margin-bottom: 8px;"><strong>10 Alive (42%):</strong> These bills cleared the March 2 fiscal committee cutoff and can still pass. They passed fiscal committees and moved to Rules or Floor.</p>
+            
+            <p style="margin-bottom: 8px;"><strong>14 Dead (58%):</strong> These bills stalled in fiscal committees by the March 2 deadline. They're dead for this session but could return in 2027.</p>
+            
+            <p><strong>6-8 Expected Passage:</strong> Based on current position and probability forecasts, we expect 6-8 of the 10 alive bills to actually pass both chambers and reach the Governor's desk by Thursday's deadline.</p>
+        </div>
+    </div>
+
+    <div class="section-title">All 10 Alive Bills Explained</div>
+    
+    <div style="margin: 20px 0;">
+        <div class="bill">
+            <div class="bill-header" onclick="toggleBill(this)">
+                <div class="bill-title-section">
+                    <div class="bill-number">SB 6346</div><span class="onerdm-badge">OneRedmond Active</span>
+                    <div class="bill-name">Millionaires Tax — 65% Passage</div>
+                    <div class="bill-topic">Revenue / Education Funding</div>
+                </div>
+                <div class="bill-status">
+                    <span class="status-badge status-risk">House Finance → Floor</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+            </div>
+            <div class="bill-content">
+                <div class="detail-value"><strong>What it does:</strong> 1% capital gains tax on sales over $250K ($500K joint filers). Raises $500-800M annually for early learning and education.</div>
+                <div class="detail-value"><strong>Why it's alive:</strong> House Finance Committee took executive action Feb 27, advancing it to floor.</div>
+                <div class="detail-value"><strong>OneRedmond position:</strong> OPPOSED — affects business owners and investors; creates tax uncertainty.</div>
+                <div class="detail-value"><strong>Court risk:</strong> 50/50 chance Supreme Court strikes it down as unconstitutional income tax (1933 precedent).</div>
+            </div>
+        </div>
+
+        <div class="bill">
+            <div class="bill-header" onclick="toggleBill(this)">
+                <div class="bill-title-section">
+                    <div class="bill-number">HB 2418</div>
+                    <div class="bill-name">Permit Reform — 78% Passage</div>
+                    <div class="bill-topic">Housing / Redmond Priority</div>
+                </div>
+                <div class="bill-status">
+                    <span class="status-badge status-alive">Senate Floor</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+            </div>
+            <div class="bill-content">
+                <div class="detail-value"><strong>What it does:</strong> 120-day shot clocks for permit approvals; creates appeal process; prohibits endless "additional info" requests from cities.</div>
+                <div class="detail-value"><strong>Why it's alive:</strong> Passed House 78-20 with bipartisan support; cleared Senate Local Gov; on Senate floor for 2nd reading.</div>
+                <div class="detail-value"><strong>OneRedmond position:</strong> SUPPORT — Melissa Stuart's bill; directly addresses Redmond's lengthy permit timelines.</div>
+                <div class="detail-value"><strong>Outlook:</strong> Near-certain passage. Expected floor vote Wed/Thu.</div>
+            </div>
+        </div>
+
+        <div class="bill">
+            <div class="bill-header" onclick="toggleBill(this)">
+                <div class="bill-title-section">
+                    <div class="bill-number">SB 6347</div><span class="onerdm-badge">OneRedmond Active</span>
+                    <div class="bill-name">Estate Tax Reinstatement — 75% Passage</div>
+                    <div class="bill-topic">Tax Relief</div>
+                </div>
+                <div class="bill-status">
+                    <span class="status-badge status-alive">House Rules</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+            </div>
+            <div class="bill-content">
+                <div class="detail-value"><strong>What it does:</strong> Rolls back 2025 estate tax rate increase from 35% to 20% for deaths on/after July 1, 2026.</div>
+                <div class="detail-value"><strong>Why it's alive:</strong> Passed Senate; advanced from House Finance to Rules Committee with bipartisan support.</div>
+                <div class="detail-value"><strong>OneRedmond position:</strong> SUPPORT — provides estate planning relief for high-net-worth families.</div>
+                <div class="detail-value"><strong>Outlook:</strong> Likely pass. Should get floor vote this week.</div>
+            </div>
+        </div>
+
+        <div class="bill">
+            <div class="bill-header" onclick="toggleBill(this)">
+                <div class="bill-title-section">
+                    <div class="bill-number">SB 6026</div><span class="onerdm-badge">OneRedmond Active</span>
+                    <div class="bill-name">Residential Development — 68% Passage</div>
+                    <div class="bill-topic">Housing / Zoning</div>
+                </div>
+                <div class="bill-status">
+                    <span class="status-badge status-alive">House Rules</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+            </div>
+            <div class="bill-content">
+                <div class="detail-value"><strong>What it does:</strong> Removes ground-floor retail mandates for residential development in commercial zones; amended to 40% cap.</div>
+                <div class="detail-value"><strong>Why it's alive:</strong> Passed Senate; passed House Local Gov (amended); advanced from Appropriations to Rules Mar 4.</div>
+                <div class="detail-value"><strong>OneRedmond position:</strong> MONITOR — increases housing density but Redmond raised walkability concerns.</div>
+                <div class="detail-value"><strong>Outlook:</strong> Moderate. Housing is priority but competing for floor time.</div>
+            </div>
+        </div>
+
+        <div class="bill">
+            <div class="bill-header" onclick="toggleBill(this)">
+                <div class="bill-title-section">
+                    <div class="bill-number">HB 2257</div>
+                    <div class="bill-name">DOR Tax Administration</div>
+                    <div class="bill-topic">Tax / Administration</div>
+                </div>
+                <div class="bill-status">
+                    <span class="status-badge status-alive">House Rules</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+            </div>
+            <div class="bill-content">
+                <div class="detail-value"><strong>What it does:</strong> Updates Department of Revenue tax administration procedures and compliance processes.</div>
+                <div class="detail-value"><strong>Why it's alive:</strong> Cleared fiscal committee; in House Rules awaiting scheduling.</div>
+                <div class="detail-value"><strong>OneRedmond position:</strong> NEUTRAL — administrative updates with moderate business impact.</div>
+            </div>
+        </div>
+
+        <div class="bill">
+            <div class="bill-header" onclick="toggleBill(this)">
+                <div class="bill-title-section">
+                    <div class="bill-number">SB 6113</div>
+                    <div class="bill-name">DOR Tax Administration (Senate)</div>
+                    <div class="bill-topic">Tax / Administration</div>
+                </div>
+                <div class="bill-status">
+                    <span class="status-badge status-alive">Passed Senate</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+            </div>
+            <div class="bill-content">
+                <div class="detail-value"><strong>What it does:</strong> Senate companion to HB 2257; updates DOR procedures.</div>
+                <div class="detail-value"><strong>Why it's alive:</strong> Already passed Senate; awaiting House action.</div>
+                <div class="detail-value"><strong>Outlook:</strong> Likely to pass if scheduled; companion bills typically move together.</div>
+            </div>
+        </div>
+
+        <div class="bill">
+            <div class="bill-header" onclick="toggleBill(this)">
+                <div class="bill-title-section">
+                    <div class="bill-number">HB 2278</div><span class="onerdm-badge">OneRedmond Active</span>
+                    <div class="bill-name">Tourism Promotion Areas — AT RISK</div>
+                    <div class="bill-topic">Tourism / Economic Dev</div>
+                </div>
+                <div class="bill-status">
+                    <span class="status-badge status-risk">House Rules (since Feb 5)</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+            </div>
+            <div class="bill-content">
+                <div class="detail-value"><strong>What it does:</strong> Removes sunset clause on tourism promotion fees (extends beyond July 2027).</div>
+                <div class="detail-value"><strong>Why it's alive:</strong> Passed Finance; in Rules but low priority.</div>
+                <div class="detail-value"><strong>Risk:</strong> Been in Rules since Feb 5; may not get scheduled for floor vote.</div>
+                <div class="detail-value"><strong>Outlook:</strong> 58% passage — competing with higher-priority bills for limited floor time.</div>
+            </div>
+        </div>
+
+        <div class="bill">
+            <div class="bill-header" onclick="toggleBill(this)">
+                <div class="bill-title-section">
+                    <div class="bill-number">HB 2325</div><span class="onerdm-badge">OneRedmond Active</span>
+                    <div class="bill-name">Tourism Assessment Program</div>
+                    <div class="bill-topic">Tourism / Funding</div>
+                </div>
+                <div class="bill-status">
+                    <span class="status-badge status-alive">House Floor</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+            </div>
+            <div class="bill-content">
+                <div class="detail-value"><strong>What it does:</strong> Establishes self-supported assessment program to fund statewide tourism promotion.</div>
+                <div class="detail-value"><strong>Why it's alive:</strong> On House floor for 2nd reading.</div>
+                <div class="detail-value"><strong>Outlook:</strong> 55% passage — low priority, may stall without leadership push.</div>
+            </div>
+        </div>
+
+        <div class="bill">
+            <div class="bill-header" onclick="toggleBill(this)">
+                <div class="bill-title-section">
+                    <div class="bill-number">SB 6061</div>
+                    <div class="bill-name">Tourism Assessment (Senate)</div>
+                    <div class="bill-topic">Tourism / Funding</div>
+                </div>
+                <div class="bill-status">
+                    <span class="status-badge status-alive">Senate Floor</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+            </div>
+            <div class="bill-content">
+                <div class="detail-value"><strong>What it does:</strong> Senate companion to HB 2325; tourism assessment for statewide promotion.</div>
+                <div class="detail-value"><strong>Why it's alive:</strong> On Senate floor for 2nd reading.</div>
+                <div class="detail-value"><strong>Outlook:</strong> Low priority; may not get floor time.</div>
+            </div>
+        </div>
+
+        <div class="bill">
+            <div class="bill-header" onclick="toggleBill(this)">
+                <div class="bill-title-section">
+                    <div class="bill-number">HB 2489</div>
+                    <div class="bill-name">Public Space Standards</div>
+                    <div class="bill-topic">Local Government</div>
+                </div>
+                <div class="bill-status">
+                    <span class="status-badge status-alive">House Rules</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+            </div>
+            <div class="bill-content">
+                <div class="detail-value"><strong>What it does:</strong> Establishes statewide standards for local enforcement of public space laws regarding life-sustaining activities.</div>
+                <div class="detail-value"><strong>Why it's alive:</strong> Passed policy committee; in House Rules.</div>
+                <div class="detail-value"><strong>Outlook:</strong> Uncertain — moderate priority, depends on floor scheduling.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">All 14 Dead Bills Explained</div>
+    
+    <p style="margin-bottom: 20px; color: #666;">These bills stalled in fiscal committees by the March 2 cutoff and are dead for the 2026 session:</p>
+
+    <div style="margin: 20px 0;">
+        <div class="bill">
+            <div class="bill-header" onclick="toggleBill(this)">
+                <div class="bill-title-section">
+                    <div class="bill-number" style="background: #721c24;">DEAD</div>
+                    <div class="bill-name">SB 6173 — Apple Health Employer Assessment</div><span class="onerdm-badge">OneRedmond Active</span>
+                    <div class="bill-topic">Healthcare / Tax</div>
+                </div>
+                <div class="bill-status">
+                    <span class="status-badge status-dead">No Action Feb 19</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+            </div>
+            <div class="bill-content">
+                <div class="detail-value">Would have assessed employers for Apple Health funding. Stuck in Senate Ways & Means; no action taken by cutoff. Critical priority for healthcare advocates but failed to move.</div>
+            </div>
+        </div>
+
+        <div class="bill">
+            <div class="bill-header" onclick="toggleBill(this)">
+                <div class="bill-title-section">
+                    <div class="bill-number" style="background: #721c24;">DEAD</div>
+                    <div class="bill-name">SB 6229 — Small Business Stock Taxation (QSBS)</div>
+                    <div class="bill-topic">Tax / Startups</div>
+                </div>
+                <div class="bill-status">
+                    <span class="status-badge status-dead">No Action Feb 19</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+            </div>
+            <div class="bill-content">
+                <div class="detail-value">Would have modified taxation of qualified small business stock. Important for startup ecosystem and VC community. Stuck in Senate Ways & Means with SB 6173.</div>
+            </div>
+        </div>
+
+        <div class="bill">
+            <div class="bill-header" onclick="toggleBill(this)">
+                <div class="bill-title-section">
+                    <div class="bill-number" style="background: #721c24;">DEAD</div>
+                    <div class="bill-name">HB 2100 — Payroll Tax (Well Washington Fund)</div>
+                    <div class="bill-topic">Tax / Revenue</div>
+                </div>
+                <div class="bill-status">
+                    <span class="status-badge status-dead">Stalled since Jan 22</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+            </div>
+            <div class="bill-content">
+                <div class="detail-value">Would have imposed excise tax on large employer payroll expenses to fund Well Washington Fund. Alternative revenue source to Millionaires Tax; stalled in House Finance with no action.</div>
+            </div>
+        </div>
+
+        <div class="bill">
+            <div class="bill-header" onclick="toggleBill(this)">
+                <div class="bill-title-section">
+                    <div class="bill-number" style="background: #721c24;">DEAD</div>
+                    <div class="bill-name">SB 6093 — Payroll Tax (Senate Version)</div>
+                    <div class="bill-topic">Tax / Revenue</div>
+                </div>
+                <div class="bill-status">
+                    <span class="status-badge status-dead">Stalled since Jan 13</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+            </div>
+            <div class="bill-content">
+                <div class="detail-value">Senate companion to HB 2100. Stuck in Senate Ways & Means since mid-January; no movement by fiscal cutoff.</div>
+            </div>
+        </div>
+
+        <div class="bill">
+            <div class="bill-header" onclick="toggleBill(this)">
+                <div class="bill-title-section">
+                    <div class="bill-number" style="background: #721c24;">DEAD</div>
+                    <div class="bill-name">HB 2615 — Tax Amnesty Program</div>
+                    <div class="bill-topic">Tax / Compliance</div>
+                </div>
+                <div class="bill-status">
+                    <span class="status-badge status-dead">No Action Feb 6</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+            </div>
+            <div class="bill-content">
+                <div class="detail-value">Would have created temporary tax amnesty period for voluntary disclosure. Opportunity for compliance issues; stalled in House Appropriations.</div>
+            </div>
+        </div>
+
+        <div class="bill">
+            <div class="bill-header" onclick="toggleBill(this)">
+                <div class="bill-title-section">
+                    <div class="bill-number" style="background: #721c24;">DEAD</div>
+                    <div class="bill-name">HB 2270 — Lodging Tax Flexibility</div>
+                    <div class="bill-topic">Tax / Tourism</div>
+                </div>
+                <div class="bill-status">
+                    <span class="status-badge status-dead">Stalled since Jan 12</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+            </div>
+            <div class="bill-content">
+                <div class="detail-value">Would have provided flexibility for lodging tax revenues in small cities. Relevant for hospitality; stalled in House Finance.</div>
+            </div>
+        </div>
+
+        <div class="bill">
+            <div class="bill-header" onclick="toggleBill(this)">
+                <div class="bill-title-section">
+                    <div class="bill-number" style="background: #721c24;">DEAD</div>
+                    <div class="bill-name">HB 2736 — Estate Tax Rates</div>
+                    <div class="bill-topic">Tax</div>
+                </div>
+                <div class="bill-status">
+                    <span class="status-badge status-dead">No Action Feb 20</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+            </div>
+            <div class="bill-content">
+                <div class="detail-value">Different approach to estate tax than SB 6347; stalled in House Finance. SB 6347 is the alive version.</div>
+            </div>
+        </div>
+
+        <div class="bill">
+            <div class="bill-header" onclick="toggleBill(this)">
+                <div class="bill-title-section">
+                    <div class="bill-number" style="background: #721c24;">DEAD</div>
+                    <div class="bill-name">HB 2730 — Aerospace Tax Preferences</div>
+                    <div class="bill-topic">Economic Development</div>
+                </div>
+                <div class="bill-status">
+                    <span class="status-badge status-dead">No Action after Feb 20 Hearing</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+            </div>
+            <div class="bill-content">
+                <div class="detail-value">Would have clarified effectiveness metrics for aerospace tax incentives. Public hearing held Feb 20 but no executive action taken; missed cutoff.</div>
+            </div>
+        </div>
+
+        <div class="bill">
+            <div class="bill-header" onclick="toggleBill(this)">
+                <div class="bill-title-section">
+                    <div class="bill-number" style="background: #721c24;">DEAD</div>
+                    <div class="bill-name">HB 1833 — AI Grant Program (Spark Act)</div>
+                    <div class="bill-topic">Technology / Innovation</div>
+                </div>
+                <div class="bill-status">
+                    <span class="status-badge status-dead">Hearing Mar 25 (After Cutoff)</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+            </div>
+            <div class="bill-content">
+                <div class="detail-value">Would have established AI grant program for innovation projects. Scheduled hearing March 25 — after March 2 fiscal cutoff; dead by timing.</div>
+            </div>
+        </div>
+
+        <div class="bill">
+            <div class="bill-header" onclick="toggleBill(this)">
+                <div class="bill-title-section">
+                    <div class="bill-number" style="background: #721c24;">DEAD</div>
+                    <div class="bill-name">HB 2225 — AI Chatbot Regulation</div>
+                    <div class="bill-topic">Technology / Consumer Protection</div>
+                </div>
+                <div class="bill-status">
+                    <span class="status-badge status-dead">No Action since Jan 14</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+            </div>
+            <div class="bill-content">
+                <div class="detail-value">Would have regulated AI companion chatbots with mental health safeguards. Stuck in Technology Committee since mid-January.</div>
+            </div>
+        </div>
+
+        <div class="bill">
+            <div class="bill-header" onclick="toggleBill(this)">
+                <div class="bill-title-section">
+                    <div class="bill-number" style="background: #721c24;">DEAD</div>
+                    <div class="bill-name">HB 2446 — Quantum Technology Development</div>
+                    <div class="bill-topic">Technology / Economic Dev</div>
+                </div>
+                <div class="bill-status">
+                    <span class="status-badge status-dead">No Action since Jan 20</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+            </div>
+            <div class="bill-content">
+                <div class="detail-value">Would have developed quantum tech into state's economic strategy. Emerging tech opportunity; stalled in Appropriations.</div>
+            </div>
+        </div>
+
+        <div class="bill">
+            <div class="bill-header" onclick="toggleBill(this)">
+                <div class="bill-title-section">
+                    <div class="bill-number" style="background: #721c24;">DEAD</div>
+                    <div class="bill-name">HB 2480 — Residential Development</div><span class="onerdm-badge">OneRedmond Active</span>
+                    <div class="bill-topic">Housing</div>
+                </div>
+                <div class="bill-status">
+                    <span class="status-badge status-dead">No Action since Feb 3</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+            </div>
+            <div class="bill-content">
+                <div class="detail-value">Separate from SB 6026; different approach to residential development. Stalled in Local Government Committee.</div>
+            </div>
+        </div>
+
+        <div class="bill">
+            <div class="bill-header" onclick="toggleBill(this)">
+                <div class="bill-title-section">
+                    <div class="bill-number" style="background: #721c24;">DEAD</div>
+                    <div class="bill-name">HB 1319 — Wealth Tax</div>
+                    <div class="bill-topic">Tax</div>
+                </div>
+                <div class="bill-status">
+                    <span class="status-badge status-dead">No Action since Jan 15</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+            </div>
+            <div class="bill-content">
+                <div class="detail-value">Would have created wealth tax on financial assets. More aggressive than SB 6346; stalled in Finance since January.</div>
+            </div>
+        </div>
+
+        <div class="bill">
+            <div class="bill-header" onclick="toggleBill(this)">
+                <div class="bill-title-section">
+                    <div class="bill-number" style="background: #721c24;">DEAD</div>
+                    <div class="bill-name">SB 6209 — Financial Aid for Private Institutions</div>
+                    <div class="bill-topic">Education</div>
+                </div>
+                <div class="bill-status">
+                    <span class="status-badge status-dead">No Action since Jan 26</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+            </div>
+            <div class="bill-content">
+                <div class="detail-value">Would have expanded financial aid to private college students. Stuck in Senate Ways & Means; education funding bill that didn't advance.</div>
+            </div>
+        </div>
+    </div>
+
+    <div style="background: #f0f7ff; border-left: 4px solid #3498db; padding: 15px; margin: 20px 0; border-radius: 4px;">
+        <div style="font-weight: 600; color: #1a5276; margin-bottom: 10px; font-size: 14px;">📊 Understanding the Numbers</div>
+        <div style="font-size: 13px; line-height: 1.6; color: #444;">
+            <p style="margin-bottom: 8px;"><strong>24 Tracked Bills:</strong> OneRedmond is monitoring 24 bills this session that affect Redmond businesses, taxes, housing, and economic development.</p>
+            
+            <p style="margin-bottom: 8px;"><strong>10 Alive (42%):</strong> These bills cleared the March 2 fiscal committee cutoff and can still pass. They passed fiscal committees and moved to Rules or Floor.</p>
+            
+            <p style="margin-bottom: 8px;"><strong>14 Dead (58%):</strong> These bills stalled in fiscal committees by the March 2 deadline. They're dead for this session but could return in 2027.</p>
+            
+            <p><strong>6-8 Expected Passage:</strong> Based on current position and probability forecasts, we expect 6-8 of the 10 alive bills to actually pass both chambers and reach the Governor's desk by Thursday's deadline.</p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>For real-time bill tracking and probability forecasts, visit the <a href="https://hoshi-political.pages.dev" target="_blank">Hoshi Political Dashboard</a>.</p>
+        <p>Questions? Contact the OneRedmond Government Affairs team.</p>
+        <p style="margin-top: 20px; font-size: 12px; color: #999;">© 2026 OneRedmond. All rights reserved.</p>
+    </div>
+
+    <script>
+        function toggleBill(header) {
+            const content = header.nextElementSibling;
+            const icon = header.querySelector('.toggle-icon');
+            
+            if (content.classList.contains('active')) {
+                content.classList.remove('active');
+                icon.textContent = '+';
+            } else {
+                content.classList.add('active');
+                icon.textContent = '−';
+            }
+        }
+    </script>
+</body>
+</html>
