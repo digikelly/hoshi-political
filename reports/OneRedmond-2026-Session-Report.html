@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OneRedmond 2026 Legislative Session Report</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: #fff;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 3px solid #1a5276;
+        }
+        .header h1 {
+            color: #1a5276;
+            font-size: 32px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        .header .subtitle {
+            color: #666;
+            font-size: 20px;
+            font-weight: 400;
+        }
+        .header .date {
+            color: #999;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .session-summary {
+            background: linear-gradient(135deg, #1a5276, #2980b9);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        .session-summary h2 {
+            margin: 0 0 20px 0;
+            font-size: 24px;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .stat-box {
+            background: rgba(255,255,255,0.15);
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .stat-number {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        .stat-label {
+            font-size: 13px;
+            opacity: 0.9;
+        }
+        .section-title {
+            color: #1a5276;
+            font-size: 24px;
+            font-weight: 700;
+            margin: 40px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        .bill {
+            margin-bottom: 30px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .bill-header {
+            background: #f8f9fa;
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .bill-header:hover {
+            background: #e8f4f8;
+        }
+        .bill-number {
+            display: inline-block;
+            background: #1a5276;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .bill-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            margin: 8px 0 5px 0;
+        }
+        .bill-topic {
+            font-size: 13px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .status-passed {
+            background: rgba(39, 174, 96, 0.2);
+            color: #27ae60;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 13px;
+        }
+        .status-failed {
+            background: rgba(231, 76, 60, 0.2);
+            color: #e74c3c;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 13px;
+        }
+        .onerdm-badge {
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            color: white;
+            font-size: 10px;
+            padding: 3px 8px;
+            border-radius: 4px;
+            margin-left: 8px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .bill-content {
+            padding: 20px;
+            display: none;
+        }
+        .bill-content.active {
+            display: block;
+        }
+        .detail-row {
+            margin-bottom: 15px;
+        }
+        .detail-label {
+            font-weight: 600;
+            color: #1a5276;
+            font-size: 13px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+        .detail-value {
+            color: #444;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        /* KPI Table Styles */
+        .kpi-table-container {
+            margin: 20px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            border: 2px solid #1a5276;
+        }
+        .kpi-table-container.support {
+            border-color: #27ae60;
+        }
+        .kpi-table-container.oppose {
+            border-color: #e74c3c;
+        }
+        .kpi-table-container.monitor {
+            border-color: #f39c12;
+        }
+        .kpi-title {
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .kpi-table-container.support .kpi-title { color: #27ae60; }
+        .kpi-table-container.oppose .kpi-title { color: #e74c3c; }
+        .kpi-table-container.monitor .kpi-title { color: #d97706; }
+        
+        .kpi-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+        }
+        .kpi-table td {
+            padding: 8px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .kpi-table td:first-child {
+            font-weight: 600;
+            color: #333;
+            width: 40%;
+        }
+        .kpi-table td:last-child {
+            color: #27ae60;
+        }
+        .kpi-table a {
+            color: #1a5276;
+            text-decoration: underline;
+            font-weight: 600;
+        }
+        .toggle-icon {
+            font-size: 20px;
+            color: #1a5276;
+            margin-left: 10px;
+        }
+        @media print {
+            body { padding: 20px; }
+            .bill-content { display: block !important; }
+            .bill-header { cursor: default; }
+            .toggle-icon { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>OneRedmond</h1>
+        <div class="subtitle">2026 Legislative Session Report</div>
+        <div class="date">March 13, 2026 | Post-Sine Die Analysis</div>
+    </div>
+
+    <div class="session-summary">
+        <h2>📊 2026 Session at a Glance</h2>
+        <div style="font-size: 14px; opacity: 0.9; margin-bottom: 10px;">
+            The Washington State Legislature concluded its 2026 session on March 12, 2026. 
+            OneRedmond tracked 24 bills and actively advocated on 4 priority measures.
+        </div>
+        <div class="stats-grid">
+            <div class="stat-box">
+                <div class="stat-number">10</div>
+                <div class="stat-label">Bills Passed<br>to Governor</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">14</div>
+                <div class="stat-label">Bills Failed<br>in Session</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">4</div>
+                <div class="stat-label">OneRedmond<br>Active Bills</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">3/4</div>
+                <div class="stat-label">Success Rate<br>on Priorities</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">✅ Bills That Passed (OneRedmond Active)</div>
+
+    <!-- HB 2418 -->
+    <div class="bill">
+        <div class="bill-header" onclick="toggleBill(this)">
+            <div>
+                <div>
+                    <span class="bill-number">HB 2418</span>
+                    <span class="onerdm-badge">OneRedmond Active</span>
+                    <span class="status-passed">✓ PASSED</span>
+                </div>
+                <div class="bill-name">Permit Review Process Reform</div>
+                <div class="bill-topic">Housing / Permitting</div>
+            </div>
+            <span class="toggle-icon">+</span>
+        </div>
+        <div class="bill-content">
+            <div class="detail-row">
+                <div class="detail-label">Description</div>
+                <div class="detail-value">Establishes 120-day shot clocks for permit approvals, creates appeal process for delays, and prohibits cities from requesting endless "additional information." This bill directly addresses Redmond's development timeline challenges.</div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label">Final Vote</div>
+                <div class="detail-value"><strong>House:</strong> 78-20 | <strong>Senate:</strong> 38-11 | <strong>Delivered to Governor:</strong> March 13, 2026</div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label">OneRedmond Position</div>
+                <div class="detail-value"><strong>SUPPORT</strong> — Redmond has some of the longest permit timelines in King County. This bill forces faster processing or exposes the city to legal challenges. This was a top priority for Redmond business community.</div>
+            </div>
+
+            <!-- KPI Table -->
+            <div class="kpi-table-container support">
+                <div class="kpi-title">📊 OneRedmond Engagement Activity</div>
+                <table class="kpi-table">
+                    <tr><td>Chair Contacted</td><td>☑️ Rep. Mari Leavitt (House), Sen. Marko Liias (Senate — IN-PERSON)</td></tr>
+                    <tr><td>Vice Chair Contacted</td><td>☑️ Rep. Alex Ramel, Sen. Jesse Salomon</td></tr>
+                    <tr><td>Ranking Member Contacted</td><td>☑️ Rep. Greg Gilday, Sen. Jeff Holy</td></tr>
+                    <tr><td>Full Committee</td><td>☑️ All 27 members contacted via email/phone</td></tr>
+                    <tr><td>Leadership Letter</td><td>☑️ Speaker Jinkins, Leaders Fitzgibbon/Pedersen/Braun</td></tr>
+                    <tr><td>Letter Sent</td><td><a href="#">📄 SUPPORT Letter (PDF) — 47 business signers</a></td></tr>
+                    <tr><td>Testimony</td><td>☑️ Jan 28 Senate Local Gov hearing</td></tr>
+                    <tr><td>Action Alerts</td><td>3 sent to 312 members (Feb 5, 18, Mar 4)</td></tr>
+                </table>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Key Meetings & Actions</div>
+                <div class="detail-value">
+                    • <strong>Feb 12:</strong> Met with Rep. Vandana Slatter (D-48) — discussed permitting reforms<br>
+                    • <strong>Jan 28:</strong> Testified in support at Senate Local Government Committee<br>
+                    • <strong>Feb 24:</strong> Coalition letter to Senate Leadership with 47 business signers<br>
+                    • Coordinated with Housing Development Consortium, Master Builders Association, AWB
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SB 6346 -->
+    <div class="bill">
+        <div class="bill-header" onclick="toggleBill(this)">
+            <div>
+                <div>
+                    <span class="bill-number">SB 6346</span>
+                    <span class="onerdm-badge">OneRedmond Active</span>
+                    <span class="status-passed" style="background: rgba(231, 76, 60, 0.2); color: #e74c3c;">⚠ PASSED (Opposed)</span>
+                </div>
+                <div class="bill-name">Millionaires Tax (Capital Gains)</div>
+                <div class="bill-topic">Tax / Revenue</div>
+            </div>
+            <span class="toggle-icon">+</span>
+        </div>
+        <div class="bill-content">
+            <div class="detail-row">
+                <div class="detail-label">Description</div>
+                <div class="detail-value">Creates 1% tax on capital gains over $250,000 ($500,000 joint). Expected to raise $500-800 million annually for education and early learning. Democrats' top revenue priority.</div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label">Final Vote</div>
+                <div class="detail-value"><strong>Senate:</strong> 27-22 | <strong>House:</strong> 52-46 | <strong>Delivered to Governor:</strong> March 13, 2026</div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label">OneRedmond Position</div>
+                <div class="detail-value"><strong>OPPOSE</strong> — Affects high-net-worth business owners, investors, and creates estate planning complexity. Litigation risk means budget instability even if it passes. Expected legal challenge.</div>
+            </div>
+
+            <!-- KPI Table -->
+            <div class="kpi-table-container oppose">
+                <div class="kpi-title">📊 OneRedmond Engagement Activity</div>
+                <table class="kpi-table">
+                    <tr><td>Chair Contacted</td><td>☑️ Sen. June Robinson (IN-PERSON Feb 18), Rep. Amy Walen</td></tr>
+                    <tr><td>Vice Chair Contacted</td><td>☑️ Sen. Christine Rolfes, Rep. Monica Stonier</td></tr>
+                    <tr><td>Ranking Member Contacted</td><td>☑️ Sen. Lynda Wilson, Rep. Peter Abbarno (coordinated amendments)</td></tr>
+                    <tr><td>Full Committee</td><td>☑️ All Ways & Means and Finance members contacted</td></tr>
+                    <tr><td>Leadership Letter</td><td>☑️ Met with Pedersen & Braun; Letters to Jinkins & Fitzgibbon</td></tr>
+                    <tr><td>Letter Sent</td><td><a href="#" style="color: #e74c3c;">📄 OPPOSE Letter (PDF) — 47 business signers</a></td></tr>
+                    <tr><td>Testimony</td><td>☑️ Feb 19 Senate W&M, Feb 26 House Finance</td></tr>
+                    <tr><td>Action Alerts</td><td>4 sent to 312 members (Feb 8, 15, 22, 27)</td></tr>
+                </table>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Key Meetings & Actions</div>
+                <div class="detail-value">
+                    • <strong>Feb 18:</strong> In-person meeting with Sen. June Robinson (W&M Chair)<br>
+                    • <strong>Feb 19:</strong> Testified in opposition at Senate W&M executive session<br>
+                    • <strong>Feb 22:</strong> Opposition letter to House Finance — 47 business leaders<br>
+                    • <strong>Feb 26:</strong> Board member testified on economic impact<br>
+                    • Coordinated with WA State Chamber, AWB, TechNet on unified opposition
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SB 6347 -->
+    <div class="bill">
+        <div class="bill-header" onclick="toggleBill(this)">
+            <div>
+                <div>
+                    <span class="bill-number">SB 6347</span>
+                    <span class="onerdm-badge">OneRedmond Active</span>
+                    <span class="status-passed">✓ PASSED</span>
+                </div>
+                <div class="bill-name">Estate Tax Reinstatement</div>
+                <div class="bill-topic">Tax</div>
+            </div>
+            <span class="toggle-icon">+</span>
+        </div>
+        <div class="bill-content">
+            <div class="detail-row">
+                <div class="detail-label">Description</div>
+                <div class="detail-value">Rolls back 2025 estate tax rate increase from 35% to 20%. Affects estates of decedents dying on or after July 1, 2026.</div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label">Final Vote</div>
+                <div class="detail-value"><strong>Senate:</strong> 36-13 | <strong>House:</strong> 58-40 | <strong>Delivered to Governor:</strong> March 13, 2026</div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label">OneRedmond Position</div>
+                <div class="detail-value"><strong>SUPPORT</strong> — Provides relief for high-net-worth estate planning. Bipartisan backing ensured passage with Rep. Abbarno leading Republican support.</div>
+            </div>
+
+            <!-- KPI Table -->
+            <div class="kpi-table-container support">
+                <div class="kpi-title">📊 OneRedmond Engagement Activity</div>
+                <table class="kpi-table">
+                    <tr><td>Chair Contacted</td><td>☑️ Sen. June Robinson, Rep. Amy Walen (confirmed support)</td></tr>
+                    <tr><td>Vice Chair Contacted</td><td>☑️ Sen. Christine Rolfes, Rep. Monica Stonier</td></tr>
+                    <tr><td>Ranking Member Contacted</td><td>☑️ Sen. Lynda Wilson, Rep. Peter Abbarno (led GOP support)</td></tr>
+                    <tr><td>Full Committee</td><td>☑️ Key members contacted (bipartisan bill)</td></tr>
+                    <tr><td>Leadership Letter</td><td>— Not required (bipartisan support)</td></tr>
+                    <tr><td>Letter Sent</td><td><a href="#">📄 SUPPORT Letter (PDF)</a></td></tr>
+                    <tr><td>Testimony</td><td>— Not required (bipartisan support)</td></tr>
+                    <tr><td>Action Alerts</td><td>1 sent to 312 members (Feb 20)</td></tr>
+                </table>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Key Actions</div>
+                <div class="detail-value">
+                    • Support letter to House Finance (Feb 24)<br>
+                    • Joined estate planning attorneys coalition letter<br>
+                    • Coordinated with WSCPA and estate planning professionals<br>
+                    • Technical comments on implementation timeline to Dept. of Revenue
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SB 6026 -->
+    <div class="bill">
+        <div class="bill-header" onclick="toggleBill(this)">
+            <div>
+                <div>
+                    <span class="bill-number">SB 6026</span>
+                    <span class="onerdm-badge">OneRedmond Active</span>
+                    <span class="status-passed">✓ PASSED</span>
+                </div>
+                <div class="bill-name">Residential Development in Commercial Zones</div>
+                <div class="bill-topic">Housing / Zoning</div>
+            </div>
+            <span class="toggle-icon">+</span>
+        </div>
+        <div class="bill-content">
+            <div class="detail-row">
+                <div class="detail-label">Description</div>
+                <div class="detail-value">Removes ground-floor retail mandates for residential development in commercial zones. Amended version caps retail requirements at 40% of eligible areas with height incentives up to 85 feet.</div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label">Final Vote</div>
+                <div class="detail-value"><strong>Senate:</strong> 29-20 | <strong>House:</strong> 55-43 (amended) | <strong>Delivered to Governor:</strong> March 13, 2026</div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label">OneRedmond Position</div>
+                <div class="detail-value"><strong>MONITOR WITH AMENDMENTS</strong> — Supported increased housing density but raised walkability concerns. Successfully secured 40% retail cap amendment which was ACCEPTED in final version.</div>
+            </div>
+
+            <!-- KPI Table -->
+            <div class="kpi-table-container monitor">
+                <div class="kpi-title">📊 OneRedmond Engagement Activity</div>
+                <table class="kpi-table">
+                    <tr><td>Chair Contacted</td><td>☑️ Sen. Marko Liias (IN-PERSON Feb 15), Rep. Mari Leavitt, Rep. Timm Ormsby</td></tr>
+                    <tr><td>Vice Chair Contacted</td><td>☑️ Sen. Jesse Salomon, Rep. Alex Ramel, Rep. Nicole Macri</td></tr>
+                    <tr><td>Ranking Member Contacted</td><td>☑️ Sen. Jeff Holy, Rep. Greg Gilday, Rep. Chris Corry</td></tr>
+                    <tr><td>Full Committee</td><td>☑️ 40% retail cap amendment REQUESTED & <strong>ACCEPTED</strong></td></tr>
+                    <tr><td>Leadership Letter</td><td>— Not required (amendment-focused)</td></tr>
+                    <tr><td>Letter Sent</td><td><a href="#" style="color: #d97706;">📄 Amendment Request (PDF) — 40% cap ACCEPTED</a></td></tr>
+                    <tr><td>Testimony</td><td>☑️ Feb 10 Senate Local Gov (walkability concerns)</td></tr>
+                    <tr><td>Action Alerts</td><td>0 sent — direct coordination with CM Stuart</td></tr>
+                </table>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Key Meetings & Actions</div>
+                <div class="detail-value">
+                    • <strong>Feb 15:</strong> In-person meeting with Sen. Marko Liias — discussed retail corridor concerns<br>
+                    • <strong>Feb 18:</strong> Coordination meeting with CM Melissa Stuart — aligned on 40% cap<br>
+                    • <strong>Feb 26:</strong> Amendment letter requesting 40% retail cap<br>
+                    • <strong>RESULT:</strong> 40% retail cap amendment ACCEPTED in final version<br>
+                    • Balanced position between housing advocates and municipal concerns
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">❌ Bills That Failed (OneRedmond Tracked)</div>
+
+    <div class="bill">
+        <div class="bill-header" onclick="toggleBill(this)">
+            <div>
+                <div>
+                    <span class="bill-number" style="background: #e74c3c;">SB 6173</span>
+                    <span class="status-failed">✗ FAILED</span>
+                </div>
+                <div class="bill-name">Apple Health Employer Assessment</div>
+                <div class="bill-topic">Tax / Healthcare</div>
+            </div>
+            <span class="toggle-icon">+</span>
+        </div>
+        <div class="bill-content">
+            <div class="detail-row">
+                <div class="detail-label">Description</div>
+                <div class="detail-value">Would have created an Apple Health employer assessment targeting employers with over 100 employees. Major cost impact for larger employers.</div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label">Status</div>
+                <div class="detail-value"><strong>DEAD</strong> — No action taken in Senate Ways & Means by March 2 fiscal cutoff. Effectively stalled for this session.</div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label">OneRedmond Position</div>
+                <div class="detail-value"><strong>OPPOSED</strong> — Would have imposed significant new costs on Redmond's large employers. Relief that bill died without reaching floor.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bill">
+        <div class="bill-header" onclick="toggleBill(this)">
+            <div>
+                <div>
+                    <span class="bill-number" style="background: #e74c3c;">SB 6229</span>
+                    <span class="status-failed">✗ FAILED</span>
+                </div>
+                <div class="bill-name">Small Business Stock Taxation (QSBS)</div>
+                <div class="bill-topic">Tax / Economic Development</div>
+            </div>
+            <span class="toggle-icon">+</span>
+        </div>
+        <div class="bill-content">
+            <div class="detail-row">
+                <div class="detail-label">Description</div>
+                <div class="detail-value">Addressed taxation of long-term capital gains from Section 1202 small business stock, affecting startup investors and founders.</div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label">Status</div>
+                <div class="detail-value"><strong>DEAD</strong> — No action at Feb 19 executive session. Missed fiscal committee cutoff.</div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label">OneRedmond Position</div>
+                <div class="detail-value"><strong>MONITORED</strong> — Changes to QSBS taxation would affect investment decisions. Startup community opposition contributed to bill stalling.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bill">
+        <div class="bill-header" onclick="toggleBill(this)">
+            <div>
+                <div>
+                    <span class="bill-number" style="background: #e74c3c;">HB 2730</span>
+                    <span class="status-failed">✗ FAILED</span>
+                </div>
+                <div class="bill-name">Aerospace Tax Preferences</div>
+                <div class="bill-topic">Economic Development</div>
+            </div>
+            <span class="toggle-icon">+</span>
+        </div>
+        <div class="bill-content">
+            <div class="detail-row">
+                <div class="detail-label">Description</div>
+                <div class="detail-value">Would have clarified effectiveness metrics for aerospace tax incentives regarding job creation and retention.</div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label">Status</div>
+                <div class="detail-value"><strong>DEAD</strong> — Public hearing held Feb 20, but no executive action taken. Missed March 2 fiscal cutoff.</div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label">OneRedmond Position</div>
+                <div class="detail-value"><strong>MONITORED</strong> — Important for aerospace/space sector. Disappointed bill failed to advance despite industry support.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">📈 OneRedmond Advocacy Summary</div>
+
+    <div style="background: #f8f9fa; padding: 25px; border-radius: 8px; margin-bottom: 20px;">
+        <div style="font-size: 16px; font-weight: 700; color: #1a5276; margin-bottom: 15px;">Session Engagement Metrics</div>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+            <div style="background: white; padding: 15px; border-radius: 6px; text-align: center;">
+                <div style="font-size: 28px; font-weight: 700; color: #1a5276;">12+</div>
+                <div style="font-size: 12px; color: #666;">Legislator Meetings</div>
+            </div>
+            <div style="background: white; padding: 15px; border-radius: 6px; text-align: center;">
+                <div style="font-size: 28px; font-weight: 700; color: #1a5276;">6</div>
+                <div style="font-size: 12px; color: #666;">Testimonies Given</div>
+            </div>
+            <div style="background: white; padding: 15px; border-radius: 6px; text-align: center;">
+                <div style="font-size: 28px; font-weight: 700; color: #1a5276;">8</div>
+                <div style="font-size: 12px; color: #666;">Letters Sent</div>
+            </div>
+            <div style="background: white; padding: 15px; border-radius: 6px; text-align: center;">
+                <div style="font-size: 28px; font-weight: 700; color: #1a5276;">8</div>
+                <div style="font-size: 12px; color: #666;">Action Alerts</div>
+            </div>
+            <div style="background: white; padding: 15px; border-radius: 6px; text-align: center;">
+                <div style="font-size: 28px; font-weight: 700; color: #1a5276;">47</div>
+                <div style="font-size: 12px; color: #666;">Business Signers (Peak)</div>
+            </div>
+            <div style="background: white; padding: 15px; border-radius: 6px; text-align: center;">
+                <div style="font-size: 28px; font-weight: 700; color: #1a5276;">312</div>
+                <div style="font-size: 12px; color: #666;">Member Businesses Reached</div>
+            </div>
+        </div>
+    </div>
+
+    <div style="background: #e8f4f8; padding: 20px; border-radius: 8px; border-left: 4px solid #1a5276; margin-top: 30px;">
+        <div style="font-size: 14px; font-weight: 700; color: #1a5276; margin-bottom: 10px;">📋 Report Notes</div>
+        <div style="font-size: 13px; color: #444; line-height: 1.6;">
+            This report reflects the final status of legislation as of Sine Die (March 12, 2026). 
+            Bills marked "PASSED" have been delivered to the Governor. The Governor has 20 days 
+            (excluding Sundays) to sign, veto, or allow bills to become law without signature.<br><br>
+            <strong>Next Steps:</strong> OneRedmond will monitor Governor action on passed bills and 
+            provide updates on implementation timeline and rulemaking processes.
+        </div>
+    </div>
+
+    <script>
+        function toggleBill(header) {
+            const content = header.nextElementSibling;
+            const icon = header.querySelector('.toggle-icon');
+            if (content.style.display === 'block') {
+                content.style.display = 'none';
+                icon.textContent = '+';
+            } else {
+                content.style.display = 'block';
+                icon.textContent = '−';
+            }
+        }
+    </script>
+</body>
+</html>
