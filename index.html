@@ -555,10 +555,17 @@
         <div id="dashboard-page" class="page active">
             
             <!-- SINE DIE COMPLETED -->
-            <div style="background: linear-gradient(135deg, #1a5276, #2980b9); border-radius: 12px; padding: 20px; margin-bottom: 20px; border: 2px solid #4ecdc4; text-align: center;">
-                <div style="font-size: 24px; font-weight: 700; color: white; margin-bottom: 8px;">✓ 2026 LEGISLATIVE SESSION COMPLETE</div>
-                <div style="font-size: 16px; color: rgba(255,255,255,0.9); margin-bottom: 12px;">Sine Die: March 12, 2026 — Session Has Concluded</div>
-                <div style="font-size: 14px; color: rgba(255,255,255,0.8);">10 bills passed to Governor | 14 bills died | 4 OneRedmond active advocacy bills</div>
+            <div style="background: linear-gradient(135deg, #27ae60, #2ecc71); border-radius: 12px; padding: 25px; margin-bottom: 20px; border: 2px solid #4ecdc4; text-align: center; cursor: pointer;" onclick="showPage('reports', document.getElementById('nav-reports'))">
+                <div style="font-size: 26px; font-weight: 700; color: white; margin-bottom: 8px;">✓ 2026 SESSION COMPLETE</div>
+                <div style="font-size: 16px; color: rgba(255,255,255,0.95); margin-bottom: 15px;">Sine Die: March 12, 2026 — Final Report Available</div>
+                <div style="display: flex; justify-content: center; gap: 30px; font-size: 14px; color: rgba(255,255,255,0.9); margin-bottom: 15px;">
+                    <span>✅ 10 Passed to Governor</span>
+                    <span>❌ 14 Failed</span>
+                    <span>🏛️ 6 Active Advocacy</span>
+                </div>
+                <div style="display: inline-block; background: rgba(255,255,255,0.2); padding: 10px 25px; border-radius: 25px; color: white; font-weight: 600; font-size: 14px;">
+                    📊 View Final Report →
+                </div>
             </div>
             
             <div class="dashboard">
@@ -879,37 +886,29 @@
                 <!-- Recent Activity -->
                 <div class="card" style="grid-column: span 4;">
                     <div class="card-header">
-                        <div class="card-title">Recent Activity</div>
-                        <span class="card-badge badge-active">Live</span>
+                        <div class="card-title">Session Outcomes</div>
+                        <span class="card-badge" style="background: rgba(39, 174, 96, 0.3); color: #4ecdc4;">Complete</span>
                     </div>
                     <div class="timeline">
                         <div class="timeline-item">
-                            <div class="timeline-date">Mar 12</div>
-                            <div class="timeline-content">🔥 SINE DIE — Final day. Floor votes on remaining bills. Session ends 11:59 PM.</div>
+                            <div class="timeline-date">Mar 13, 2026</div>
+                            <div class="timeline-content">✓ <strong>Session Complete</strong> — 10 bills delivered to Governor, 14 failed. Final report published.</div>
                         </div>
                         <div class="timeline-item">
-                            <div class="timeline-date">Mar 6</div>
-                            <div class="timeline-content">📊 POST-CUTOFF: 9 bills alive, 15 dead. Session ends March 12.</div>
+                            <div class="timeline-date">Mar 12, 2026</div>
+                            <div class="timeline-content">🔥 <strong>SINE DIE</strong> — Final floor votes completed. Session ended 11:59 PM.</div>
                         </div>
                         <div class="timeline-item">
-                            <div class="timeline-date">Mar 4</div>
-                            <div class="timeline-content">📋 SB 6026 - Advanced from Appropriations to House Rules Committee</div>
+                            <div class="timeline-date">Final Results</div>
+                            <div class="timeline-content">🏆 <strong>Wins:</strong> HB 2418, HB 2325, SB 6026, SB 6347 passed</div>
                         </div>
                         <div class="timeline-item">
-                            <div class="timeline-date">Mar 2</div>
-                            <div class="timeline-content">📋 SB 6026 - Executive session held in House Appropriations (cleared fiscal)</div>
+                            <div class="timeline-date"></div>
+                            <div class="timeline-content">⚠️ <strong>Opposed Passed:</strong> SB 6346 (Millionaires Tax) despite opposition</div>
                         </div>
                         <div class="timeline-item">
-                            <div class="timeline-date">Feb 27</div>
-                            <div class="timeline-content">✅ SB 6346 - House Finance Committee took executive action (advancing)</div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-date">Feb 27</div>
-                            <div class="timeline-content">🗳️ HB 2418 - Placed on Senate Floor for 2nd Reading (major progress)</div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-date">Feb 25</div>
-                            <div class="timeline-content">✅ SB 6026 - PASSED House Local Government Committee, referred to Appropriations</div>
+                            <div class="timeline-date"></div>
+                            <div class="timeline-content">✓ <strong>Defeated:</strong> SB 6173, HB 1319 (employer taxes) failed</div>
                         </div>
                     </div>
                 </div>
@@ -929,13 +928,12 @@
                 </script>
 
                     <div class="card-header">
-                        <div class="card-title">Tracked Bills Status Overview</div>
+                        <div class="card-title">Complete Bill Summary</div>
                         <div style="display: flex; gap: 10px;">
-                            <span class="card-badge" style="background: rgba(78, 205, 196, 0.2); color: #4ecdc4;">✅ 10 Alive (Cleared Fiscal)</span>
-                            <span class="card-badge" style="background: rgba(255, 107, 107, 0.2); color: #ff6b6b;">❌ 14 Dead (In Fiscal)</span>
-                            <span class="card-badge" style="background: rgba(212, 165, 116, 0.2); color: var(--hoshi-gold);">Mar 4 Update</span>
-                        </div>
-                    </div>
+                            <span class="card-badge" style="background: rgba(78, 205, 196, 0.2); color: #4ecdc4;">✅ 10 Passed</span>
+                            <span class="card-badge" style="background: rgba(255, 107, 107, 0.2); color: #ff6b6b;">❌ 14 Failed</span>
+                            <span class="card-badge" style="background: rgba(39, 174, 96, 0.3); color: #27ae60;">Session Complete</span>
+                        </div>                    </div>
                     <div style="overflow-x: auto;">
                         <table class="status-table" id="status-table">
                             <thead>
@@ -1247,124 +1245,65 @@
                     </div>
                     
                     <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 20px;">
-                        <!-- Bill Briefs -->
-                        <div class="bill-card" onclick="window.open('reports/SB6346-brief.html', '_blank')" style="cursor: pointer;">
+                        <!-- POST-SESSION: Primary Report -->
+                        <div class="bill-card" onclick="window.open('reports/OneRedmond-2026-PostSession-Summary.html', '_blank')" style="cursor: pointer; background: linear-gradient(135deg, rgba(39, 174, 96, 0.2), rgba(26, 82, 118, 0.15)); border: 3px solid #27ae60; grid-column: span 3;">
+                            <div class="bill-header">
+                                <span class="bill-number">📊 2026 FINAL REPORT</span>
+                                <span class="bill-status" style="background: rgba(39, 174, 96, 0.3); color: #27ae60; font-weight: 700;">POST-SESSION SUMMARY</span>
+                            </div>
+                            <div class="bill-title">OneRedmond 2026 Legislative Session — Final Summary</div>
+                            <div class="bill-description"><strong>The definitive post-session report:</strong> Complete bill outcomes, advocacy impact metrics, key takeaways, and next steps. 9 passed, 15 failed, 7 with active advocacy. <strong>Start here for session wrap-up.</strong></div>
+                        </div>
+
+                        <!-- POST-SESSION: Detailed Advocacy -->
+                        <div class="bill-card" onclick="window.open('reports/OneRedmond-SineDie-March13-Advocacy-Report.html', '_blank')" style="cursor: pointer; background: linear-gradient(135deg, rgba(26, 82, 118, 0.2), rgba(41, 128, 185, 0.1)); border: 2px solid #2980b9;">
+                            <div class="bill-header">
+                                <span class="bill-number">📋 ADVOCACY DETAIL</span>
+                                <span class="bill-status" style="background: rgba(41, 128, 185, 0.3); color: #2980b9;">Complete Actions</span>
+                            </div>
+                            <div class="bill-title">Sine Die Advocacy Report — March 13</div>
+                            <div class="bill-description">Detailed action tables for all 7 active bills: 5 letters sent, legislators contacted, testimony given, meetings held.</div>
+                        </div>
+
+                        <!-- Bill Briefs (Reference) -->
+                        <div class="bill-card" onclick="window.open('reports/SB6346-brief.html', '_blank')" style="cursor: pointer; opacity: 0.9;">
                             <div class="bill-header">
                                 <span class="bill-number">SB 6346</span>
-                                <span class="bill-status" style="background: rgba(255, 107, 107, 0.2); color: #ff6b6b;">2 Pages</span>
+                                <span class="bill-status" style="background: rgba(255, 107, 107, 0.2); color: #ff6b6b;">Brief</span>
                             </div>
                             <div class="bill-title">Millionaires Tax Brief</div>
-                            <div class="bill-description">9.9% tax on income exceeding $1M annually. OneRedmond OPPOSED.</div>
+                            <div class="bill-description">OneRedmond OPPOSED — Passed despite opposition.</div>
                         </div>
                         
-                        <div class="bill-card" onclick="window.open('reports/SB6173-brief.html', '_blank')" style="cursor: pointer;">
-                            <div class="bill-header">
-                                <span class="bill-number">SB 6173</span>
-                                <span class="bill-status" style="background: rgba(255, 107, 107, 0.2); color: #ff6b6b;">2 Pages</span>
-                            </div>
-                            <div class="bill-title">Apple Health Employer Assessment Brief</div>
-                            <div class="bill-description">Critical employer assessment for Apple Health funding.</div>
-                        </div>
-                        
-                        <div class="bill-card" onclick="window.open('reports/SB6347-brief.html', '_blank')" style="cursor: pointer;">
-                            <div class="bill-header">
-                                <span class="bill-number">SB 6347</span>
-                                <span class="bill-status" style="background: rgba(255, 217, 61, 0.2); color: #ffd93d;">2 Pages</span>
-                            </div>
-                            <div class="bill-title">Estate Tax Reinstatement Brief</div>
-                            <div class="bill-description">Reinstates higher estate tax rates for large estates.</div>
-                        </div>
-                        
-                        <div class="bill-card" onclick="window.open('reports/HB2418-brief.html', '_blank')" style="cursor: pointer;">
+                        <div class="bill-card" onclick="window.open('reports/HB2418-brief.html', '_blank')" style="cursor: pointer; opacity: 0.9;">
                             <div class="bill-header">
                                 <span class="bill-number">HB 2418</span>
-                                <span class="bill-status" style="background: rgba(78, 205, 196, 0.2); color: #4ecdc4;">2 Pages</span>
+                                <span class="bill-status" style="background: rgba(78, 205, 196, 0.2); color: #4ecdc4;">Brief</span>
                             </div>
                             <div class="bill-title">Permit Review Reform Brief</div>
-                            <div class="bill-description">Streamlines permitting with 120-day shot clocks. Direct Redmond impact.</div>
+                            <div class="bill-description">OneRedmond SUPPORTED — Major win for Redmond.</div>
                         </div>
                         
-                        <div class="bill-card" onclick="window.open('reports/SB6026-brief.html', '_blank')" style="cursor: pointer;">
+                        <div class="bill-card" onclick="window.open('reports/SB6026-brief.html', '_blank')" style="cursor: pointer; opacity: 0.9;">
                             <div class="bill-header">
                                 <span class="bill-number">SB 6026</span>
-                                <span class="bill-status" style="background: rgba(78, 205, 196, 0.2); color: #4ecdc4;">2 Pages</span>
+                                <span class="bill-status" style="background: rgba(78, 205, 196, 0.2); color: #4ecdc4;">Brief</span>
                             </div>
-                            <div class="bill-title">Residential Development in Commercial Zones Brief</div>
-                            <div class="bill-description">Removes ground-floor commercial mandates for residential development.</div>
+                            <div class="bill-title">Residential Development Brief</div>
+                            <div class="bill-description">40% retail cap amendment secured.</div>
                         </div>
                         
-                        <div class="bill-card" onclick="window.open('reports/HB2325-brief.html', '_blank')" style="cursor: pointer;">
-                            <div class="bill-header">
-                                <span class="bill-number">HB 2325</span>
-                                <span class="bill-status" style="background: rgba(78, 205, 196, 0.2); color: #4ecdc4;">2 Pages</span>
+                        <!-- Archived Interim Reports (collapsed) -->
+                        <div style="grid-column: span 3; margin-top: 10px; padding: 15px; background: rgba(100,100,100,0.1); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);">
+                            <div style="font-size: 13px; color: rgba(197, 227, 240, 0.6); margin-bottom: 10px;">
+                                📁 <strong>Archived Interim Reports</strong> — Daily updates from March 9-12 (superseded by final reports above)
                             </div>
-                            <div class="bill-title">Tourism Assessment Program Brief</div>
-                            <div class="bill-description">ALIVE - On House Floor. Self-supported assessment for tourism promotion funding.</div>
-                        </div>
-                        
-                        <div class="bill-card" onclick="window.open('reports/SB6347.html', '_blank')" style="cursor: pointer;">
-                            <div class="bill-header">
-                                <span class="bill-number">Analysis</span>
-                                <span class="bill-status" style="background: rgba(212, 165, 116, 0.2); color: var(--hoshi-gold);">Full Report</span>
+                            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                                <a href="reports/OneRedmond-Update-March9-2026.html" target="_blank" style="font-size: 11px; color: rgba(197, 227, 240, 0.5); text-decoration: none; padding: 4px 8px; background: rgba(255,255,255,0.05); border-radius: 4px;">March 9</a>
+                                <a href="reports/OneRedmond-Chamber-Style-March10-2026.html" target="_blank" style="font-size: 11px; color: rgba(197, 227, 240, 0.5); text-decoration: none; padding: 4px 8px; background: rgba(255,255,255,0.05); border-radius: 4px;">March 10</a>
+                                <a href="reports/OneRedmond-Chamber-Style-March11-2026.html" target="_blank" style="font-size: 11px; color: rgba(197, 227, 240, 0.5); text-decoration: none; padding: 4px 8px; background: rgba(255,255,255,0.05); border-radius: 4px;">March 11</a>
+                                <a href="reports/Sine-Die-Final-Push-March10-2026.html" target="_blank" style="font-size: 11px; color: rgba(197, 227, 240, 0.5); text-decoration: none; padding: 4px 8px; background: rgba(255,255,255,0.05); border-radius: 4px;">March 10 Final Push</a>
                             </div>
-                            <div class="bill-title">SB 6347 Full Analysis</div>
-                            <div class="bill-description">Detailed analysis of Estate Tax Reinstatement bill.</div>
-                        </div>
-                        
-                        <div class="bill-card" onclick="window.open('reports/OneRedmond-Update-March9-2026.html', '_blank')" style="cursor: pointer; background: rgba(78, 205, 196, 0.1); border: 2px solid #4ecdc4;">
-                            <div class="bill-header">
-                                <span class="bill-number">📋 OneRedmond</span>
-                                <span class="bill-status" style="background: rgba(78, 205, 196, 0.2); color: #4ecdc4;">Client Report</span>
-                            </div>
-                            <div class="bill-title">Legislative Update - March 9, 2026</div>
-                            <div class="bill-description">Full briefing for OneRedmond: 10 alive bills, 14 dead, outlooks, and priorities. Print-ready.</div>
-                        </div>
-                        
-                        <div class="bill-card" onclick="window.open('reports/OneRedmond-Chamber-Style-March10-2026.html', '_blank')" style="cursor: pointer; background: linear-gradient(135deg, rgba(26, 82, 118, 0.1), rgba(78, 205, 196, 0.1)); border: 2px solid #1a5276;">
-                            <div class="bill-header">
-                                <span class="bill-number">🏛️ OneRedmond</span>
-                                <span class="bill-status" style="background: rgba(26, 82, 118, 0.2); color: #1a5276;">Chamber Style</span>
-                            </div>
-                            <div class="bill-title">Legislative Update - March 10, 2026</div>
-                            <div class="bill-description">Professional chamber-style briefing: HB 2418, SB 6346, budget crisis, and Sine Die scenarios. Interactive format.</div>
-                        </div>
-                        
-                        <div class="bill-card" onclick="window.open('reports/OneRedmond-Chamber-Style-March11-2026.html', '_blank')" style="cursor: pointer; background: linear-gradient(135deg, rgba(231, 76, 60, 0.1), rgba(26, 82, 118, 0.1)); border: 2px solid #e74c3c;">
-                            <div class="bill-header">
-                                <span class="bill-number">🏛️ OneRedmond</span>
-                                <span class="bill-status" style="background: rgba(231, 76, 60, 0.2); color: #e74c3c;">FINAL 36H</span>
-                            </div>
-                            <div class="bill-title">Legislative Update - March 11, 2026</div>
-                            <div class="bill-description">UPDATED: Final 36 hours to Sine Die. Floor votes today. HB 2418, SB 6346 status. March 12 midnight deadline.</div>
-                        </div>
-                        
-                        <div class="bill-card" onclick="window.open('reports/Sine-Die-Final-Push-March10-2026.html', '_blank')" style="cursor: pointer; background: rgba(195, 74, 74, 0.1); border: 2px solid #c0392b;">
-                            <div class="bill-header">
-                                <span class="bill-number">🔥 SINE DIE</span>
-                                <span class="bill-status" style="background: rgba(195, 74, 74, 0.2); color: #c0392b;">URGENT</span>
-                            </div>
-                            <div class="bill-title">Final Push Briefing - March 10, 2026</div>
-                            <div class="bill-description">48-72 hours remaining. Budget crisis, income tax gamble, HB 2418 status, and final scenarios.</div>
-                        </div>
-                        
-                        <!-- NEW: March 13 Sine Die Advocacy Report -->
-                        <div class="bill-card" onclick="window.open('reports/OneRedmond-SineDie-March13-Advocacy-Report.html', '_blank')" style="cursor: pointer; background: linear-gradient(135deg, rgba(26, 82, 118, 0.25), rgba(41, 128, 185, 0.15)); border: 3px solid #2980b9; grid-column: span 2;">
-                            <div class="bill-header">
-                                <span class="bill-number">📋 MARCH 13 SINE DIE</span>
-                                <span class="bill-status" style="background: rgba(41, 128, 185, 0.3); color: #2980b9; font-weight: 700;">ADVOCACY REPORT</span>
-                            </div>
-                            <div class="bill-title">OneRedmond Sine Die Advocacy Report</div>
-                            <div class="bill-description"><strong>Published March 13, 2026:</strong> Comprehensive summary of OneRedmond's advocacy actions this session. Includes detailed action tables for bills we were active on — letters sent, testimony given, legislators contacted, Governor outreach. <strong>Shows clients our active engagement.</strong></div>
-                        </div>
-                        
-                        <!-- NEW: 2026 Session Report -->
-                        <div class="bill-card" onclick="window.open('reports/OneRedmond-2026-Session-Report.html', '_blank')" style="cursor: pointer; background: linear-gradient(135deg, rgba(26, 82, 118, 0.2), rgba(39, 174, 96, 0.1)); border: 3px solid #1a5276; grid-column: span 2;">
-                            <div class="bill-header">
-                                <span class="bill-number">📊 2026 SESSION</span>
-                                <span class="bill-status" style="background: rgba(39, 174, 96, 0.3); color: #27ae60; font-weight: 700;">COMPLETE</span>
-                            </div>
-                            <div class="bill-title">OneRedmond 2026 Legislative Session Report</div>
-                            <div class="bill-description"><strong>Comprehensive post-Sine Die analysis:</strong> All bills that passed/failed, OneRedmond engagement tables for active bills, session summary with metrics. <strong>10 passed, 14 failed, 4 active advocacy bills.</strong></div>
                         </div>
                         
                         <div class="bill-card" onclick="showPage('forecasts')" style="cursor: pointer; background: rgba(212, 165, 116, 0.1);">
@@ -1570,22 +1509,62 @@
                         </div>
                     </div>
                     
-                    <!-- Cirque du Soleil Liquor License -->
-                    <div class="bill-card" style="border: 1px solid rgba(255, 107, 107, 0.5); margin-bottom: 20px;">
-                        <div class="bill-header">
-                            <span class="bill-number">🎪 Cirque du Soleil</span>
-                            <span class="bill-status" style="background: rgba(255, 107, 107, 0.2); color: #ff6b6b;">📝 Follow-up Required</span>
+                    <!-- PROJECT COSMOS: SpaceX × Cirque du Soleil -->
+                    <div class="bill-card" style="border: 2px solid var(--cosmos-purple, #6b5ce7); margin-bottom: 20px; background: linear-gradient(135deg, rgba(107, 92, 231, 0.2), rgba(0, 82, 136, 0.15), rgba(26, 47, 74, 0.3)); cursor: pointer;" onclick="window.open('cosmos.html', '_blank')">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
+                            <div>
+                                <div style="font-size: 11px; color: #6b5ce7; letter-spacing: 2px; margin-bottom: 6px; text-transform: uppercase; font-weight: 600;">🌌 Global Inflection Point</div>
+                                <div style="font-family: 'Space Grotesk', sans-serif; font-size: 24px; font-weight: 500; color: var(--star-white); letter-spacing: 2px; margin-bottom: 4px;">PROJECT COSMOS</div>
+                                <div style="font-size: 14px; color: var(--sky-blue);">SpaceX × Cirque du Soleil</div>
+                            </div>
+                            <span style="background: linear-gradient(135deg, rgba(107, 92, 231, 0.4), rgba(0, 82, 136, 0.3)); color: #a78bfa; padding: 8px 16px; border-radius: 20px; font-size: 12px; border: 1px solid rgba(107, 92, 231, 0.5);">🚀 VISION →</span>
                         </div>
-                        <div class="bill-description">Liquor license application for Big Top location near Marymoor Park — adjacent to Marymoor Village TOD area</div>
-                        <div style="margin-top: 8px; font-size: 11px; color: rgba(197, 227, 240, 0.6);">
-                            📍 Near Marymoor Park • 🍷 Alcohol service permit pending • ⚠️ Monitor for community impact
+                        
+                        <div style="font-size: 14px; line-height: 1.7; color: rgba(255, 255, 255, 0.9); margin-bottom: 20px;">
+                            A historic collaboration born in Redmond that will redefine humanity's relationship with space. 
+                            When the world's boldest explorers meet its most visionary artists, we create more than entertainment—
+                            we create the moment that launches a new era.
                         </div>
-                        <div style="margin-top: 8px; padding: 8px; background: rgba(255, 107, 107, 0.1); border-radius: 4px; border-left: 3px solid #ff6b6b;">
-                            <span style="font-size: 11px; color: #ff6b6b; font-weight: 600;">⏰ Action Item:</span>
-                            <span style="font-size: 11px; color: rgba(197, 227, 240, 0.8);"> Track approval status and any community objections</span>
+                        
+                        <!-- The Opportunity Grid -->
+                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 20px;">
+                            <div style="padding: 15px; background: rgba(10, 22, 40, 0.5); border-radius: 10px; border-left: 3px solid var(--hoshi-gold);">
+                                <div style="font-size: 20px; margin-bottom: 6px;">📰</div>
+                                <div style="font-size: 12px; font-weight: 600; color: var(--sky-soft); margin-bottom: 4px;">Global News Event</div>
+                                <div style="font-size: 11px; color: rgba(197, 227, 240, 0.7);">4B+ media reach, worldwide coverage</div>
+                            </div>
+                            
+                            <div style="padding: 15px; background: rgba(10, 22, 40, 0.5); border-radius: 10px; border-left: 3px solid #4ecdc4;">
+                                <div style="font-size: 20px; margin-bottom: 6px;">🎪</div>
+                                <div style="font-size: 12px; font-weight: 600; color: var(--sky-soft); margin-bottom: 4px;">Cirque @ Marymoor</div>
+                                <div style="font-size: 11px; color: rgba(197, 227, 240, 0.7);">Liquor license needed, 2026 launch</div>
+                            </div>
+                            
+                            <div style="padding: 15px; background: rgba(10, 22, 40, 0.5); border-radius: 10px; border-left: 3px solid #ff6b6b;">
+                                <div style="font-size: 20px; margin-bottom: 6px;">🚀</div>
+                                <div style="font-size: 12px; font-weight: 600; color: var(--sky-soft); margin-bottom: 4px;">SpaceX Partnership</div>
+                                <div style="font-size: 11px; color: rgba(197, 227, 240, 0.7);">Redmond facility connection</div>
+                            </div>
                         </div>
-                        <div style="margin-top: 8px; font-size: 11px; color: rgba(197, 227, 240, 0.7);">
-                            <span style="color: var(--hoshi-gold);">👤 Contact:</span> Yago Pita Alvarez
+                        
+                        <!-- Immediate Needs -->
+                        <div style="background: rgba(255, 193, 7, 0.08); border: 1px solid rgba(255, 193, 7, 0.25); border-radius: 10px; padding: 15px; margin-bottom: 15px;">
+                            <div style="font-size: 12px; font-weight: 600; color: #ffc107; margin-bottom: 10px;">⚡ IMMEDIATE PRIORITIES:</div>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 12px;">
+                                <div style="color: rgba(197, 227, 240, 0.9);">• Schedule King County Marymoor Park meeting</div>
+                                <div style="color: rgba(197, 227, 240, 0.9);">• Secure liquor license for venue</div>
+                                <div style="color: rgba(197, 227, 240, 0.9);">• Connect with SpaceX Redmond leadership</div>
+                                <div style="color: rgba(197, 227, 240, 0.9);">• Draft partnership proposal</div>
+                            </div>
+                        </div>
+                        
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div style="font-size: 11px; color: rgba(197, 227, 240, 0.6);">
+                                📍 Marymoor Park • 💰 $500M+ Economic Potential • 🌍 World Premiere Target: 2028
+                            </div>
+                            <div style="font-size: 12px; color: #6b5ce7; font-weight: 500;">
+                                Explore Full Vision →
+                            </div>
                         </div>
                     </div>
                     
@@ -1624,10 +1603,10 @@
         // Bill data with full summaries - ALL 17 BILLS
         const billsData = {
             'HB2730': { number: 'HB 2730', title: 'Aerospace Tax Preferences - Effectiveness Metrics', shortDesc: 'Clarifying the metric for judging the effectiveness of aerospace tax preferences.', fullSummary: 'This bill clarifies how the effectiveness of aerospace tax incentives will be measured, specifically regarding job creation and retention metrics. Important for aerospace companies operating in Washington.', assessment: 'DEAD - Missed March 2 fiscal cutoff. Stuck in House Finance Committee with no executive action after Feb 20 hearing.', status: 'HFinance', statusLabel: '❌ DEAD - Missed Cutoff', hearing: 'Feb 20 - No Action', sponsor: 'TBD', committee: 'House Finance', impact: 'medium', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=2730&Year=2026', chamber: 'House', alive: false },
-            'SB6346': { number: 'SB 6346', title: 'Millionaires Tax', shortDesc: 'Establishing a tax on millionaires.', fullSummary: 'This bill establishes a tax on millionaires to fund state services. It targets high-net-worth individuals and could affect wealthy business owners and investors.', assessment: 'PASSED - Senate 27-22, House 52-46. Delivered to Governor March 13, 2026. Expected legal challenge. OneRedmond opposed.', status: 'Passed', statusLabel: '⚠️ PASSED (Opposed)', hearing: 'Final Vote: Mar 12', sponsor: 'TBD', committee: 'House Finance', impact: 'high', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=6346&Year=2026', chamber: 'Senate', alive: true },
+            'SB6346': { number: 'SB 6346', title: 'Millionaires Tax', shortDesc: 'Establishing a tax on millionaires.', fullSummary: 'This bill establishes a tax on millionaires to fund state services. It targets high-net-worth individuals and could affect wealthy business owners and investors.', assessment: 'PASSED - Senate 27-22, House 52-46. Delivered to Governor March 13, 2026. Expected legal challenge. OneRedmond opposed.', status: 'Passed', statusLabel: '⚠️ PASSED (Opposed)', hearing: 'Final Vote: Mar 12', sponsor: 'TBD', committee: 'House Finance', impact: 'high', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=6346&Year=2026', chamber: 'Senate', alive: true, opposed: true },
             'HB2100': { number: 'HB 2100', title: 'Payroll Tax for Well Washington Fund', shortDesc: 'Enacting an excise tax on large operating companies on payroll expenses above minimum wage threshold.', fullSummary: 'This bill enacts an excise tax on large operating companies based on payroll expenses above the minimum wage threshold to fund services benefiting Washingtonians through the Well Washington fund.', assessment: 'DEAD - Stuck in House Finance Committee. No action since Jan 22. Missed March 2 fiscal cutoff.', status: 'HFinance', statusLabel: '❌ DEAD - Missed Cutoff', hearing: 'Jan 22 - No action', sponsor: 'TBD', committee: 'House Finance', impact: 'high', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=2100&Year=2025', chamber: 'House', alive: false },
             'SB6093': { number: 'SB 6093', title: 'Payroll Tax - Senate Version', shortDesc: 'Senate version of excise tax on large operating companies payroll expenses.', fullSummary: 'Senate companion bill to HB 2100, enacting an excise tax on large operating companies based on payroll expenses above minimum wage threshold to fund the Well Washington fund.', assessment: 'DEAD - Stuck in Senate Ways & Means Committee. No action since Jan 13. Missed March 2 fiscal cutoff.', status: 'SWays & Means', statusLabel: '❌ DEAD - Missed Cutoff', hearing: 'Jan 13 - No action', sponsor: 'TBD', committee: 'Senate Ways & Means', impact: 'high', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=6093&Year=2025', chamber: 'Senate', alive: false },
-            'HB1319': { number: 'HB 1319', title: 'Wealth Tax on Financial Assets', shortDesc: 'Enacting a wealth tax on ownership of stocks, bonds, and other financial intangible property.', fullSummary: 'This bill enacts a wealth tax on the ownership of stocks, bonds, and other financial intangible property. Targets high-net-worth individuals with significant investment portfolios.', assessment: 'LIKELY DEAD - No action since Jan 15. Missed policy committee cutoff (Feb 7).', status: 'HFinance', statusLabel: 'LIKELY DEAD', hearing: 'Jan 15', sponsor: 'OFM Request', committee: 'House Finance', impact: 'high', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=1319&Year=2025', chamber: 'House', alive: false },
+            'HB1319': { number: 'HB 1319', title: 'Wealth Tax on Financial Assets', shortDesc: 'Enacting a wealth tax on ownership of stocks, bonds, and other financial intangible property.', fullSummary: 'This bill enacts a wealth tax on the ownership of stocks, bonds, and other financial intangible property. Targets high-net-worth individuals with significant investment portfolios.', assessment: 'LIKELY DEAD - No action since Jan 15. Missed policy committee cutoff (Feb 7).', status: 'HFinance', statusLabel: 'LIKELY DEAD', hearing: 'Jan 15', sponsor: 'OFM Request', committee: 'House Finance', impact: 'high', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=1319&Year=2025', chamber: 'House', alive: false, opposed: true },
             'SB6229': { number: 'SB 6229', title: 'Small Business Stock Taxation', shortDesc: 'Concerning taxation of long-term capital gain of section 1202 small business stock.', fullSummary: 'This bill addresses taxation of long-term capital gains from section 1202 small business stock, affecting startup investors and founders.', assessment: 'LIKELY DEAD for this session. Executive session on Feb 19 resulted in NO ACTION TAKEN. Missed fiscal committee cutoff. Changes to QSBS taxation could affect investment decisions if revived.', status: 'SWays & Means', statusLabel: 'LIKELY DEAD', hearing: 'Feb 19 - No Action', sponsor: 'TBD', committee: 'Senate Ways & Means', impact: 'medium', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=6229&Year=2026', chamber: 'Senate', alive: false },
             'HB2615': { number: 'HB 2615', title: 'Tax Amnesty Program', shortDesc: 'Codifying voluntary disclosure tax program and authorizing temporary tax amnesty.', fullSummary: 'This bill codifies the voluntary disclosure tax program and authorizes a temporary tax amnesty period, allowing taxpayers to come into compliance with reduced penalties.', assessment: 'DEAD - Stuck in House Appropriations Committee. No action since Feb 6. Missed March 2 fiscal cutoff.', status: 'HApprops', statusLabel: '❌ DEAD - Missed Cutoff', hearing: 'Feb 6 - No action', sponsor: 'TBD', committee: 'House Appropriations', impact: 'medium', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=2615&Year=2025', chamber: 'House', alive: false },
             'HB2278': { number: 'HB 2278', title: 'Tourism Promotion Areas', shortDesc: 'Concerning tourism promotion areas and destination marketing.', fullSummary: 'This bill establishes a framework for creating tourism promotion areas throughout Washington State, enabling local jurisdictions to form tourism promotion districts with dedicated funding.', assessment: 'Removes sunset clause on tourism promotion fees (extended beyond July 1, 2027). Passed House Finance Committee. Now on House floor for vote. Lower priority for tech clients but relevant for hospitality sector.', status: 'HRules R', statusLabel: 'On House Floor', hearing: 'Feb 9 - Advanced', sponsor: 'Gregerson (D)', committee: 'House Floor', impact: 'low', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=2278&Year=2026', chamber: 'House', alive: true },
@@ -1644,7 +1623,7 @@
             'HB1833': { number: 'HB 1833', title: 'Spark Act - AI Grant Program', shortDesc: 'Establishing an AI grant program for innovation and ethical pilot projects.', fullSummary: 'Creates the Spark Act, establishing an artificial intelligence grant program administered by the Department of Commerce to promote AI innovation and ethical AI pilot projects.', assessment: 'DEAD - Hearing scheduled Mar 25 (after March 2 fiscal cutoff). Missed cutoff.', status: 'HEnvEnergy', statusLabel: '❌ DEAD - After Cutoff', hearing: 'Mar 25', sponsor: 'Kloba (D)', committee: 'Environment, Energy & Technology', impact: 'high', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=1833&Year=2025', chamber: 'House', alive: false },
             'HB2225': { number: 'HB 2225', title: 'AI Companion Chatbot Regulation', shortDesc: 'Regulating AI companion chatbots with mental health safeguards.', fullSummary: 'Regulates artificial intelligence companion chatbots, requiring mental health safeguards and consumer protections for AI-powered companion applications.', assessment: 'DEAD - Stuck in Technology Committee. No action since Jan 14. Missed March 2 fiscal cutoff.', status: 'HTech', statusLabel: '❌ DEAD - Missed Cutoff', hearing: 'Jan 14 - No action', sponsor: 'Ferguson (Gov)', committee: 'Technology, Economic Development, & Veterans', impact: 'medium', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=2225&Year=2025', chamber: 'House', alive: false },
             'HB2446': { number: 'HB 2446', title: 'Quantum Technology Industry Development', shortDesc: 'Developing quantum technology into economic and workforce strategy.', fullSummary: 'Developing the quantum technology industry into the state\'s economic development and workforce strategy.', assessment: 'DEAD - Stuck in House Appropriations Committee. No action since Jan 20. Missed March 2 fiscal cutoff.', status: 'HApprops', statusLabel: '❌ DEAD - Missed Cutoff', hearing: 'Jan 20 - No action', sponsor: 'TBD', committee: 'Appropriations', impact: 'medium', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=2446&Year=2025', chamber: 'House', alive: false },
-            'SB6173': { number: 'SB 6173', title: 'Apple Health Employer Assessment', shortDesc: 'Creating an apple health employer assessment for employers with over 100 employees.', fullSummary: 'This bill creates an Apple Health employer assessment targeting employers with over 100 employees. This represents a significant new fee/tax on larger employers to fund health programs.', assessment: '🔴 LIKELY DEAD - Executive session on Feb 19 resulted in NO ACTION TAKEN. Missed fiscal committee cutoff. Major cost impact for employers over 100 employees if revived.', status: 'SWays & Means', statusLabel: 'LIKELY DEAD', hearing: 'Feb 19 - No Action', sponsor: 'TBD', committee: 'Senate Ways & Means', impact: 'high', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=6173&Year=2026', chamber: 'Senate', alive: false },
+            'SB6173': { number: 'SB 6173', title: 'Apple Health Employer Assessment', shortDesc: 'Creating an apple health employer assessment for employers with over 100 employees.', fullSummary: 'This bill creates an Apple Health employer assessment targeting employers with over 100 employees. This represents a significant new fee/tax on larger employers to fund health programs.', assessment: '🔴 LIKELY DEAD - Executive session on Feb 19 resulted in NO ACTION TAKEN. Missed fiscal committee cutoff. Major cost impact for employers over 100 employees if revived.', status: 'SWays & Means', statusLabel: 'LIKELY DEAD', hearing: 'Feb 19 - No Action', sponsor: 'TBD', committee: 'Senate Ways & Means', impact: 'high', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=6173&Year=2026', chamber: 'Senate', alive: false, opposed: true },
             'SB6026': { number: 'SB 6026', title: 'Residential Development in Commercial Zones', shortDesc: 'Removing ground-floor commercial mandates for residential development in commercial zones.', fullSummary: 'This bill removes the requirement for ground-floor commercial space in certain commercial zones, allowing for more residential development. Amended with 40% retail cap (OneRedmond amendment accepted).', assessment: 'PASSED - Senate 29-20, House 55-43 (amended). Delivered to Governor March 13, 2026. OneRedmond monitored. 40% retail cap amendment successfully secured.', status: 'Passed', statusLabel: '✓ PASSED', hearing: 'Final Vote: Mar 12', sponsor: 'TBD', committee: 'House Appropriations', impact: 'medium', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=6026&Year=2026', chamber: 'Senate', alive: true },
             'SB6347': { number: 'SB 6347', title: 'Estate Tax Reinstatement', shortDesc: 'Reinstating estate tax rates for large estates effective July 1, 2026.', fullSummary: 'This bill reinstates higher estate tax rates for large estates, effective July 1, 2026. Applies to estates of decedents dying on or after that date.', assessment: 'PASSED - Senate 36-13, House 58-40. Delivered to Governor March 13, 2026. OneRedmond supported.', status: 'Passed', statusLabel: '✓ PASSED', hearing: 'Final Vote: Mar 12', sponsor: 'TBD', committee: 'House Rules', impact: 'high', billUrl: 'https://app.leg.wa.gov/billsummary?BillNumber=6347&Year=2025', chamber: 'Senate', alive: true }
         };
@@ -1918,9 +1897,12 @@
                 const rowStyle = bill.alive === false ? 'style="opacity: 0.5; text-decoration: line-through;"' : '';
                 const chamberClass = bill.chamber ? `chamber-${bill.chamber.toLowerCase()}` : '';
                 
+                // Add OPPOSED tag for bills OneRedmond opposed
+                const opposedTag = bill.opposed ? '<span style="background: rgba(255, 107, 107, 0.3); color: #ff6b6b; padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 600; margin-left: 8px; border: 1px solid rgba(255, 107, 107, 0.5);">OPPOSED</span>' : '';
+                
                 return `
                     <tr onclick="navigateToBill('${billId}')" style="cursor: pointer;" ${rowStyle}>
-                        <td><span class="bill-link-table">${bill.number || billId}</span></td>
+                        <td><span class="bill-link-table">${bill.number || billId}</span>${opposedTag}</td>
                         <td>${bill.title}</td>
                         <td class="${chamberClass}">${bill.chamber}</td>
                         <td><span class="status-badge ${statusClass}">${bill.statusLabel || bill.status}</span></td>
